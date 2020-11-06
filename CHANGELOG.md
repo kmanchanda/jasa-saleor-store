@@ -37,6 +37,7 @@ All notable, unreleased changes to this project will be documented in this file.
 - Support for static url - #721 by @marianoeramirez and @dominik-zeglen
 - Fix search crashing when displaying item with no category - #928 by @mmarkusik
 - Fix Generate site map - #915 by @rboixaderg
+- Use defaultChannelSlug in queries and mutations - #937 by @AlicjaSzu
 
 ## 2.10.4
 
