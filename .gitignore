@@ -6,6 +6,7 @@
 !.gitignore
 !.github
 !.babelrc
+!.firebaserc
 !.plop
 !.jest
 !.linguirc
