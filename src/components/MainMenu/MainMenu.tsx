@@ -27,7 +27,7 @@ import hamburgerHoverImg from "../../images/hamburger-hover.svg";
 import hamburgerImg from "../../images/hamburger.svg";
 import logoImg from "../../images/logo.svg";
 // import searchImg from "../../images/search.svg";
-import NewsearchIcon from "../../images/search-icon.svg";
+import NewSearchIcon from "../../images/search-icon.svg";
 import userImg from "../../images/user.svg";
 import {
   mediumScreen,
@@ -83,16 +83,13 @@ const MainMenu: React.FC<MainMenuProps> = ({ demoMode }) => {
       })}
     >
       {demoMode && <DemoBanner />}
-      <nav className="main-menu" id="header">
-        
-      <div className="main-menu__center">
+      <nav className="main-menu" id="header">        
+        <div className="main-menu__center">
           <Link to={appPaths.baseUrl}>
             <ReactSVG path={logoImg} />
           </Link>
         </div>
         <div className="main-menu__left">
-
-
           <TypedMainMenuQuery renderOnError displayLoader={false}>
             {({ data }) => {
               const items = maybe(() => data.shop.navigation.main.items, []);
@@ -222,19 +219,14 @@ const MainMenu: React.FC<MainMenuProps> = ({ demoMode }) => {
           </TypedMainMenuQuery>
         </div>
 
-<div className="main-menu__search">
+        <div className="main-menu__search">
+          <div className="searcbox">
+            <span className="searchIcn"> <ReactSVG path={NewSearchIcon} /></span>
+            <input type="text" className="from-control" placeholder="Hvad er du på udkig efter?"/>
+          </div>
+        </div>
 
-<div className="searcbox">
-  <span className="searchIcn"> <ReactSVG path={NewsearchIcon} /></span>
-  <input type="text" className="from-control" placeholder="Hvad er du på udkig efter?"/>
-</div>
-
-</div>
-
-
-        <div className="main-menu__right">
-
-          
+        <div className="main-menu__right">          
           <ul>
             <li><a href="#">Kataloger</a></li>
             <li><a href="#">Kontakt</a></li>
