@@ -26,7 +26,7 @@ import cartImg from "../../images/cart.svg";
 import hamburgerHoverImg from "../../images/hamburger-hover.svg";
 import hamburgerImg from "../../images/hamburger.svg";
 import logoImg from "../../images/logo.svg";
-// import searchImg from "../../images/search.svg";
+ import searchImg from "../../images/search.svg";
 import NewSearchIcon from "../../images/search-icon.svg";
 import userImg from "../../images/user.svg";
 import {
@@ -84,11 +84,18 @@ const MainMenu: React.FC<MainMenuProps> = ({ demoMode }) => {
     >
       {demoMode && <DemoBanner />}
       <nav className="main-menu" id="header">        
-        <div className="main-menu__center">
-          <Link to={appPaths.baseUrl}>
+       
+        <Media
+                    query={{ minWidth: mediumScreen }}
+                    render={() => (
+                      <div className="main-menu__center">
+                    <Link to={appPaths.baseUrl}>
             <ReactSVG path={logoImg} />
           </Link>
-        </div>
+          </div>
+                    )}
+                    />
+        
         <div className="main-menu__left">
           <TypedMainMenuQuery renderOnError displayLoader={false}>
             {({ data }) => {
@@ -219,17 +226,39 @@ const MainMenu: React.FC<MainMenuProps> = ({ demoMode }) => {
           </TypedMainMenuQuery>
         </div>
 
+        <Media
+                    query={{ maxWidth: mediumScreen }}
+                    render={() => (
+                      <div className="main-menu__center">
+                    <Link to={appPaths.baseUrl}>
+            <ReactSVG path={logoImg} />
+          </Link>
+          </div>
+                    )}
+                    />
+                     <Media
+                    query={{ minWidth: mediumScreen }}
+                    render={() => (
         <div className="main-menu__search">
           <div className="searcbox">
             <span className="searchIcn"> <ReactSVG path={NewSearchIcon} /></span>
             <input type="text" className="from-control" placeholder="Hvad er du på udkig efter?"/>
           </div>
         </div>
-
+                    )}
+/>
         <div className="main-menu__right">          
           <ul>
-            <li><a href="#">Kataloger</a></li>
+          <Media
+                    query={{ minWidth: mediumScreen }}
+                    render={() => (
+                      <>
+                       <li><a href="#">Kataloger</a></li>
             <li><a href="#">Kontakt</a></li>
+            </>
+                    )}
+                   
+                    />
             <Online>
               <Media
                 query={{ minWidth: smallScreen }}
@@ -318,7 +347,10 @@ const MainMenu: React.FC<MainMenuProps> = ({ demoMode }) => {
                 />
               </li>
             </Offline>
-            {/* <li
+            <Media
+                  query={{ maxWidth: mediumScreen }}
+                  render={() => (
+            <li
               data-test="menuSearchOverlayLink"
               className="main-menu__search"
               onClick={() =>
@@ -334,7 +366,9 @@ const MainMenu: React.FC<MainMenuProps> = ({ demoMode }) => {
                 )}
               />
               <ReactSVG path={searchImg} />
-            </li> */}
+            </li> 
+                  )}
+                  />
           </ul>
         </div>
       </nav>
