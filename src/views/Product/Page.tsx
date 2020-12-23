@@ -5,6 +5,7 @@ import { ProductDescription } from "@components/molecules";
 import { ProductGallery } from "@components/organisms";
 import AddToCartSection from "@components/organisms/AddToCartSection";
 import { smallScreen } from "../../globalStyles/scss/variables.scss";
+import backIcon from "../../../../images/backIcon.svg";
 
 import {
   Breadcrumbs,
@@ -80,7 +81,9 @@ const Page: React.FC<
 
   return (
     <div className="product-page">
-      <div className="container">
+      <div className="container breado">
+	  
+	
         <Breadcrumbs breadcrumbs={populateBreadcrumbs(product)} />
       </div>
       <div className="container">

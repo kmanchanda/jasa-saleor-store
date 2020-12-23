@@ -12,6 +12,19 @@ import {
 import { IProductVariantsAttributesSelectedValues } from "@types";
 import QuantityInput from "../../molecules/QuantityInput";
 import AddToCartButton from "../../molecules/AddToCartButton";
+import ReactSVG from "react-svg";
+import {
+    Accordion,
+    AccordionItem,
+    AccordionItemHeading,
+    AccordionItemButton,
+    AccordionItemPanel,
+} from 'react-accessible-accordion';
+import 'react-accessible-accordion/dist/fancy-example.css';
+
+import featureImg from "../../../../images/feature-icon.svg";
+import addMeticon from "../../../../images/addM.png";
+
 import ProductVariantPicker from "../ProductVariantPicker";
 import * as S from "./styles";
 import {
@@ -118,10 +131,24 @@ const AddToCartSection: React.FC<IAddToCartSection> = ({
           "outOfStock"
         )
       ) : (
-        <S.ProductPricing>
-          {getProductPrice(productPricing, variantPricing)}
-        </S.ProductPricing>
+         <S.ProductPricing>
+        {getProductPrice(productPricing, variantPricing)}
+         </S.ProductPricing>
       )}
+	  
+	  <div className="cfinner">
+	  <div className="finner1">
+	  Varenr.: 13744
+      </div>
+	  <div className="finner1">
+	  DB nr.: 1553418
+      </div>
+	    </div>
+      <div className="Maindes">
+	  Dørgreb L-Form i PVD messing. Med 2 mm massiv roset Ø52 mm. CC 30 mm. Inkl. skruer. Passer til dørtykkelse 30-75 mm.
+      </div>
+	 
+	  
       {noPurchaseAvailable &&
         renderErrorMessage(
           intl.formatMessage(commonMessages.noPurchaseAvailable),
@@ -142,6 +169,8 @@ const AddToCartSection: React.FC<IAddToCartSection> = ({
           }),
           "timeRestrictedAvailability"
         )}
+		
+		
       {isLowStock &&
         renderErrorMessage(
           intl.formatMessage(commonMessages.lowStock),
@@ -175,6 +204,55 @@ const AddToCartSection: React.FC<IAddToCartSection> = ({
         onSubmit={() => onAddToCart(variantId, quantity)}
         disabled={disableButton}
       />
+     <div className="btn-blo">
+	  <button className="btnIn2">Se forhandlerliste</button>
+	  </div>
+	  <div  className="featurelists">
+	  <ReactSVG path={featureImg} /> Opnå gratis forsendelse ved køb over 500 kr.
+      </div>
+	  
+	  <div className="addsmettel">
+	  <div className="addstitle">
+	  ANDET MATERIALE
+	  </div>
+	  <div className="addmetlist">
+	  <div className="addmetbox">
+	  <img src={addMeticon} alt={"addMeticon"} />
+	  
+	  </div>
+	  </div>
+    </div>
+	   <Accordion>
+            <AccordionItem>
+                <AccordionItemHeading>
+                    <AccordionItemButton>
+                    Vedligeholdelse
+                    </AccordionItemButton>
+                </AccordionItemHeading>
+                <AccordionItemPanel>
+                    <p>
+                        Exercitation in fugiat est ut ad ea cupidatat ut in
+                        cupidatat occaecat ut occaecat consequat est minim minim
+                        esse tempor laborum consequat esse adipisicing eu
+                        reprehenderit enim.
+                    </p>
+                </AccordionItemPanel>
+            </AccordionItem>
+            <AccordionItem>
+                <AccordionItemHeading>
+                    <AccordionItemButton>
+                    Specifikationer & Mål
+                    </AccordionItemButton>
+                </AccordionItemHeading>
+                <AccordionItemPanel>
+                    <p>
+                        In ad velit in ex nostrud dolore cupidatat consectetur
+                        ea in ut nostrud velit in irure cillum tempor laboris
+                        sed adipisicing eu esse duis nulla non.
+                    </p>
+                </AccordionItemPanel>
+            </AccordionItem>
+        </Accordion>
     </S.AddToCartSelection>
   );
 };
