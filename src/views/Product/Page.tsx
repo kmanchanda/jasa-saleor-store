@@ -70,6 +70,7 @@ const Page: React.FC<
       productVariants={product.variants}
       productPricing={product.pricing}
       queryAttributes={queryAttributes}
+      descriptionJson={product.descriptionJson}
       setVariantId={setVariantId}
       variantId={variantId}
       onAddToCart={handleAddToCart}
@@ -122,15 +123,8 @@ const Page: React.FC<
             }
           </Media>
         </div>
-      </div>
-      <div className="container">
-        <div className="product-page__product__description">
-          <ProductDescription
-            descriptionJson={product.descriptionJson}
-            attributes={product.attributes}
-          />
-        </div>
-      </div>
+        <hr />
+      </div>      
       <OtherProducts products={product.category.products.edges} />
     </div>
   );

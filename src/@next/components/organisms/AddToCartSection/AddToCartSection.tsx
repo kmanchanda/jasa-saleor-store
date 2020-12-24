@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { useIntl } from "react-intl";
-
+import { sanitize } from "dompurify";
+import draftToHtml from "draftjs-to-html";
 import { commonMessages } from "@temp/intl";
 import { ICheckoutModelLine } from "@saleor/sdk/lib/helpers";
 import {
@@ -42,6 +43,7 @@ export interface IAddToCartSection {
   productPricing: ProductDetails_product_pricing;
   items: ICheckoutModelLine[];
   queryAttributes: Record<string, string>;
+  descriptionJson: string;
   isAvailableForPurchase: boolean | null;
   availableForPurchase: string | null;
   variantId: string;
@@ -58,6 +60,7 @@ const AddToCartSection: React.FC<IAddToCartSection> = ({
   productPricing,
   productVariants,
   queryAttributes,
+  descriptionJson,
   onAddToCart,
   onAttributeChangeHandler,
   setVariantId,
@@ -124,17 +127,7 @@ const AddToCartSection: React.FC<IAddToCartSection> = ({
 
   return (
     <S.AddToCartSelection>
-      <S.ProductNameHeader data-test="productName">{name}</S.ProductNameHeader>
-      {isOutOfStock ? (
-        renderErrorMessage(
-          intl.formatMessage(commonMessages.outOfStock),
-          "outOfStock"
-        )
-      ) : (
-         <S.ProductPricing>
-        {getProductPrice(productPricing, variantPricing)}
-         </S.ProductPricing>
-      )}
+      <S.ProductNameHeader data-test="productName">{name}</S.ProductNameHeader>     
 	  
 	  <div className="cfinner">
 	  <div className="finner1">
@@ -145,7 +138,13 @@ const AddToCartSection: React.FC<IAddToCartSection> = ({
       </div>
 	    </div>
       <div className="Maindes">
-	  Dørgreb L-Form i PVD messing. Med 2 mm massiv roset Ø52 mm. CC 30 mm. Inkl. skruer. Passer til dørtykkelse 30-75 mm.
+        {descriptionJson && (
+          <div
+            dangerouslySetInnerHTML={{
+              __html: sanitize(draftToHtml(JSON.parse(descriptionJson))),
+            }}
+          />
+        )}
       </div>
 	 
 	  
@@ -181,7 +180,7 @@ const AddToCartSection: React.FC<IAddToCartSection> = ({
           intl.formatMessage(commonMessages.noItemsAvailable),
           "noItemsAvailable"
         )}
-      <S.VariantPicker>
+      {/* <S.VariantPicker>
         <ProductVariantPicker
           productVariants={productVariants}
           onChange={onVariantPickerChange}
@@ -189,7 +188,7 @@ const AddToCartSection: React.FC<IAddToCartSection> = ({
           queryAttributes={queryAttributes}
           onAttributeChangeHandler={onAttributeChangeHandler}
         />
-      </S.VariantPicker>
+      </S.VariantPicker> */}
       <S.QuantityInput>
         <QuantityInput
           quantity={quantity}
@@ -200,28 +199,38 @@ const AddToCartSection: React.FC<IAddToCartSection> = ({
           testingContext="addToCartQuantity"
         />
       </S.QuantityInput>
+      
+      {isOutOfStock ? (
+        renderErrorMessage(
+          intl.formatMessage(commonMessages.outOfStock),
+          "outOfStock"
+        )
+      ) : (
+         <S.ProductPricing>
+        {getProductPrice(productPricing, variantPricing)}
+         </S.ProductPricing>
+      )}
       <AddToCartButton
         onSubmit={() => onAddToCart(variantId, quantity)}
         disabled={disableButton}
       />
-     <div className="btn-blo">
-	  <button className="btnIn2">Se forhandlerliste</button>
-	  </div>
-	  <div  className="featurelists">
-	  <ReactSVG path={featureImg} /> Opnå gratis forsendelse ved køb over 500 kr.
+      <div className="btn-blo">
+	      <button className="btnIn2">Se forhandlerliste</button>
+	    </div>
+      <div  className="featurelists">
+        <ReactSVG path={featureImg} /> Opnå gratis forsendelse ved køb over 500 kr.
       </div>
 	  
-	  <div className="addsmettel">
-	  <div className="addstitle">
-	  ANDET MATERIALE
-	  </div>
-	  <div className="addmetlist">
-	  <div className="addmetbox">
-	  <img src={addMeticon} alt={"addMeticon"} />
-	  
-	  </div>
-	  </div>
-    </div>
+      <div className="addsmettel">
+        <div className="addstitle">
+          ANDET MATERIALE
+        </div>
+        <div className="addmetlist">
+          <div className="addmetbox">
+          <img src={addMeticon} alt={"addMeticon"} />
+          </div>
+        </div>
+      </div>
 	   <Accordion>
             <AccordionItem>
                 <AccordionItemHeading>
