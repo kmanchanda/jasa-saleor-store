@@ -10,6 +10,7 @@ export const Wrapper = styled.div`
 
   ${media.smallScreen`
     display: grid;
+    grid-column-gap: 20px;
   `}
 `;
 
@@ -20,7 +21,7 @@ export const Thumbnail = styled.div<{ activeThumbnail: boolean }>`
   border-style: solid;
   border-color: ${props =>
         props.activeThumbnail === true
-            ? props.theme.colors.thumbnailBorder
+            ? '#F5A930'
             : "transparent"};
   justify-content: center;
   height: 100px;

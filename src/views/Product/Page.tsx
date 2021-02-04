@@ -3,6 +3,7 @@ import React from "react";
 import { ProductGallery } from "@components/organisms";
 import AddToCartSection from "@components/organisms/AddToCartSection";
 import { smallScreen } from "../../globalStyles/scss/variables.scss";
+import Media from "react-media";
 
 import {
     Breadcrumbs,
@@ -88,36 +89,36 @@ const Page: React.FC<
                     <script className="structured-data-list" type="application/ld+json">
                         {structuredData(product)}
                     </script>
-                    {/* <Media query={{ maxWidth: smallScreen }}>
+                    <Media query={{ maxWidth: smallScreen }}>
                         {matches =>
                             matches ? (
                                 <>
-                                    <GalleryCarousel images={getImages()} />
+                                    <ProductGallery images={getImages()} isMobileView={true} />
                                     <div className="product-page__product__info">
                                         {addToCartSection}
                                     </div>
                                 </>
-                            ) : ( */}
-                    <>
-                        <div
-                            className="product-page__product__gallery"
-                            ref={productGallery}
-                        >
-                            <ProductGallery images={getImages()} />
-                        </div>
-                        <div className="product-page__product__info">
-                            <div
-                                className={classNames(
-                                    "product-page__product__info--fixed"
-                                )}
-                            >
-                                {addToCartSection}
-                            </div>
-                        </div>
-                    </>
-                    {/* )
+                            ) : (
+                                    <>
+                                        <div
+                                            className="product-page__product__gallery"
+                                            ref={productGallery}
+                                        >
+                                            <ProductGallery images={getImages()} />
+                                        </div>
+                                        <div className="product-page__product__info">
+                                            <div
+                                                className={classNames(
+                                                    "product-page__product__info--fixed"
+                                                )}
+                                            >
+                                                {addToCartSection}
+                                            </div>
+                                        </div>
+                                    </>
+                                )
                         }
-                    </Media> */}
+                    </Media>
                 </div>
                 <hr />
             </div>

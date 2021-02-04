@@ -1,6 +1,57 @@
 @import "../../../globalStyles/scss/variables.scss";
 
 .footer {
+    background-color: $gray-light;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    .company-logo{
+        padding: 24px 36px 0px 70px;
+    }
+.footer-nav{
+    display: flex;
+    width: 100%;
+    margin: auto 64px;
+
+    .heading-item{
+        margin: 6px;
+        font-weight: 500;
+        font-size: 14px;
+        line-height: 24px;
+        letter-spacing: 0.02em;
+        text-transform: uppercase;
+        display: flex;
+        flex-direction: column;
+        color: #131313;
+        min-width: 25%;
+        justify-content: flex-start;
+
+        .subheading-footer-item{
+            font-size: 8px;
+            line-height: 20px;
+            color: #131313;
+
+        }
+    }
+}
+.copyright-icon{
+    display: flex;
+    padding: 0px 64px;
+    width: 100%;
+    justify-content: space-between;
+    align-items: center;
+    .copyright-text{
+    font-size: 10px;
+    line-height: 26px;
+    color: #373737;
+    }
+
+    .social-media-icon{
+        display: flex;;
+
+    }
+}
+
   &__favicons {
     border-top: 1px solid $gray-light;
     display: flex;

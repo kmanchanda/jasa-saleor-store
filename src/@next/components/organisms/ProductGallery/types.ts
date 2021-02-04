@@ -1,5 +1,6 @@
 import { IImage } from "@types";
 
 export interface IProps {
-  images: IImage[];
+    images: IImage[],
+    isMobileView?: boolean
 }
