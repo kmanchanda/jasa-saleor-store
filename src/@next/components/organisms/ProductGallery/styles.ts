@@ -1,4 +1,4 @@
-import { styled } from "@styles";
+import { styled, media } from "@styles";
 
 export const Wrapper = styled.div`
   display: grid;
@@ -6,17 +6,22 @@ export const Wrapper = styled.div`
   height: 100%;
   grid-template-columns: 76px 1fr;
   grid-column-gap: 40px;
+
+
+  ${media.smallScreen`
+    display: grid;
+  `}
 `;
 
 export const Thumbnail = styled.div<{ activeThumbnail: boolean }>`
   width: 76px;
   display: flex;
-  border-width: 4px;
+  border-width: 1px;
   border-style: solid;
   border-color: ${props =>
-    props.activeThumbnail === true
-      ? props.theme.colors.thumbnailBorder
-      : "transparent"};
+        props.activeThumbnail === true
+            ? props.theme.colors.thumbnailBorder
+            : "transparent"};
   justify-content: center;
   height: 100px;
   overflow: hidden;
@@ -77,7 +82,7 @@ export const Preview = styled.div`
   grid-area: preview;
   width: auto;
   max-height: 560px;
-  overflow: hidden;
+  overflow: scroll;
   img {
     width: 100%;
     object-fit: contain;

@@ -1,9 +1,11 @@
 import { media, styled } from "@styles";
 
 export const List = styled.div`
-  display: grid;
-  grid-template-columns: 1fr 1fr 1fr;
-  grid-gap: 2rem;
+
+  display: flex;
+  flex-wrap: no-wrap;
+  overflow-x:scroll;
+  
 
   ${media.largeScreen`
     grid-template-columns: 1fr 1fr;

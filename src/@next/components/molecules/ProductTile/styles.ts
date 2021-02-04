@@ -33,6 +33,13 @@ export const Price = styled.p`
   ${textProps}
 `;
 
+export const Description = styled.p` 
+${textProps}
+font-weight: normal;
+font-size: 12px;
+line-height: 26px;
+`;
+
 export const Image = styled.div`
   width: auto;
   height: auto;

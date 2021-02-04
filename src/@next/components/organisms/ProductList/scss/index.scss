@@ -1,0 +1,37 @@
+.product-list{
+    display: flex;
+    flex-wrap: nowrap;
+    overflow-x:scroll;
+    width: 100%;
+    position: relative;
+
+    .image-item{
+        min-width:25%
+    }
+    .right-scroll-icon{
+
+    }
+
+    ::-webkit-scrollbar {
+        width: 2px;
+      }
+      /* Track */
+::-webkit-scrollbar-track {
+    background: #000; 
+  }
+}
+
+
+@media only screen and (max-width: 600px) {
+    
+    .product-list{
+        display: flex;
+        flex-wrap: nowrap;
+        overflow-x:scroll;
+        width: 100%;
+    
+        .image-item{
+            min-width:70%
+        }
+    }
+  }
