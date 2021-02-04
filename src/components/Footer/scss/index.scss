@@ -6,12 +6,12 @@
     display: flex;
     flex-direction: column;
     .company-logo{
-        padding: 24px 36px 0px 70px;
+        padding: 24px 36px 0px 36px;
     }
 .footer-nav{
     display: flex;
     width: 100%;
-    margin: auto 64px;
+    padding: 32px;
 
     .heading-item{
         margin: 6px;
@@ -27,16 +27,17 @@
         justify-content: flex-start;
 
         .subheading-footer-item{
+            display: flex;
             font-size: 8px;
             line-height: 20px;
             color: #131313;
-
+            flex-wrap: wrap;
         }
     }
 }
 .copyright-icon{
     display: flex;
-    padding: 0px 64px;
+    padding: 0px 36px;
     width: 100%;
     justify-content: space-between;
     align-items: center;
@@ -130,3 +131,16 @@
     }
   }
 }
+
+@media only screen and (max-width: 600px) {
+    
+    .footer{
+        .footer-nav{
+            margin: none !important;
+            flex-direction: column;
+        }
+        .copyright-icon{
+            flex-direction: column;
+        }
+    }
+  }
