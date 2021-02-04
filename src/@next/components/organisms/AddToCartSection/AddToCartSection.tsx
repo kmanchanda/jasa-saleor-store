@@ -245,9 +245,7 @@ const AddToCartSection: React.FC<IAddToCartSection> = ({
                             overlayContext.show(OverlayType.DisplayContent, OverlayTheme.right, { title, content })
                         } className='accordian-list' >
                             <span>{title}</span>
-                            <IconButton
-                                testingContext="removeButton"
-                                size={32}
+                            <IconButton testingContext="removeButton"
                                 name="chevron_right"
                             />
                         </div>

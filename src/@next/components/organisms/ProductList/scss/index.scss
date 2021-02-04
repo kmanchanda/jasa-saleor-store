@@ -11,15 +11,19 @@
     .right-scroll-icon{
 
     }
-
-    ::-webkit-scrollbar {
-        width: 2px;
-      }
-      /* Track */
-::-webkit-scrollbar-track {
-    background: #000; 
-  }
 }
+
+.product-list::-webkit-scrollbar {
+    height: 2px;
+  }
+
+.product-list::-webkit-scrollbar-thumb {
+    background: #000; 
+    }
+.product-list::-webkit-scrollbar-track {
+background: transparent; 
+}
+
 
 
 @media only screen and (max-width: 600px) {
