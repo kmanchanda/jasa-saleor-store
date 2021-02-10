@@ -59,66 +59,63 @@ export const ProductGallery: React.FC<IProps> = ({ images, isMobileView = false 
 
     return (
         <S.Wrapper data-test="productPhotosGallery">
-            {
-                !isMobileView ?
-                    <S.ThumbnailsContainer>
-                        {!topImageInView && displayButtons && (
-                            <S.TopButton
-                                onClick={() => {
-                                    if (topImageRef.current) {
-                                        topImageRef.current.scrollIntoView({
-                                            behavior: "smooth",
-                                            block: "end",
-                                            inline: "nearest",
-                                        });
-                                    }
-                                }}
-                            >
-                                <Icon name="select_arrow" size={10} />
-                            </S.TopButton>
-                        )}
-                        {!bottomImageInView && displayButtons && (
-                            <S.BottomButton
-                                onClick={() => {
-                                    if (bottomImageRef.current) {
-                                        bottomImageRef.current.scrollIntoView({
-                                            behavior: "smooth",
-                                            block: "end",
-                                            inline: "nearest",
-                                        });
-                                    }
-                                }}
-                            >
-                                <Icon name="select_arrow" size={10} />
-                            </S.BottomButton>
-                        )}
-                        <S.ThumbnailList>
-                            <ul>
-                                {images &&
-                                    images.length > 0 &&
-                                    images.map((image, index) => {
-                                        return (
-                                            <li
-                                                key={index}
-                                                data-test="galleryThumbnail"
-                                                data-test-id={index}
-                                            >
-                                                <S.Thumbnail
-                                                    ref={setIntersectionObserver(index, images.length)}
-                                                    onClick={() => setImageIndex(index)}
-                                                    onMouseEnter={() => setImageIndex(index)}
-                                                    activeThumbnail={Boolean(index === imageIndex)}
-                                                >
-                                                    <CachedImage alt={image.alt} url={image.url} />
-                                                </S.Thumbnail>
-                                            </li>
-                                        );
-                                    })}
-                            </ul>
-                        </S.ThumbnailList>
-                    </S.ThumbnailsContainer>
-                    : null
-            }
+            <S.ThumbnailsContainer>
+                {!topImageInView && displayButtons && (
+                    <S.TopButton
+                        onClick={() => {
+                            if (topImageRef.current) {
+                                topImageRef.current.scrollIntoView({
+                                    behavior: "smooth",
+                                    block: "end",
+                                    inline: "nearest",
+                                });
+                            }
+                        }}
+                    >
+                        <Icon name="select_arrow" size={10} />
+                    </S.TopButton>
+                )}
+                {!bottomImageInView && displayButtons && (
+                    <S.BottomButton
+                        onClick={() => {
+                            if (bottomImageRef.current) {
+                                bottomImageRef.current.scrollIntoView({
+                                    behavior: "smooth",
+                                    block: "end",
+                                    inline: "nearest",
+                                });
+                            }
+                        }}
+                    >
+                        <Icon name="select_arrow" size={10} />
+                    </S.BottomButton>
+                )}
+                <S.ThumbnailList>
+                    <ul>
+                        {images &&
+                            images.length > 0 &&
+                            images.map((image, index) => {
+                                return (
+                                    <li
+                                        key={index}
+                                        data-test="galleryThumbnail"
+                                        data-test-id={index}
+                                    >
+                                        <S.Thumbnail
+                                            ref={setIntersectionObserver(index, images.length)}
+                                            onClick={() => setImageIndex(index)}
+                                            onMouseEnter={() => setImageIndex(index)}
+                                            activeThumbnail={Boolean(index === imageIndex)}
+                                        >
+                                            <CachedImage alt={image.alt} url={image.url} />
+                                        </S.Thumbnail>
+                                    </li>
+                                );
+                            })}
+                    </ul>
+                </S.ThumbnailList>
+            </S.ThumbnailsContainer>
+
             <S.Preview data-test="imagePreview">
                 {images && images.length > 0 && imageIndex < images.length && (
                     <CachedImage
@@ -129,66 +126,6 @@ export const ProductGallery: React.FC<IProps> = ({ images, isMobileView = false 
                 {images.length === 0 && <CachedImage />}
             </S.Preview>
 
-            {
-                isMobileView ?
-                    <S.ThumbnailsContainer>
-                        {!topImageInView && displayButtons && (
-                            <S.TopButton
-                                onClick={() => {
-                                    if (topImageRef.current) {
-                                        topImageRef.current.scrollIntoView({
-                                            behavior: "smooth",
-                                            block: "end",
-                                            inline: "nearest",
-                                        });
-                                    }
-                                }}
-                            >
-                                <Icon name="select_arrow" size={10} />
-                            </S.TopButton>
-                        )}
-                        {!bottomImageInView && displayButtons && (
-                            <S.BottomButton
-                                onClick={() => {
-                                    if (bottomImageRef.current) {
-                                        bottomImageRef.current.scrollIntoView({
-                                            behavior: "smooth",
-                                            block: "end",
-                                            inline: "nearest",
-                                        });
-                                    }
-                                }}
-                            >
-                                <Icon name="select_arrow" size={10} />
-                            </S.BottomButton>
-                        )}
-                        <S.ThumbnailList>
-                            <ul>
-                                {images &&
-                                    images.length > 0 &&
-                                    images.map((image, index) => {
-                                        return (
-                                            <li
-                                                key={index}
-                                                data-test="galleryThumbnail"
-                                                data-test-id={index}
-                                            >
-                                                <S.Thumbnail
-                                                    ref={setIntersectionObserver(index, images.length)}
-                                                    onClick={() => setImageIndex(index)}
-                                                    onMouseEnter={() => setImageIndex(index)}
-                                                    activeThumbnail={Boolean(index === imageIndex)}
-                                                >
-                                                    <CachedImage alt={image.alt} url={image.url} />
-                                                </S.Thumbnail>
-                                            </li>
-                                        );
-                                    })}
-                            </ul>
-                        </S.ThumbnailList>
-                    </S.ThumbnailsContainer>
-                    : null
-            }
         </S.Wrapper>
     );
 };

@@ -18,8 +18,7 @@ import 'react-accessible-accordion/dist/fancy-example.css';
 
 import featureImg from "../../../../images/feature-icon.svg";
 import addMeticon from "../../../../images/addM.png";
-import { IconButton } from "@components/atoms";
-
+import IconAssetWrapper from '../../../../components/IconAssetWrapper/index';
 import './scss/index.scss';
 
 import {
@@ -33,6 +32,7 @@ import {
     getProductPrice,
     canAddToCart,
 } from "./stockHelpers";
+import { ChevronRightBlackIcon } from "@temp/ImageMapping/imageMapping";
 
 const LOW_STOCK_QUANTITY: number = 5;
 
@@ -245,9 +245,7 @@ const AddToCartSection: React.FC<IAddToCartSection> = ({
                             overlayContext.show(OverlayType.DisplayContent, OverlayTheme.right, { title, content })
                         } className='accordian-list' >
                             <span>{title}</span>
-                            <IconButton testingContext="removeButton"
-                                name="chevron_right"
-                            />
+                            <IconAssetWrapper source={ChevronRightBlackIcon} />
                         </div>
                     )
                 })

@@ -2,8 +2,12 @@ import React, { useRef } from "react";
 import { FormattedMessage } from "react-intl";
 import { Link } from "react-router-dom";
 
-import { Button, IconButton, Loader } from "@components/atoms";
+import { Button, Loader } from "@components/atoms";
 import { ProductTile } from "@components/molecules";
+
+
+import IconAssetWrapper from '../../../../components/IconAssetWrapper/index';
+import { ChevronRightWhiteIcon } from '../../../../ImageMapping/imageMapping'
 
 import { generateProductUrl } from "../../../../core/utils";
 
@@ -23,7 +27,7 @@ export const ProductList: React.FC<IProps> = ({
     const sliderRef = useRef(null);
 
     const scrollElement = () => {
-        sliderRef.current.scrollLeft += 200;
+        sliderRef.current.scrollLeft += 300;
     }
 
     const dummyData = [...products, ...products]
@@ -46,12 +50,8 @@ export const ProductList: React.FC<IProps> = ({
                         );
                     })}
                 </div>
-                <span onClick={scrollElement} style={{ position: 'absolute', top: 140, right: 30 }}>
-                    <IconButton
-                        testingContext="removeButton"
-                        size={40}
-                        name="chevron_right"
-                    />
+                <span className='nav-btn' onClick={scrollElement} style={{ position: 'absolute', top: 140, right: 30 }}>
+                    <IconAssetWrapper backgroundBlack source={ChevronRightWhiteIcon} size={10} />
                 </span>
 
             </div>

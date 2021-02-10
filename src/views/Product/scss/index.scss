@@ -1,11 +1,37 @@
 @import "../../../globalStyles/scss/variables.scss";
 
 .product-page {
+    display: flex;
+    flex-direction: column;
   background-color: $white;
+
+
+  .image-thumnbnail{
+      display: flex;
+      overflow-x: scroll;
+      width: 100%;
+      justify-content: space-around;
+
+      .image-item{
+          &.active{
+            border-radius: 2px;
+            border-width: 1px;
+            border-style: solid;
+            border-color: #F5A930;
+          }
+          &.inactive{
+            border-radius: 1px;
+            border-style: solid;
+            border-color: transparent;
+        }
+      }
+  }
+
   .lidYyG{    border-width: 2px;
     border-radius: 2px;
     border-style: solid;
-    border-color: #F5A930;}
+    border-color: #F5A930;
+}
   .breadcrumbs {
     background-color: $white;
     padding: $spacer / 2 $spacer $spacer / 2 $spacer * 1.5;

@@ -93,7 +93,7 @@ const Page: React.FC<
                         {matches =>
                             matches ? (
                                 <>
-                                    <ProductGallery images={getImages()} isMobileView={true} />
+                                    <GalleryCarousel images={getImages()} />
                                     <div className="product-page__product__info">
                                         {addToCartSection}
                                     </div>
