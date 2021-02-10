@@ -51,7 +51,7 @@ export const ProductList: React.FC<IProps> = ({
                     })}
                 </div>
                 <span className='nav-btn' onClick={scrollElement} style={{ position: 'absolute', top: 140, right: 30 }}>
-                    <IconAssetWrapper backgroundBlack source={ChevronRightWhiteIcon} size={10} />
+                    <IconAssetWrapper backgroundBlack source={ChevronRightWhiteIcon} size={7} />
                 </span>
 
             </div>

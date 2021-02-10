@@ -145,3 +145,22 @@ body {
 .form-error {
   color: $rose;
 }
+
+.w-full{
+    width: 100%;
+}
+
+.row-flex{
+    display: flex;
+}
+
+.col-flex{
+    display: flex;
+    flex-direction: column;
+}
+
+.row-flex-between{
+    display: flex;
+    justify-content: space-between;
+}
+

@@ -11,6 +11,8 @@ import { Category_category } from "../../views/Category/gqlTypes/Category";
 
 import { smallScreen } from "../../globalStyles/scss/variables.scss";
 import "./scss/index.scss";
+import IconAssetWrapper from "../IconAssetWrapper";
+import { ChevronLeftBlackIcon } from '../../ImageMapping/imageMapping'
 
 export interface Breadcrumb {
     value: string;
@@ -51,30 +53,54 @@ const Breadcrumbs: React.FC<{
     >
         {matches =>
             matches ? (
-                <ul className="breadcrumbs">
-                    <li>
-                        <Link to={baseUrl}>
-                            <FormattedMessage {...commonMessages.home} />
-                        </Link>
-                    </li>
-                    {breadcrumbs.map((breadcrumb, index) => (
-                        <li
-                            key={breadcrumb.value}
-                            className={classNames({
-                                breadcrumbs__active: index === breadcrumbs.length - 1,
-                            })}
-                        >
-                            <Link to={breadcrumb.link}>{breadcrumb.value}</Link>
-                        </li>
-                    ))}
-                </ul>
-            ) : (
+                <div className='row-flex'>
                     <div className="breadcrumbs float-back">
+                        <IconAssetWrapper source={ChevronLeftBlackIcon} />
+
                         <Link to={getBackLink(breadcrumbs)}>
-                            <FormattedMessage defaultMessage="Back" />
+                            <FormattedMessage defaultMessage="Tilbage" />
                         </Link>
                     </div>
+                    <ul className="breadcrumbs">
+                        <li>
+                            <Link to={baseUrl}>
+                                <FormattedMessage {...commonMessages.home} />
+                            </Link>
+                        </li>
+                        {breadcrumbs.map((breadcrumb, index) => (
+                            <li
+                                key={breadcrumb.value}
+                                className={classNames({
+                                    breadcrumbs__active: index === breadcrumbs.length - 1,
+                                })}
+                            >
+                                <Link to={breadcrumb.link}>{breadcrumb.value}</Link>
+                            </li>
+                        ))}
+                    </ul>
+
+                </div>
+            ) : (
+                    <ul className="breadcrumbs">
+                        <li>
+                            <Link to={baseUrl}>
+                                <FormattedMessage {...commonMessages.home} />
+                            </Link>
+                        </li>
+                        {breadcrumbs.map((breadcrumb, index) => (
+                            <li
+                                key={breadcrumb.value}
+                                className={classNames({
+                                    breadcrumbs__active: index === breadcrumbs.length - 1,
+                                })}
+                            >
+                                <Link to={breadcrumb.link}>{breadcrumb.value}</Link>
+                            </li>
+                        ))}
+                    </ul>
+
                 )
+
         }
     </Media>
 );
