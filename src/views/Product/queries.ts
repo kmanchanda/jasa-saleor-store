@@ -1,8 +1,8 @@
 import gql from "graphql-tag";
 import { TypedQuery } from "../../core/queries";
 import {
-  ProductDetails,
-  ProductDetailsVariables,
+    ProductDetails,
+    ProductDetailsVariables,
 } from "./gqlTypes/ProductDetails";
 import { VariantList, VariantListVariables } from "./gqlTypes/VariantList";
 
@@ -118,6 +118,10 @@ export const productDetailsQuery = gql`
       ...BasicProductFields
       ...ProductPricingField
       descriptionJson
+      metadata {
+        key
+        value
+    }
       category {
         id
         name
@@ -170,11 +174,11 @@ export const productVariantsQuery = gql`
 `;
 
 export const TypedProductDetailsQuery = TypedQuery<
-  ProductDetails,
-  ProductDetailsVariables
+    ProductDetails,
+    ProductDetailsVariables
 >(productDetailsQuery);
 
 export const TypedProductVariantsQuery = TypedQuery<
-  VariantList,
-  VariantListVariables
+    VariantList,
+    VariantListVariables
 >(productVariantsQuery);

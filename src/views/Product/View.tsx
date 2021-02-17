@@ -17,6 +17,7 @@ import { TypedProductDetailsQuery } from "./queries";
 import { IProps } from "./types";
 
 const canDisplay = (product: ProductDetails_product) =>
+
     maybe(
         () =>
             !!product.descriptionJson &&
@@ -98,6 +99,9 @@ const PageWithQueryAttributes: React.FC<IProps> = props => {
     useEffect(() => {
         history.replace(history.location.pathname);
     }, [queryAttributes]);
+
+    console.log("🚀 ~ file: View.tsx ~ line 28 ~ product", product)
+
 
     return (
         <Page
