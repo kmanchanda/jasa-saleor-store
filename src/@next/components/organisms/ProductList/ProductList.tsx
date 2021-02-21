@@ -15,6 +15,7 @@ import * as S from "./styles";
 import './scss/index.scss';
 
 import { IProps } from "./types";
+import ProductCardTemplate from "@temp/components/Product-Card/productCard.component";
 
 export const ProductList: React.FC<IProps> = ({
     products,
@@ -37,10 +38,11 @@ export const ProductList: React.FC<IProps> = ({
             <div style={{ position: 'relative' }}>
                 <div className='product-list' ref={sliderRef} >
                     {dummyData.map(product => {
-                        const { id, name } = product;
+                        const { id, name } = product || {};
                         return (
                             id &&
                             name && (
+                                // <ProductCardTemplate id={id} imageUrl={product?.thumbnail?.url} heading={name} />
                                 <div className='image-item'>
                                     <Link to={generateProductUrl(id, name)} key={id}>
                                         <ProductTile product={product} />

@@ -8,15 +8,12 @@ const textProps = css`
 `;
 
 export const Wrapper = styled.div`
-  background: ${props => props.theme.colors.light};
-  padding: 2.5rem;
+  
+  padding: 1.1rem;
   text-align: center;
   max-height: 30rem;
   transition: 0.3s;
 
-  :hover {
-    background-color: ${props => props.theme.colors.hoverLightBackground};
-  }
 
   ${media.largeScreen`
     padding: 1.8rem;
@@ -41,9 +38,13 @@ line-height: 26px;
 `;
 
 export const Image = styled.div`
-  width: auto;
-  height: auto;
   max-width: 100%;
+  width: 250px;
+        height: 300px;
+        background-color: #F9F9F9;
+        border-radius: 2px;
+        overflow: hidden;
+        padding: 4px 0px;
 
   > img {
     width: auto;
