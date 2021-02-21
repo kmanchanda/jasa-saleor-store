@@ -33,6 +33,7 @@ import {
     canAddToCart,
 } from "./stockHelpers";
 import { ChevronRightBlackIcon } from "@temp/ImageMapping/imageMapping";
+import { Link } from "react-router-dom";
 
 const LOW_STOCK_QUANTITY: number = 5;
 
@@ -138,6 +139,7 @@ const AddToCartSection: React.FC<IAddToCartSection> = ({
     let array = (metadata['Beskrivelse']).split('\n').filter((item: string) => item !== '\n');
 
 
+    const otherMaterials = JSON.parse(metadata['Product image (Tryk)'])
 
     return (
         <S.AddToCartSelection>
@@ -246,7 +248,20 @@ const AddToCartSection: React.FC<IAddToCartSection> = ({
         </div>
                 <div className="addmetlist">
                     <div className="addmetbox">
-                        <img src={addMeticon} alt={"addMeticon"} />
+                        {
+                            otherMaterials.length ?
+                                otherMaterials.map((item, index) => {
+                                    const { thumbnails, url } = item || {};
+                                    const { small } = thumbnails;
+                                    return (
+                                        <a href={url} target="_blank" rel="noopener noreferrer">
+                                            <img src={small.url} alt={"addMeticon"} style={{ width: 100, height: 100 }} />
+                                        </a>
+                                    )
+                                })
+                                : null
+                        }
+
                     </div>
                 </div>
             </div>
