@@ -19,12 +19,11 @@ const ProductListModule = ({ products }: propTypes) => {
         {
             data.length ?
                 data.map((item, index) => {
-                    const { thumbnail, name, } = item || {}
+                    const { thumbnail, name, id } = item || {}
                     return (
-                        <ProductCardTemplate imageUrl={thumbnail.url} heading={name} />
+                        <ProductCardTemplate imageUrl={thumbnail.url} heading={name} id={id} />
                     )
                 })
-
                 : null
         }
 

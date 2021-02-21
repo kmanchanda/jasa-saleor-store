@@ -60,7 +60,7 @@ export const ProductGallery: React.FC<IProps> = ({ images, isMobileView = false 
     return (
         <S.Wrapper data-test="productPhotosGallery">
             <S.ThumbnailsContainer>
-                {!topImageInView && displayButtons && (
+                {/* {!topImageInView && displayButtons && (
                     <S.TopButton
                         onClick={() => {
                             if (topImageRef.current) {
@@ -74,8 +74,8 @@ export const ProductGallery: React.FC<IProps> = ({ images, isMobileView = false 
                     >
                         <Icon name="select_arrow" size={10} />
                     </S.TopButton>
-                )}
-                {!bottomImageInView && displayButtons && (
+                )} */}
+                {/* {!bottomImageInView && displayButtons && (
                     <S.BottomButton
                         onClick={() => {
                             if (bottomImageRef.current) {
@@ -89,7 +89,7 @@ export const ProductGallery: React.FC<IProps> = ({ images, isMobileView = false 
                     >
                         <Icon name="select_arrow" size={10} />
                     </S.BottomButton>
-                )}
+                )} */}
                 <S.ThumbnailList>
                     <ul>
                         {images &&

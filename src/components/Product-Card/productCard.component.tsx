@@ -1,4 +1,6 @@
+import { generateProductUrl } from '@temp/core/utils';
 import React from 'react';
+import { Link } from 'react-router-dom';
 
 import './scss/index.scss';
 
@@ -6,30 +8,31 @@ type propTypes = {
     imageUrl?: string,
     heading?: string,
     subheading?: string,
-    caption?: string
+    caption?: string,
+    id: string
 }
 
-const ProductCardTemplate = ({ imageUrl = '', heading = '', subheading = '', caption = '' }: propTypes) => {
+const ProductCardTemplate = ({ imageUrl = '', heading = '', subheading = '', caption = '', id }: propTypes) => {
     return (
         <div className='product-card-temp'>
+            <Link to={generateProductUrl(id, heading)} >
+                <div className='image-container'>
+                    <img src={imageUrl} style={{ width: '100%' }} alt='product-picture' />
+                </div>
+                <span className='heading-styles'>
+                    {heading}
+                </span>
+                <span className='sub-heading-styles'>
+                    Varenr. 10001   DB nr. 5271840   {/* {subheading}  */}  {/* @umangTodo */}
+                </span>
+                {
+                    caption ?
+                        <span className='caption-styles' >
 
-            <div className='image-container'>
-                <img src={imageUrl} style={{ width: '100%' }} />
-            </div>
-            <span className='heading-styles'>
-                {heading}
-            </span>
-            <span className='sub-heading-styles'>
-
-            </span>
-
-            {
-                caption ?
-                    <span className='caption-styles' >
-
-                    </span>
-                    : null
-            }
+                        </span>
+                        : null
+                }
+            </Link>
         </div>
     )
 

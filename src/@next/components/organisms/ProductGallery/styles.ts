@@ -63,7 +63,7 @@ export const ThumbnailsContainer = styled.div`
 
 export const ThumbnailList = styled.div`
   position: relative;
-  height: 100%;
+  height:420px;
   overflow-y: scroll;
   overflow-x: hidden;
   scrollbar-width: none;
