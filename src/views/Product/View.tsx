@@ -100,9 +100,6 @@ const PageWithQueryAttributes: React.FC<IProps> = props => {
         history.replace(history.location.pathname);
     }, [queryAttributes]);
 
-    console.log("🚀 ~ file: View.tsx ~ line 28 ~ product", product)
-
-
     return (
         <Page
             {...props}

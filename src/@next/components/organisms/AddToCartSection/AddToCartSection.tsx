@@ -36,6 +36,10 @@ import { ChevronRightBlackIcon } from "@temp/ImageMapping/imageMapping";
 
 const LOW_STOCK_QUANTITY: number = 5;
 
+
+
+export type ObjectDto = Record<string | number, any>
+
 export interface IAddToCartSection {
     productId: string;
     productVariants: ProductDetails_product_variants[];
@@ -49,6 +53,7 @@ export interface IAddToCartSection {
     variantId: string;
     setVariantId(variantId: string): void;
     onAddToCart(variantId: string, quantity?: number): void;
+    metadata: any
     onAttributeChangeHandler(slug: string | null, value: string): void;
 }
 
@@ -64,6 +69,7 @@ const AddToCartSection: React.FC<IAddToCartSection> = ({
     onAddToCart,
     onAttributeChangeHandler,
     setVariantId,
+    metadata,
     variantId,
 }) => {
     const intl = useIntl();
@@ -128,6 +134,10 @@ const AddToCartSection: React.FC<IAddToCartSection> = ({
         setVariantPricing(selectedVariant?.pricing);
         setVariantStock(selectedVariant?.quantityAvailable);
     };
+    let desc = (metadata['Beskrivelse']).replaceAll(/(\r\n|\n|\n\s+\n|\r)/g, " ")
+    let array = (metadata['Beskrivelse']).split('\n').filter((item: string) => item !== '\n');
+
+
 
     return (
         <S.AddToCartSelection>
@@ -135,20 +145,25 @@ const AddToCartSection: React.FC<IAddToCartSection> = ({
 
             <div className="cfinner">
                 <div className="finner1">
-                    Varenr.: 13744
-      </div>
+                    Varenr.: {metadata['Varenummer']}
+                </div>
                 <div className="finner1">
-                    DB nr.: 1553418
-      </div>
+                    DB nr.: {metadata['DB number']}
+                </div>
             </div>
             <div className="Maindes">
-                {descriptionJson && (
-                    <div
-                        dangerouslySetInnerHTML={{
-                            __html: sanitize(draftToHtml(JSON.parse(descriptionJson))),
-                        }}
-                    />
-                )}
+                {desc &&
+                    array.map(item => {
+                        return (
+                            <div
+                                dangerouslySetInnerHTML={{
+                                    __html: item
+                                }}
+                            />
+                        )
+                    })
+                }
+
             </div>
 
 

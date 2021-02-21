@@ -54,13 +54,7 @@ const Breadcrumbs: React.FC<{
         {matches =>
             matches ? (
                 <div className='row-flex'>
-                    <div className="breadcrumbs float-back">
-                        <IconAssetWrapper source={ChevronLeftBlackIcon} />
 
-                        <Link to={getBackLink(breadcrumbs)}>
-                            <FormattedMessage defaultMessage="Tilbage" />
-                        </Link>
-                    </div>
                     <ul className="breadcrumbs">
                         <li>
                             <Link to={baseUrl}>
@@ -81,23 +75,30 @@ const Breadcrumbs: React.FC<{
 
                 </div>
             ) : (
-                    <ul className="breadcrumbs">
-                        <li>
-                            <Link to={baseUrl}>
-                                <FormattedMessage {...commonMessages.home} />
-                            </Link>
-                        </li>
-                        {breadcrumbs.map((breadcrumb, index) => (
-                            <li
-                                key={breadcrumb.value}
-                                className={classNames({
-                                    breadcrumbs__active: index === breadcrumbs.length - 1,
-                                })}
-                            >
-                                <Link to={breadcrumb.link}>{breadcrumb.value}</Link>
-                            </li>
-                        ))}
-                    </ul>
+                    // <ul className="breadcrumbs">
+                    //     <li>
+                    //         <Link to={baseUrl}>
+                    //             <FormattedMessage {...commonMessages.home} />
+                    //         </Link>
+                    //     </li>
+                    //     {breadcrumbs.map((breadcrumb, index) => (
+                    //         <li
+                    //             key={breadcrumb.value}
+                    //             className={classNames({
+                    //                 breadcrumbs__active: index === breadcrumbs.length - 1,
+                    //             })}
+                    //         >
+                    //             <Link to={breadcrumb.link}>{breadcrumb.value}</Link>
+                    //         </li>
+                    //     ))}
+                    // </ul>
+                    <div className="breadcrumbs float-back">
+                        <IconAssetWrapper source={ChevronLeftBlackIcon} />
+
+                        <Link to={getBackLink(breadcrumbs)}>
+                            <FormattedMessage defaultMessage="Tilbage" />
+                        </Link>
+                    </div>
 
                 )
 

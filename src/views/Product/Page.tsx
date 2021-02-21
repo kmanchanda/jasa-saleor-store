@@ -36,9 +36,20 @@ const Page: React.FC<
         onAttributeChangeHandler: (slug: string | null, value: string) => void;
     }
 > = ({ add, product, items, queryAttributes, onAttributeChangeHandler }) => {
+
     const overlayContext = React.useContext(OverlayContext);
 
     const productGallery: React.RefObject<HTMLDivElement> = React.useRef();
+
+    const { metadata = [] } = product as any;
+
+    const dataHash = {};
+    if (metadata.length) {
+        metadata.forEach(element => {
+            if (element?.key)
+                dataHash[element.key] = element?.value ? element.value : ''
+        });
+    }
 
     const [variantId, setVariantId] = React.useState("");
 
@@ -71,6 +82,7 @@ const Page: React.FC<
             queryAttributes={queryAttributes}
             descriptionJson={product.descriptionJson}
             setVariantId={setVariantId}
+            metadata={dataHash}
             variantId={variantId}
             onAddToCart={handleAddToCart}
             onAttributeChangeHandler={onAttributeChangeHandler}
