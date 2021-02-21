@@ -15,7 +15,6 @@ import * as S from "./styles";
 import './scss/index.scss';
 
 import { IProps } from "./types";
-import ProductCardTemplate from "@temp/components/Product-Card/productCard.component";
 
 export const ProductList: React.FC<IProps> = ({
     products,
@@ -31,7 +30,7 @@ export const ProductList: React.FC<IProps> = ({
         sliderRef.current.scrollLeft += 300;
     }
 
-    const dummyData = [...products, ...products]
+    const dummyData = [...products, ...products] //todo@umang remove
     return (
         <>
             {/* <S.List data-test="productList" data-test-id={testingContextId}> */}
