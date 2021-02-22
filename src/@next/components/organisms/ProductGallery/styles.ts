@@ -66,9 +66,8 @@ export const ThumbnailList = styled.div`
   height:420px;
   overflow-y: scroll;
   overflow-x: hidden;
-  scrollbar-width: none;
   ::-webkit-scrollbar {
-    width: 0px;
+    width: 0px !important;
   }
 
   ul {

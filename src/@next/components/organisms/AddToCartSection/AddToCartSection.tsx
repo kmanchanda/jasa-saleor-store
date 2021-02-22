@@ -255,7 +255,7 @@ const AddToCartSection: React.FC<IAddToCartSection> = ({
                                     const { small } = thumbnails;
                                     return (
                                         <a href={url} target="_blank" rel="noopener noreferrer">
-                                            <img src={small.url} alt={"addMeticon"} style={{ width: 100, height: 100 }} />
+                                            <img src={small.url} alt={"addMeticon"} style={{ width: 80, height: 80 }} />
                                         </a>
                                     )
                                 })

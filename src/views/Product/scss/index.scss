@@ -11,6 +11,9 @@
       overflow-x: scroll;
       width: 100%;
       justify-content: space-around;
+      &::-webkit-scrollbar {
+        width: 0px !important;
+      }
 
       .image-item{
           &.active{
