@@ -20,6 +20,7 @@ import { maybe } from "../../core/utils";
 import { Category_category } from "./gqlTypes/Category";
 import { CategoryProducts_products } from "./gqlTypes/CategoryProducts";
 import ProductListModule from "../ProductList";
+import FilterChips from "@temp/components/Filter-Chips/filterChips.componet";
 
 interface SortItem {
     label: string;
@@ -94,6 +95,20 @@ const Page: React.FC<PageProps> = ({
                 <Breadcrumbs breadcrumbs={extractBreadcrumbs(category)} />
             </div>
             <div className='container col-flex'>
+
+                <FilterChips applicableFilters={sortOptions} />
+
+                <ProductListHeader
+                    activeSortOption={activeSortOption}
+                    openFiltersMenu={() => setShowFilters(true)}
+                    numberOfProducts={products ? products.totalCount : 0}
+                    activeFilters={activeFilters}
+                    activeFiltersAttributes={activeFiltersAttributes}
+                    clearFilters={clearFilters}
+                    sortOptions={sortOptions}
+                    onChange={onOrder}
+                    onCloseFilterAttribute={onAttributeFiltersChange}
+                />
                 <span className='title-heading' > {/* Todo@umang */}
                 Dørgreb & tilbehør
                 </span>
