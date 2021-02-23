@@ -19,7 +19,7 @@ export const AddToCartButton: React.FC<IAddToCartButton> = ({
       color="primary"
       disabled={disabled}
     >
-      <FormattedMessage defaultMessage="Add to basket" />
+      <FormattedMessage defaultMessage="Læg i kurv - 90 DKK" />
     </Button>
   );
 };

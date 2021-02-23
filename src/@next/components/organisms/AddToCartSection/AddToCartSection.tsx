@@ -140,6 +140,19 @@ const AddToCartSection: React.FC<IAddToCartSection> = ({
 
 
     const otherMaterials = JSON.parse(metadata['Product image (Tryk)'])
+    
+    /* @todo will replace with api data */
+    const dummyData = [
+        {
+            title: 'Vedligeholdelse',
+            content: (metadata['Vedligeholdelse'] != undefined) ? metadata['Vedligeholdelse'] : ''
+        }, {
+            title: ' Specifikationer & Mål',
+            content: " In ad velit in ex nostrud dolore cupidatat consectetur \
+                                ea in ut nostrud velit in irure cillum tempor laboris \
+                            sed adipisicing eu esse duis nulla non."
+        },
+    ]
 
     return (
         <S.AddToCartSelection>
@@ -154,18 +167,7 @@ const AddToCartSection: React.FC<IAddToCartSection> = ({
                 </div>
             </div>
             <div className="Maindes">
-                {desc &&
-                    array.map(item => {
-                        return (
-                            <div
-                                dangerouslySetInnerHTML={{
-                                    __html: item
-                                }}
-                            />
-                        )
-                    })
-                }
-
+            Dørgreb L-Form i PVD messing. Med 2 mm massiv roset Ø52 mm. CC 30 mm. Inkl. skruer. Passer til dørtykkelse 30-75 mm.
             </div>
 
 
@@ -221,7 +223,7 @@ const AddToCartSection: React.FC<IAddToCartSection> = ({
                 />
             </S.QuantityInput>
 
-            {isOutOfStock ? (
+            {/* {isOutOfStock ? (
                 renderErrorMessage(
                     intl.formatMessage(commonMessages.outOfStock),
                     "outOfStock"
@@ -230,7 +232,7 @@ const AddToCartSection: React.FC<IAddToCartSection> = ({
                     <S.ProductPricing>
                         {getProductPrice(productPricing, variantPricing)}
                     </S.ProductPricing>
-                )}
+                )} */}
             <AddToCartButton
                 onSubmit={() => onAddToCart(variantId, quantity)}
                 disabled={disableButton}
@@ -286,15 +288,3 @@ const AddToCartSection: React.FC<IAddToCartSection> = ({
 AddToCartSection.displayName = "AddToCartSection";
 export default AddToCartSection;
 
-/* @todo will replace with api data */
-const dummyData = [
-    {
-        title: 'Vedligeholdelse',
-        content: 'Exercitation in fugiat est ut ad ea cupidatat ut in cupidatat occaecat ut occaecat consequat est minim minim esse tempor laborum consequat esse adipisicing eu reprehenderit enim.'
-    }, {
-        title: ' Specifikationer & Mål',
-        content: " In ad velit in ex nostrud dolore cupidatat consectetur \
-                            ea in ut nostrud velit in irure cillum tempor laboris \
-                        sed adipisicing eu esse duis nulla non."
-    },
-]

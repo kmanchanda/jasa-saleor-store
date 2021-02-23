@@ -128,7 +128,7 @@ export const commonMessages = defineMessages({
     defaultMessage: "Cancel",
   },
   home: {
-    defaultMessage: "Home",
+    defaultMessage: "Sortiment",
   },
 });
 
