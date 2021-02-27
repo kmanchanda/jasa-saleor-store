@@ -23,7 +23,7 @@ const ProductCardTemplate = ({
     <div className="product-card-temp">
       <Link to={generateProductUrl(id, heading)}>
         <div className="image-container">
-          <img src={imageUrl} style={{ width: "100%" }} alt="product-picture" />
+          <img src={imageUrl} style={{ width: "100%" }} />
         </div>
         <span className="heading-styles">{heading}</span>
         <span className="sub-heading-styles">Varenr. 10001 DB nr. 5271840</span>

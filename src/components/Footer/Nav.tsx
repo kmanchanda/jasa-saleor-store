@@ -60,17 +60,11 @@ const dummyFooterData = [
   {
     heading: "ÅBNINGSTIDER",
     subHeading: [
-      "Mandag - Torsdag: Kl. 8:00 - 16:30 \
-        Fredag: Kl. 8:00 - 14:00 \
-        Lørdag - Søndag: Lukket",
+      "Mandag - Torsdag: Kl. 8:00 - 16:30 Fredag: Kl. 8:00 - 14:00 Lørdag - Søndag: Lukket",
     ],
   },
   {
     heading: "Kontakt",
-    subHeading: [
-      "Marøgeljøj 17 \
-        DK-8520 Lystrup \
-        CVR nr. 29309027",
-    ],
+    subHeading: ["Marøgeljøj 17 DK-8520 Lystrup CVR nr. 29309027"],
   },
 ];

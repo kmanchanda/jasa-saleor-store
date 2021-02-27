@@ -18,6 +18,9 @@ import {
   Breadcrumbs,
   extractBreadcrumbs,
   ProductsFeatured,
+  OverlayContext,
+  OverlayTheme,
+  OverlayType,
 } from "../../components";
 
 import { ProductListHeader } from "../../@next/components/molecules";
@@ -30,11 +33,7 @@ import { Category_category } from "./gqlTypes/Category";
 import { CategoryProducts_products } from "./gqlTypes/CategoryProducts";
 import ProductListModule from "../ProductList";
 import IconAssetWrapper from "../../components/IconAssetWrapper/index";
-import {
-  OverlayContext,
-  OverlayTheme,
-  OverlayType,
-} from "../../components/index";
+
 import {
   smallScreen,
   mediumScreen,
@@ -99,8 +98,7 @@ const Page: React.FC<PageProps> = ({
   const content = sortOptions;
   const title = "Dørgreb";
 
-  const activeFiltersAttributes = filters && console.log("filters", filters);
-  filters.attributes &&
+  if (filters.attributes) {
     Object.keys(filters.attributes).reduce(
       (acc, key) =>
         acc.concat(
@@ -108,6 +106,8 @@ const Page: React.FC<PageProps> = ({
         ),
       []
     );
+  }
+
   const listenScrollEvent = event => {
     if (window.scrollY < 500) {
       return setHeader(false);

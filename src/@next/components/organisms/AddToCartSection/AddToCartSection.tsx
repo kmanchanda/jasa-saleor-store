@@ -33,7 +33,6 @@ import {
   getProductPrice,
   canAddToCart,
 } from "./stockHelpers";
-import { Link } from "react-router-dom";
 
 const LOW_STOCK_QUANTITY: number = 5;
 
@@ -142,15 +141,12 @@ const AddToCartSection: React.FC<IAddToCartSection> = ({
   const dummyData = [
     {
       title: "Vedligeholdelse",
-      content:
-        metadata.Vedligeholdelse != undefined ? metadata.Vedligeholdelse : "",
+      content: metadata.Vedligeholdelse || "",
     },
     {
       title: " Specifikationer & Mål",
       content:
-        " In ad velit in ex nostrud dolore cupidatat consectetur \
-                                ea in ut nostrud velit in irure cillum tempor laboris \
-                            sed adipisicing eu esse duis nulla non.",
+        " In ad velit in ex nostrud dolore cupidatat consectetur ea in ut nostrud velit in irure cillum tempor laboris sed adipisicing eu esse duis nulla non.",
     },
   ];
 

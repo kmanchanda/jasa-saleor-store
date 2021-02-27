@@ -41,9 +41,7 @@ const ContactUs = () => {
         value: "",
         className: "textarea",
       },
-    ];
-
-
+    ],
   ];
 
   return (
@@ -62,21 +60,21 @@ const ContactUs = () => {
           </span>
         </span>
 
-        <div className="separator-line"></div>
+        <div className="separator-line" />
 
         <div className="complain-query-container">
           <span className="complain-desc">
             Har du spørgsmål om produkter, bestillinger eller reklamationer?
           </span>
           <div className="email-call-container">
-            <div className="query-card skip-right-mn"></div>
-            <div className="query-card"></div>
+            <div className="query-card skip-right-mn" />
+            <div className="query-card" />
           </div>
 
           <span className="query-timing">Mandag-torsdag: 08:00-16:30</span>
           <span className="query-timing">Fredag: 08:00-14:00</span>
 
-          <div className="separator-line"></div>
+          <div className="separator-line" />
 
           <div className="row-flex footer-desc">
             {dummyFooterData.map((item, index) => {
@@ -104,7 +102,7 @@ const ContactUs = () => {
                 return (
                   <div className="col-flex input-w-label">
                     <label className="label">{label}</label>
-                    <input className={className} value={value}></input>
+                    <input className={className} value={value} />
                   </div>
                 );
               })}

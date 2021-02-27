@@ -2,7 +2,8 @@ import React, { useContext, useEffect, useState } from "react";
 import { FormattedMessage } from "react-intl";
 import { commonMessages } from "@temp/intl";
 import { useAuth, useCart } from "@saleor/sdk";
-
+import InputAdornment from "@material-ui/core/InputAdornment";
+import Autocomplete from "@material-ui/lab/Autocomplete";
 import Media from "react-media";
 import { Link } from "react-router-dom";
 import ReactSVG from "react-svg";
@@ -35,8 +36,6 @@ import {
   smallScreen,
 } from "../../globalStyles/scss/variables.scss";
 import "./scss/index.scss";
-import InputAdornment from "@material-ui/core/InputAdornment";
-import Autocomplete from "@material-ui/lab/Autocomplete";
 
 interface MainMenuProps {
   demoMode: boolean;

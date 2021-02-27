@@ -24,7 +24,6 @@ class DisplayFilterChips extends React.Component<{
     const { overlay } = this.props;
     const { hide, context } = overlay;
     const { title = "", content } = context;
-    console.log("render -> context", context);
 
     return (
       <Overlay testingContext="loginOverlay" context={overlay}>
