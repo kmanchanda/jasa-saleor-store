@@ -21,7 +21,6 @@ const NavItem: React.FC<NavNestedItemProps> = ({
         ))}
       </ul>
     ) : null;
-
   return (
     <li>
       <NavLink item={item} onClick={hideOverlay} />

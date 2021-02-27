@@ -31,3 +31,22 @@
     }
   }
 }
+.centerCategory {
+  // z-index: 1000;
+  position: absolute;
+  margin-bottom: 16px;
+}
+.centerCategoryFixed {
+  // z-index: 1000;
+  position: fixed;
+  top: 30px;
+}
+
+.FabContainer{
+  display: flex;
+}
+
+.Fab{
+flex: 1;
+text-align: center;
+}

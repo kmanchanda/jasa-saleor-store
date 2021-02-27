@@ -10,9 +10,12 @@ type propTypes = {
 
 const ProductListModule = ({ products }: propTypes) => {
 
-    let dummyData = [...products, ...products, ...products] // todo@umang
+    let dummyData = [...products, ...products,
+    ...products, ...products, ...products,
+    ...products, ...products, ...products,
+    ...products, ...products, ...products]
 
-    const data = dummyData.filter((item => item?.thumbnail?.url))
+    const data = dummyData.filter((item => item ?.thumbnail ?.url))
 
     return (<div className='product-list-module w-full'>
 

@@ -21,11 +21,29 @@ import { Category_category } from "./gqlTypes/Category";
 import { CategoryProducts_products } from "./gqlTypes/CategoryProducts";
 import ProductListModule from "../ProductList";
 import FilterChips from "@temp/components/Filter-Chips/filterChips.componet";
-
+import { Typography } from "@material-ui/core";
+import Fab from '@material-ui/core/Fab';
+import NavigationIcon from '@material-ui/icons/Navigation';
+import Grid from '@material-ui/core/Grid';
+import Box from '@material-ui/core/Box';
+import IconAssetWrapper from '../../components/IconAssetWrapper/index';
+import {
+    OverlayContext,
+    OverlayTheme,
+    OverlayType,
+} from "../../components/index"
+import { ChevronRightBlackIcon } from "@temp/ImageMapping/imageMapping";
 interface SortItem {
     label: string;
     value?: string;
 }
+import Media from "react-media";
+import {
+    smallScreen,
+    mediumScreen
+
+} from "../../globalStyles/scss/variables.scss";
+import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
 
 interface SortOptions extends Array<SortItem> { }
 
@@ -66,7 +84,8 @@ const Page: React.FC<PageProps> = ({
     const hasProducts = canDisplayProducts && !!products.totalCount;
     const [showFilters, setShowFilters] = React.useState(false);
     const intl = useIntl();
-
+    const [header, setHeader] = React.useState(false);
+    const overlayContext = React.useContext(OverlayContext);
     const getAttribute = (attributeSlug: string, valueSlug: string) => {
         return {
             attributeSlug,
@@ -77,9 +96,14 @@ const Page: React.FC<PageProps> = ({
         };
     };
 
+    const content = sortOptions;
+    const title = "Dørgreb";
+
+
     const activeFiltersAttributes =
         filters &&
-        filters.attributes &&
+        console.log("filters", filters)
+    filters.attributes &&
         Object.keys(filters.attributes).reduce(
             (acc, key) =>
                 acc.concat(
@@ -87,45 +111,95 @@ const Page: React.FC<PageProps> = ({
                 ),
             []
         );
+    const listenScrollEvent = (event) => {
+        if (window.scrollY < 500) {
+            return setHeader(false);
+        } else return setHeader(true);
+    };
+
+    React.useEffect(() => {
+        window.addEventListener('scroll', listenScrollEvent);
+        return () => {
+            window.removeEventListener('scroll', listenScrollEvent);
+        };
+    }, []);
 
 
     return (
         <div className="category">
+            <FilterSidebar
+                show={showFilters}
+                hide={() => setShowFilters(false)}
+                onAttributeFiltersChange={onAttributeFiltersChange}
+                attributes={attributes}
+                filters={filters}
+            />
             <div className="container">
                 <Breadcrumbs breadcrumbs={extractBreadcrumbs(category)} />
             </div>
+
             <div className='container col-flex'>
-
-                <FilterChips applicableFilters={sortOptions} />
-
-                <ProductListHeader
-                    activeSortOption={activeSortOption}
-                    openFiltersMenu={() => setShowFilters(true)}
-                    numberOfProducts={products ? products.totalCount : 0}
-                    activeFilters={activeFilters}
-                    activeFiltersAttributes={activeFiltersAttributes}
-                    clearFilters={clearFilters}
-                    sortOptions={sortOptions}
-                    onChange={onOrder}
-                    onCloseFilterAttribute={onAttributeFiltersChange}
-                />
-                <span className='title-heading' > {/* Todo@umang */}
-                Dørgreb & tilbehør
+                <span className='title-heading' >
+                    Dørgreb & tilbehør
                 </span>
 
-                <span className='category-desc'>  {/* Todo@umang */}
+                <span className='category-desc'>
                     {'Vi bestræber os på at levere dørgreb, der passer til enhver smag og ethvert behov. Derfor udvikler vi hele tiden sortimentet i samarbejde med dygtige designere og kompetente leverandører. Dørgrebene findes i flere forskellige kvaliteter og overflader – f.eks. krom, blank messing, matbørstet krom, PVD messing m.m.'}
                 </span>
                 <span className='category-desc pt-24'>
                     {'Vi ønsker, at vores dørgreb giver kunden en funktionalitet og et design der spreder glæde i rigtig mange år frem, og går derfor aldrig på kompromis med kvaliteten.'}
                 </span>
+                <Media
+                    query={{ minWidth: mediumScreen }}
+                    render={() => (
+                        <>
+                            <FilterChips applicableFilters={sortOptions} />
+                            <div className='filterButtonContainer'>
+                                <div className={header ? 'centerCategoryFixed' : null}>
+                                    <Fab onClick={() => setShowFilters(true)} variant="extended" style={{ background: 'black', color: 'white' }}>
+                                        <NavigationIcon />
+                                        Filter
+                                    </Fab>
+                                </div>
+                            </div>
+                        </>
+                    )}
+                />
+
+                <Media
+                    query={{ maxWidth: '550px' }}
+                    render={() => (
+                        <>
+                            <div className="FabContainer">
+                                <div className="Fab">
+                                    <div onClick={() =>
+                                        overlayContext.show(OverlayType.DisplayFilterChips, OverlayTheme.right, { title, content })
+                                    } >
+                                        <Fab variant="extended" style={{ background: 'black', color: 'white' }}>
+                                            <ExpandMoreIcon />
+                                            Dørgreb
+                                </Fab>
+                                    </div>
+                                </div>
+                                <div className="Fab">
+                                    <div>
+                                        <Fab onClick={() => setShowFilters(true)} variant="extended" style={{ background: 'black', color: 'white' }}>
+                                            <NavigationIcon />
+                                            Filter
+                                </Fab>
+                                    </div>
+                                </div>
+                            </div>
+                        </>
+                    )}
+                />
             </div>
             <div className='container'>
                 {canDisplayProducts && (
                     <ProductListModule products={products.edges.map(edge => edge.node)} />
                 )}
             </div>
-        </div>
+        </div >
 
     )
 

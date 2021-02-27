@@ -1,5 +1,4 @@
 import * as React from "react";
-
 export enum OverlayType {
     cart = "cart",
     checkout = "checkout",
@@ -11,7 +10,8 @@ export enum OverlayType {
     mainMenuNav = "main-menu-nav",
     modal = "modal",
     register = "register",
-    DisplayContent = 'display-content'
+    DisplayContent = 'display-content',
+    DisplayFilterChips = 'display-filter-chips'
 }
 
 export enum OverlayTheme {

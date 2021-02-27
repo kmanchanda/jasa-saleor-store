@@ -6,33 +6,36 @@
     overflow: hidden;
 
     .image-container{
-        width: 250px;
-        height: 300px;
+        max-width: 340px;
+        max-height: 442px;
         background-color: #F9F9F9;
         border-radius: 2px;
         overflow: hidden;
-        padding: 4px 0px;
+        padding: 80px 38px;
     }
     .heading-styles{
         display: flex;
         flex-wrap: wrap;
         flex-grow: 0;
-        font-weight: 500;
+        font-weight: 600;
         font-size: 18px;
         line-height: 26px;
         color: #131313;
+        margin-top: 12px;
     }
     .sub-heading-styles{
-        font-weight: 400;
+        font-weight: 500;
         font-size: 14px;
+        font-style: normal;
         line-height: 24px;
         letter-spacing: 0.02em;
         text-transform: uppercase;
-        color: #888888;
+        color: #888888;;
         flex: none;
         order: 0;
         flex-grow: 0;
         margin-right:2px;
+        padding-top: 8px;
     }
 
     .caption-styles{
@@ -44,26 +47,28 @@
 @media only screen and (max-width: 600px) {
 
     .product-card-temp{
-        width: 40%;
+        width: 45%;
 
         .image-container{
-            width: 110px;
-            height: 120px;
+            width: 152px;
+            height: 197px;
             background-color: #F9F9F9;
             border-radius: 2px;
             overflow: hidden;
+            padding: 38px 16px;
         }
 
         .heading-styles{
             display: flex;
             flex-wrap: wrap;
             flex-grow: 0;
+            font-family: "Helvetica Neue";
+            font-style: normal;
             font-weight: 500;
-            font-size: 14px;
-            line-height: 26px;
+            font-size: 24px;
+            line-height: 32px;
             color: #131313;
         }
-    
     }
 
 }
@@ -75,11 +80,12 @@
         overflow: hidden;
 
         .image-container{
-            width: 120px;
-            height: 120px;
+            width: 152px;
+            height: 197px;
             background-color: #F9F9F9;
             border-radius: 2px;
             overflow: hidden;
+            padding: 38px 16px;
         }
 
         .heading-styles{

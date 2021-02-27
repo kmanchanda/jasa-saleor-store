@@ -181,26 +181,68 @@ export const checkoutMessages = defineMessages({
 });
 
 export const prodListHeaderCommonMsg = defineMessages({
-  sortOptionsClear: {
-    defaultMessage: "Clear...",
+  // sortOptionsClear: {
+  //   defaultMessage: "Clear...",
+  // },
+  // sortOptionsPrice: {
+  //   defaultMessage: "Price Low-High",
+  // },
+  // sortOptionsPriceDsc: {
+  //   defaultMessage: "Price High-Low",
+  // },
+  // sortOptionsName: {
+  //   defaultMessage: "Name Increasing",
+  // },
+  // sortOptionsNameDsc: {
+  //   defaultMessage: "Name Decreasing",
+  // },
+  // sortOptionsUpdatedAt: {
+  //   defaultMessage: "Last updated Ascending",
+  // },
+  // sortOptionsUpdatedAtDsc: {
+  //   defaultMessage: "Last updated Descending",
+  // },
+  sortOptionsDørgrebTilbehør: {
+    defaultMessage: "Dørgreb & tilbehør",
   },
-  sortOptionsPrice: {
-    defaultMessage: "Price Low-High",
+  sortOptionsDørgreb: {
+    defaultMessage: "Dørgreb",
   },
-  sortOptionsPriceDsc: {
-    defaultMessage: "Price High-Low",
+  sortOptionsDørgrebsrosetter: {
+    defaultMessage: "Dørgrebsrosetter",
   },
-  sortOptionsName: {
-    defaultMessage: "Name Increasing",
+  sortOptionsLangskilte: {
+    defaultMessage: "Langskilte",
   },
-  sortOptionsNameDsc: {
-    defaultMessage: "Name Decreasing",
+  sortOptionsNøgleskilte: {
+    defaultMessage: "Nøgleskilte",
   },
-  sortOptionsUpdatedAt: {
-    defaultMessage: "Last updated Ascending",
+  sortOptionsBlindskilte: {
+    defaultMessage: "Blindskilte",
   },
-  sortOptionsUpdatedAtDsc: {
-    defaultMessage: "Last updated Descending",
+  sortOptionsToiletbesætning: {
+    defaultMessage: "Toiletbesætning",
+  },
+  sortOptionsCylinderringe: {
+    defaultMessage: "Cylinderringe",
+  },
+  sortOptionsDørhanke: {
+    defaultMessage: "Dørhanke",
+  },
+  sortOptionsAntibakteriel: {
+    defaultMessage: "Antibakteriel"
+  },
+  sortOptionsDørgreb316: {
+    defaultMessage: "Dørgreb i 316 stål"
+  },
+  sortOptionsDørgrebstilbehør: {
+    defaultMessage: "Dørgrebstilbehør"
+  },
+  sortOptionsNOIR: {
+    defaultMessage: "NOIR by Jasa Company"
+  },
+  sortOptionsElektronisk: {
+    defaultMessage: "Elektronisk Dørgreb"
   },
 });
 

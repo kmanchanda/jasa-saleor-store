@@ -102,35 +102,62 @@ export const View: React.FC<ViewProps> = ({ match }) => {
 
   const sortOptions = [
     {
-      label: intl.formatMessage(prodListHeaderCommonMsg.sortOptionsClear),
-      value: null,
+      label: intl.formatMessage(prodListHeaderCommonMsg.sortOptionsDørgrebTilbehør),
+      value: "Dørgreb & tilbehør",
     },
     {
-      label: intl.formatMessage(prodListHeaderCommonMsg.sortOptionsPrice),
-      value: "price",
+      label: intl.formatMessage(prodListHeaderCommonMsg.sortOptionsDørgreb),
+      value: "Dørgreb",
     },
     {
-      label: intl.formatMessage(prodListHeaderCommonMsg.sortOptionsPriceDsc),
-      value: "-price",
+      label: intl.formatMessage(prodListHeaderCommonMsg.sortOptionsDørgrebsrosetter),
+      value: "Dørgrebsrosetter",
     },
     {
-      label: intl.formatMessage(prodListHeaderCommonMsg.sortOptionsName),
-      value: "name",
+      label: intl.formatMessage(prodListHeaderCommonMsg.sortOptionsLangskilte),
+      value: "Langskilte",
     },
     {
-      label: intl.formatMessage(prodListHeaderCommonMsg.sortOptionsNameDsc),
-      value: "-name",
+      label: intl.formatMessage(prodListHeaderCommonMsg.sortOptionsNøgleskilte),
+      value: "Nøgleskilte",
     },
     {
-      label: intl.formatMessage(prodListHeaderCommonMsg.sortOptionsUpdatedAt),
-      value: "updated_at",
+      label: intl.formatMessage(prodListHeaderCommonMsg.sortOptionsBlindskilte),
+      value: "Blindskilte",
     },
     {
-      label: intl.formatMessage(
-        prodListHeaderCommonMsg.sortOptionsUpdatedAtDsc
-      ),
-      value: "-updated_at",
+      label: intl.formatMessage(prodListHeaderCommonMsg.sortOptionsToiletbesætning),
+      value: "Toiletbesætning",
     },
+    {
+      label: intl.formatMessage(prodListHeaderCommonMsg.sortOptionsCylinderringe),
+      value: "Cylinderringe",
+    },
+    {
+      label: intl.formatMessage(prodListHeaderCommonMsg.sortOptionsDørhanke),
+      value: "Dørhanke",
+    },
+    {
+      label: intl.formatMessage(prodListHeaderCommonMsg.sortOptionsAntibakteriel),
+      value: "Antibakteriel",
+    },
+    {
+      label: intl.formatMessage(prodListHeaderCommonMsg.sortOptionsDørgreb316),
+      value: "Dørgreb i 316 stål",
+    },
+    {
+      label: intl.formatMessage(prodListHeaderCommonMsg.sortOptionsDørgrebstilbehør),
+      value: "Dørgrebstilbehør",
+    },
+    {
+      label: intl.formatMessage(prodListHeaderCommonMsg.sortOptionsNOIR),
+      value: "NOIR by Jasa Company",
+    },
+    {
+      label: intl.formatMessage(prodListHeaderCommonMsg.sortOptionsElektronisk),
+      value: "Elektronisk Dørgreb",
+    },
+
   ];
 
   return (
@@ -155,8 +182,8 @@ export const View: React.FC<ViewProps> = ({ match }) => {
             }
 
             const canDisplayFilters =
-              !!categoryData.data?.attributes?.edges &&
-              !!categoryData.data?.category?.name;
+              !!categoryData.data ?.attributes ?.edges &&
+                !!categoryData.data ?.category ?.name;
 
             return (
               <TypedCategoryProductsQuery variables={variables}>
@@ -202,7 +229,7 @@ export const View: React.FC<ViewProps> = ({ match }) => {
                           category={categoryData.data.category}
                           displayLoader={categoryData.loading}
                           hasNextPage={
-                            categoryProducts.data?.products?.pageInfo
+                            categoryProducts.data ?.products ?.pageInfo
                               .hasNextPage
                           }
                           sortOptions={sortOptions}

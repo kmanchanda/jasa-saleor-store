@@ -132,15 +132,15 @@ const AddToCartSection: React.FC<IAddToCartSection> = ({
             return;
         }
         setVariantId(selectedVariant.id);
-        setVariantPricing(selectedVariant?.pricing);
-        setVariantStock(selectedVariant?.quantityAvailable);
+        setVariantPricing(selectedVariant ?.pricing);
+        setVariantStock(selectedVariant ?.quantityAvailable);
     };
     let desc = (metadata['Beskrivelse']).replaceAll(/(\r\n|\n|\n\s+\n|\r)/g, " ")
     let array = (metadata['Beskrivelse']).split('\n').filter((item: string) => item !== '\n');
 
 
     const otherMaterials = JSON.parse(metadata['Product image (Tryk)'])
-    
+
     /* @todo will replace with api data */
     const dummyData = [
         {
@@ -167,7 +167,7 @@ const AddToCartSection: React.FC<IAddToCartSection> = ({
                 </div>
             </div>
             <div className="Maindes">
-            Dørgreb L-Form i PVD messing. Med 2 mm massiv roset Ø52 mm. CC 30 mm. Inkl. skruer. Passer til dørtykkelse 30-75 mm.
+                Dørgreb L-Form i PVD messing. Med 2 mm massiv roset Ø52 mm. CC 30 mm. Inkl. skruer. Passer til dørtykkelse 30-75 mm.
             </div>
 
 

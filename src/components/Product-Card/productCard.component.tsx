@@ -23,7 +23,7 @@ const ProductCardTemplate = ({ imageUrl = '', heading = '', subheading = '', cap
                     {heading}
                 </span>
                 <span className='sub-heading-styles'>
-                    Varenr. 10001   DB nr. 5271840   {/* {subheading}  */}  {/* @umangTodo */}
+                    Varenr. 10001   DB nr. 5271840
                 </span>
                 {
                     caption ?

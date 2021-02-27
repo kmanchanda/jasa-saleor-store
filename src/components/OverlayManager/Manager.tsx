@@ -3,6 +3,7 @@ import * as React from "react";
 import { Overlay, OverlayContext, OverlayType } from "..";
 import Cart from "./Cart";
 import DisplayContent from "./DisplayContent";
+import DisplayFilterChips from "./DisplayFilterChips";
 import Login from "./Login";
 import MobileNav from "./MobileNav";
 import Modal from "./Modal";
@@ -43,6 +44,9 @@ const OverlayManager: React.FC = (props) => (
 
                 case OverlayType.DisplayContent:
                     return <DisplayContent overlay={overlay} />;
+
+                case OverlayType.DisplayFilterChips:
+                    return <DisplayFilterChips overlay={overlay} />;
 
                 default:
                     return null;

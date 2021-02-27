@@ -3,6 +3,21 @@
 .header-with-dropdown {
   z-index: 3;
 }
+.search{
+  padding: 0px 10px;
+  // width: 100%;
+}
+
+.searchBox {
+  .MuiOutlinedInput-root{
+    border-radius: 90px;
+    height: 56px;
+  }
+  .MuiOutlinedInput-root.Mui-focused .MuiOutlinedInput-notchedOutline {
+    border-color: gray;
+    border-width: 2px;
+}
+}
 
 .main-menu {
   align-items: center;

@@ -9,7 +9,7 @@ const FilterChips = ({ applicableFilters }) => {
                 applicableFilters.length ?
                     applicableFilters.map((item, index) => {
                         return (
-                            <div className='filter-chip' >
+                            <div className='filter-chip' key={index} >
                                 {item.label}
                             </div>
                         )

@@ -151,7 +151,9 @@ body {
 }
 
 .row-flex{
+  // padding-top: 48px;
     display: flex;
+    flex-wrap: wrap;
 }
 
 .col-flex{
@@ -166,11 +168,11 @@ body {
 
 .title-heading{
     font-weight: 500;
-    font-size: 28px;
+    font-size: 36px;
     line-height: 46px;
     letter-spacing: 0.01em;
     color: #131313;
-    padding-top: 26px;
+    padding-top: 41px;
 }
 
 .pt-24{
@@ -179,10 +181,22 @@ body {
 
 .category-desc{
     font-style: normal;
-    font-weight: 300;
+    font-weight: 400;
     font-size: 16px;
     line-height: 26px;
     color: #4E4E4E;
     padding-bottom: 24px;
+    padding-top: 16px;
+
 }
+.filterButtonContainer{
+  display: flex;
+  justify-content: center;
+  margin-top: 56px;
+  margin-bottom: 16px;
+}
+.filterButton{
+  background: #131313;
+}
+
 

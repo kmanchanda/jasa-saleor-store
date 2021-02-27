@@ -49,7 +49,6 @@ class SitemapGenerator {
     );
 
     // tslint:disable-next-line: no-console
-    console.log("DONE");
   }
 
   generateSitemapIndex(filename: string) {
