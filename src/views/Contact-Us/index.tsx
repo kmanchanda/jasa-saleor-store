@@ -101,8 +101,14 @@ const ContactUs = () => {
                 const { className, label, value } = input;
                 return (
                   <div className="col-flex input-w-label">
-                    <label className="label">{label}</label>
-                    <input className={className} value={value} />
+                    <label className="label" htmlFor={`label-${cIndex}`}>
+                      {label}
+                    </label>
+                    <input
+                      className={className}
+                      value={value}
+                      id={`label-${cIndex}`}
+                    />
                   </div>
                 );
               })}

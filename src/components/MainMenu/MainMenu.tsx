@@ -375,7 +375,7 @@ const MainMenu: React.FC<MainMenuProps> = ({ demoMode }) => {
               render={() => (
                 <>
                   <li>
-                    <a href="#">Kataloger</a>
+                    <a href="/">Kataloger</a>
                   </li>
                   <li>
                     <a href="contact-us">Kontakt</a>
