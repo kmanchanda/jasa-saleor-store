@@ -7,7 +7,6 @@ export const Wrapper = styled.div`
   grid-template-columns: 76px 1fr;
   grid-column-gap: 40px;
 
-
   ${media.smallScreen`
     display: grid;
     grid-column-gap: 20px;
@@ -20,9 +19,7 @@ export const Thumbnail = styled.div<{ activeThumbnail: boolean }>`
   border-width: 1px;
   border-style: solid;
   border-color: ${props =>
-        props.activeThumbnail === true
-            ? '#F5A930'
-            : "transparent"};
+    props.activeThumbnail === true ? "#F5A930" : "transparent"};
   justify-content: center;
   height: 100px;
   overflow: hidden;
@@ -63,7 +60,7 @@ export const ThumbnailsContainer = styled.div`
 
 export const ThumbnailList = styled.div`
   position: relative;
-  height:420px;
+  height: 420px;
   overflow-y: scroll;
   overflow-x: hidden;
   ::-webkit-scrollbar {

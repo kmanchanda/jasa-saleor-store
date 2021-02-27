@@ -10,7 +10,7 @@ class MenuDropdown extends React.Component<
     suffixClass: string;
   },
   { active: boolean }
-  > {
+> {
   static defaultProps = {
     suffixClass: "",
   };
@@ -33,7 +33,7 @@ class MenuDropdown extends React.Component<
         <div
           className={`menu-dropdown__body${` menu-dropdown__body${this.props.suffixClass}`}${
             this.state.active ? " menu-dropdown__body--visible" : ""
-            }`}
+          }`}
         >
           {this.props.content}
         </div>

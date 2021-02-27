@@ -1,25 +1,20 @@
-import React from 'react';
+import React from "react";
 
-import './scss/index.scss';
+import "./scss/index.scss";
+
 const FilterChips = ({ applicableFilters }) => {
-
-    return (
-        <div className='row-flex filter-container' >
-            {
-                applicableFilters.length ?
-                    applicableFilters.map((item, index) => {
-                        return (
-                            <div className='filter-chip' key={index} >
-                                {item.label}
-                            </div>
-                        )
-                    })
-                    : null
-
-            }
-
-        </div>
-    )
-
-}
+  return (
+    <div className="row-flex filter-container">
+      {applicableFilters.length
+        ? applicableFilters.map((item, index) => {
+            return (
+              <div className="filter-chip" key={index}>
+                {item.label}
+              </div>
+            );
+          })
+        : null}
+    </div>
+  );
+};
 export default FilterChips;

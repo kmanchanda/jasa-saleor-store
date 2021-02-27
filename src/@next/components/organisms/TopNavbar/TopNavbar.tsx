@@ -104,8 +104,8 @@ export const TopNavbar: React.FC<IProps> = ({ items }: IProps) => {
                     {item.name}
                   </S.Button>
                 ) : (
-                    <NavLink item={item} />
-                  )}
+                  <NavLink item={item} />
+                )}
               </li>
             ))}
           </S.Desktop>

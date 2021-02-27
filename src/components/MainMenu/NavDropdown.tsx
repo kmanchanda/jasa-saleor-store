@@ -16,7 +16,7 @@ class NavDropdown extends React.PureComponent<
     onShowDropdown: () => void;
     onHideDropdown: () => void;
   }
-  > {
+> {
   render() {
     const {
       children,

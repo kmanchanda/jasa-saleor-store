@@ -102,7 +102,9 @@ export const View: React.FC<ViewProps> = ({ match }) => {
 
   const sortOptions = [
     {
-      label: intl.formatMessage(prodListHeaderCommonMsg.sortOptionsDørgrebTilbehør),
+      label: intl.formatMessage(
+        prodListHeaderCommonMsg.sortOptionsDørgrebTilbehør
+      ),
       value: "Dørgreb & tilbehør",
     },
     {
@@ -110,7 +112,9 @@ export const View: React.FC<ViewProps> = ({ match }) => {
       value: "Dørgreb",
     },
     {
-      label: intl.formatMessage(prodListHeaderCommonMsg.sortOptionsDørgrebsrosetter),
+      label: intl.formatMessage(
+        prodListHeaderCommonMsg.sortOptionsDørgrebsrosetter
+      ),
       value: "Dørgrebsrosetter",
     },
     {
@@ -126,11 +130,15 @@ export const View: React.FC<ViewProps> = ({ match }) => {
       value: "Blindskilte",
     },
     {
-      label: intl.formatMessage(prodListHeaderCommonMsg.sortOptionsToiletbesætning),
+      label: intl.formatMessage(
+        prodListHeaderCommonMsg.sortOptionsToiletbesætning
+      ),
       value: "Toiletbesætning",
     },
     {
-      label: intl.formatMessage(prodListHeaderCommonMsg.sortOptionsCylinderringe),
+      label: intl.formatMessage(
+        prodListHeaderCommonMsg.sortOptionsCylinderringe
+      ),
       value: "Cylinderringe",
     },
     {
@@ -138,7 +146,9 @@ export const View: React.FC<ViewProps> = ({ match }) => {
       value: "Dørhanke",
     },
     {
-      label: intl.formatMessage(prodListHeaderCommonMsg.sortOptionsAntibakteriel),
+      label: intl.formatMessage(
+        prodListHeaderCommonMsg.sortOptionsAntibakteriel
+      ),
       value: "Antibakteriel",
     },
     {
@@ -146,7 +156,9 @@ export const View: React.FC<ViewProps> = ({ match }) => {
       value: "Dørgreb i 316 stål",
     },
     {
-      label: intl.formatMessage(prodListHeaderCommonMsg.sortOptionsDørgrebstilbehør),
+      label: intl.formatMessage(
+        prodListHeaderCommonMsg.sortOptionsDørgrebstilbehør
+      ),
       value: "Dørgrebstilbehør",
     },
     {
@@ -157,7 +169,6 @@ export const View: React.FC<ViewProps> = ({ match }) => {
       label: intl.formatMessage(prodListHeaderCommonMsg.sortOptionsElektronisk),
       value: "Elektronisk Dørgreb",
     },
-
   ];
 
   return (
@@ -182,8 +193,8 @@ export const View: React.FC<ViewProps> = ({ match }) => {
             }
 
             const canDisplayFilters =
-              !!categoryData.data ?.attributes ?.edges &&
-                !!categoryData.data ?.category ?.name;
+              !!categoryData.data?.attributes?.edges &&
+              !!categoryData.data?.category?.name;
 
             return (
               <TypedCategoryProductsQuery variables={variables}>
@@ -229,7 +240,7 @@ export const View: React.FC<ViewProps> = ({ match }) => {
                           category={categoryData.data.category}
                           displayLoader={categoryData.loading}
                           hasNextPage={
-                            categoryProducts.data ?.products ?.pageInfo
+                            categoryProducts.data?.products?.pageInfo
                               .hasNextPage
                           }
                           sortOptions={sortOptions}

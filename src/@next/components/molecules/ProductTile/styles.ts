@@ -8,12 +8,10 @@ const textProps = css`
 `;
 
 export const Wrapper = styled.div`
-  
   padding: 1.1rem;
   text-align: center;
   max-height: 30rem;
   transition: 0.3s;
-
 
   ${media.largeScreen`
     padding: 1.8rem;
@@ -30,21 +28,21 @@ export const Price = styled.p`
   ${textProps}
 `;
 
-export const Description = styled.p` 
-${textProps}
-font-weight: normal;
-font-size: 12px;
-line-height: 26px;
+export const Description = styled.p`
+  ${textProps}
+  font-weight: normal;
+  font-size: 12px;
+  line-height: 26px;
 `;
 
 export const Image = styled.div`
   max-width: 100%;
   width: 250px;
-        height: 300px;
-        background-color: #F9F9F9;
-        border-radius: 2px;
-        overflow: hidden;
-        padding: 4px 0px;
+  height: 300px;
+  background-color: #f9f9f9;
+  border-radius: 2px;
+  overflow: hidden;
+  padding: 4px 0px;
 
   > img {
     width: auto;

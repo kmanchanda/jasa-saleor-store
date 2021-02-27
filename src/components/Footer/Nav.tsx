@@ -6,31 +6,22 @@ import { TypedSecondaryMenuQuery } from "./queries";
 import "./scss/index.scss";
 
 class Nav extends React.PureComponent {
-    render() {
-        return (
-            <footer className="footer-nav">
-                {
-                    dummyFooterData.map((item, index) => {
-                        const { heading, subHeading } = item;
-                        return (
-                            <div className='heading-item'>
-                                <span className='heading-footer-item'>
-                                    {heading}
-                                </span>
-                                {
-                                    subHeading.map((item, indexChild) => {
-                                        return (<span className='subheading-footer-item'>
-                                            {item}
-                                        </span>)
-                                    })
-                                }
+  render() {
+    return (
+      <footer className="footer-nav">
+        {dummyFooterData.map((item, index) => {
+          const { heading, subHeading } = item;
+          return (
+            <div className="heading-item">
+              <span className="heading-footer-item">{heading}</span>
+              {subHeading.map((item, indexChild) => {
+                return <span className="subheading-footer-item">{item}</span>;
+              })}
+            </div>
+          );
+        })}
 
-                            </div>
-                        )
-                    })
-                }
-
-                {/* <div className="container">
+        {/* <div className="container">
                     <TypedSecondaryMenuQuery>
                         {({ data }) => {
                             return data.shop.navigation.secondary.items.map(item => (
@@ -50,31 +41,36 @@ class Nav extends React.PureComponent {
                         }}
                     </TypedSecondaryMenuQuery>
                 </div> */}
-            </footer>
-        );
-    }
+      </footer>
+    );
+  }
 }
 
 export default Nav;
 
-
-
 const dummyFooterData = [
-    {
-        heading: 'Find det hurtigt',
-        subHeading: ['Vision og værdier', 'Om Jasa', 'Vores histore', 'Jasafe'],
-    }, {
-        heading: 'ÅBNINGSTIDER',
-        subHeading: ['FAQ', 'Nyheder', 'Kataloger', 'Medarbejdere', 'Job'],
-    }, {
-        heading: 'ÅBNINGSTIDER',
-        subHeading: ['Mandag - Torsdag: Kl. 8:00 - 16:30 \
+  {
+    heading: "Find det hurtigt",
+    subHeading: ["Vision og værdier", "Om Jasa", "Vores histore", "Jasafe"],
+  },
+  {
+    heading: "ÅBNINGSTIDER",
+    subHeading: ["FAQ", "Nyheder", "Kataloger", "Medarbejdere", "Job"],
+  },
+  {
+    heading: "ÅBNINGSTIDER",
+    subHeading: [
+      "Mandag - Torsdag: Kl. 8:00 - 16:30 \
         Fredag: Kl. 8:00 - 14:00 \
-        Lørdag - Søndag: Lukket'],
-    }, {
-        heading: 'Kontakt',
-        subHeading: ['Marøgeljøj 17 \
+        Lørdag - Søndag: Lukket",
+    ],
+  },
+  {
+    heading: "Kontakt",
+    subHeading: [
+      "Marøgeljøj 17 \
         DK-8520 Lystrup \
-        CVR nr. 29309027'],
-
-    }]
+        CVR nr. 29309027",
+    ],
+  },
+];

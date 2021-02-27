@@ -1,37 +1,44 @@
-import ProductCardTemplate from '@temp/components/Product-Card/productCard.component';
-import React from 'react';
+import ProductCardTemplate from "@temp/components/Product-Card/productCard.component";
+import React from "react";
 
-import './scss/index.scss'
+import "./scss/index.scss";
 
 type propTypes = {
-    products: any
-}
-
+  products: any;
+};
 
 const ProductListModule = ({ products }: propTypes) => {
+  const dummyData = [
+    ...products,
+    ...products,
+    ...products,
+    ...products,
+    ...products,
+    ...products,
+    ...products,
+    ...products,
+    ...products,
+    ...products,
+    ...products,
+  ];
 
-    let dummyData = [...products, ...products,
-    ...products, ...products, ...products,
-    ...products, ...products, ...products,
-    ...products, ...products, ...products]
+  const data = dummyData.filter(item => item?.thumbnail?.url);
 
-    const data = dummyData.filter((item => item ?.thumbnail ?.url))
-
-    return (<div className='product-list-module w-full'>
-
-        {
-            data.length ?
-                data.map((item, index) => {
-                    const { thumbnail, name, id } = item || {}
-                    return (
-                        <ProductCardTemplate imageUrl={thumbnail.url} heading={name} id={id} />
-                    )
-                })
-                : null
-        }
-
-
-    </div>)
-
-}
+  return (
+    <div className="product-list-module w-full">
+      {data.length
+        ? data.map((item, index) => {
+            const { thumbnail, name, id } = item || {};
+            return (
+              <ProductCardTemplate
+                imageUrl={thumbnail.url}
+                heading={name}
+                id={id}
+              />
+            );
+          })
+        : null}
+    </div>
+  );
+};
 export default ProductListModule;

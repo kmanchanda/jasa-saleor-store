@@ -20,18 +20,18 @@ const Overlay: React.FC<OverlayProps> = ({
   context: { type, theme, hide },
   testingContext,
 }) => (
-    <div
-      className={classNames("overlay", {
-        [`overlay--${type}`]: !!type,
-        [className]: !!className,
-      })}
-      data-test={testingContext}
-      onClick={hide}
-    >
-      <div className={`overlay__${theme}`} onClick={e => e.stopPropagation()}>
-        {children}
-      </div>
+  <div
+    className={classNames("overlay", {
+      [`overlay--${type}`]: !!type,
+      [className]: !!className,
+    })}
+    data-test={testingContext}
+    onClick={hide}
+  >
+    <div className={`overlay__${theme}`} onClick={e => e.stopPropagation()}>
+      {children}
     </div>
-  );
+  </div>
+);
 
 export default Overlay;

@@ -230,19 +230,19 @@ export const prodListHeaderCommonMsg = defineMessages({
     defaultMessage: "Dørhanke",
   },
   sortOptionsAntibakteriel: {
-    defaultMessage: "Antibakteriel"
+    defaultMessage: "Antibakteriel",
   },
   sortOptionsDørgreb316: {
-    defaultMessage: "Dørgreb i 316 stål"
+    defaultMessage: "Dørgreb i 316 stål",
   },
   sortOptionsDørgrebstilbehør: {
-    defaultMessage: "Dørgrebstilbehør"
+    defaultMessage: "Dørgrebstilbehør",
   },
   sortOptionsNOIR: {
-    defaultMessage: "NOIR by Jasa Company"
+    defaultMessage: "NOIR by Jasa Company",
   },
   sortOptionsElektronisk: {
-    defaultMessage: "Elektronisk Dørgreb"
+    defaultMessage: "Elektronisk Dørgreb",
   },
 });
 
