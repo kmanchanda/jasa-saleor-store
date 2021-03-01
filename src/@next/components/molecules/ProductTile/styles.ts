@@ -21,7 +21,7 @@ export const Wrapper = styled.div`
 export const Title = styled.h4`
   ${textProps}
   font-style: normal;
-  font-weight: 500;
+  font-weight: 600;
   font-size: 16px;
   line-height: 26px;
   color: #131313;
@@ -32,7 +32,7 @@ export const Title = styled.h4`
 export const Price = styled.p`
   ${textProps}
   font-style: normal;
-  font-weight: 500;
+  font-weight: 600;
   font-size: 14px;
   line-height: 24px;
   letter-spacing: 0.02em;
@@ -55,10 +55,10 @@ export const Image = styled.div`
   background-color: #f9f9f9;
   border-radius: 2px;
   overflow: hidden;
-  padding: 80px 38px;
+  padding: 50px 20px;
 
   > img {
-    height: auto;
-    width:100%
+    height: 100% !important;
+    width:100% !important
   }
 `;

@@ -82,8 +82,10 @@ export const Preview = styled.div`
   background: #f9f9f9;
   padding-inline:40px;
   padding-top:60px;
-  padding-bottom:60px
-  img {
-     width: 100%;
-  }
+  padding-bottom:60px;
+    img {
+      width: 100%;
+      object-fit: contain;
+        width: 100%;
+    }
 `;
