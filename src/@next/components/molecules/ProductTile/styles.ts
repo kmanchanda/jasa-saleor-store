@@ -19,34 +19,46 @@ export const Wrapper = styled.div`
 `;
 
 export const Title = styled.h4`
-  text-transform: uppercase;
-  font-weight: normal;
   ${textProps}
+  font-style: normal;
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 26px;
+  color: #131313;
+  padding-top:12px
+
 `;
 
 export const Price = styled.p`
   ${textProps}
+  font-style: normal;
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 24px;
+  letter-spacing: 0.02em;
+  text-transform: uppercase;
+  color: #131313;
 `;
 
 export const Description = styled.p`
   ${textProps}
   font-weight: normal;
-  font-size: 12px;
-  line-height: 26px;
+  font-style: normal;
+  font-size: 14px;
+  line-height: 24px;
 `;
 
 export const Image = styled.div`
   max-width: 100%;
   width: 250px;
-  height: 300px;
+  height: 320px;
   background-color: #f9f9f9;
   border-radius: 2px;
   overflow: hidden;
-  padding: 4px 0px;
+  padding: 80px 38px;
 
   > img {
-    width: auto;
     height: auto;
-    max-width: 100%;
+    width:100%
   }
 `;

@@ -1,6 +1,5 @@
 import React from "react";
 import { useInView } from "react-intersection-observer";
-
 import { Icon } from "@components/atoms";
 import { CachedImage } from "@components/molecules";
 
@@ -118,7 +117,6 @@ export const ProductGallery: React.FC<IProps> = ({
           </ul>
         </S.ThumbnailList>
       </S.ThumbnailsContainer>
-
       <S.Preview data-test="imagePreview">
         {images && images.length > 0 && imageIndex < images.length && (
           <CachedImage

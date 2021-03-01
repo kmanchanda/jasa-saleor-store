@@ -9,8 +9,8 @@ import { IProps } from "./types";
 export const ProductTile: React.FC<IProps> = ({ product }: IProps) => {
   const price =
     product.pricing &&
-    product.pricing.priceRange &&
-    product.pricing.priceRange.start
+      product.pricing.priceRange &&
+      product.pricing.priceRange.start
       ? product.pricing.priceRange.start
       : undefined;
 
@@ -25,7 +25,8 @@ export const ProductTile: React.FC<IProps> = ({ product }: IProps) => {
         {/* Todo remove hard coding */}
       </S.Description>
       <S.Price data-test="productPrice">
-        <TaxedMoney taxedMoney={price} />
+        {/* <TaxedMoney taxedMoney={price} /> */}
+        <span>90 DKK</span>
       </S.Price>
     </S.Wrapper>
   );

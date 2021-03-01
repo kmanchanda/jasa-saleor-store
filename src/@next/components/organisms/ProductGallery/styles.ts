@@ -77,11 +77,13 @@ export const ThumbnailList = styled.div`
 
 export const Preview = styled.div`
   grid-area: preview;
-  width: auto;
-  max-height: 560px;
-  overflow: scroll;
+  width: 460px;
+  max-height: 520px;
+  background: #f9f9f9;
+  padding-inline:40px;
+  padding-top:60px;
+  padding-bottom:60px
   img {
-    width: 100%;
-    object-fit: contain;
+     width: 100%;
   }
 `;

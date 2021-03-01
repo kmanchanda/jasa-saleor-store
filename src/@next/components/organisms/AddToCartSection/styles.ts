@@ -2,10 +2,13 @@ import { styled } from "@styles";
 
 export const AddToCartSelection = styled.div``;
 
-export const ProductNameHeader = styled.h3`
-  text-transform: uppercase;
-  font-weight: ${props => props.theme.typography.boldFontWeight};
-  margin-bottom: ${props => props.theme.spacing.spacer};
+export const ProductNameHeader = styled.span`
+  font-family: Helvetica Neue;
+  font-style: normal;
+  font-weight: 500;
+  font-size: 24px !important;
+  line-height: 36px;
+  color: #131313;
 `;
 
 export const ProductPricing = styled.h4`

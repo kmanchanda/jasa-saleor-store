@@ -28,7 +28,7 @@ export const ProductList: React.FC<IProps> = ({
     sliderRef.current.scrollLeft += 300;
   };
 
-  const dummyData = [...products, ...products]; // todo@umang remove
+  const dummyData = [...products, ...products, ...products, ...products]; // todo@umang remove
   return (
     <>
       {/* <S.List data-test="productList" data-test-id={testingContextId}> */}
@@ -66,16 +66,16 @@ export const ProductList: React.FC<IProps> = ({
         {loading ? (
           <Loader />
         ) : (
-          canLoadMore && (
-            <Button
-              testingContext="loadMoreProductsButton"
-              color="secondary"
-              onClick={onLoadMore}
-            >
-              <FormattedMessage defaultMessage="More +" />
-            </Button>
-          )
-        )}
+            canLoadMore && (
+              <Button
+                testingContext="loadMoreProductsButton"
+                color="secondary"
+                onClick={onLoadMore}
+              >
+                <FormattedMessage defaultMessage="More +" />
+              </Button>
+            )
+          )}
       </S.Loader>
     </>
   );

@@ -127,8 +127,8 @@ const AddToCartSection: React.FC<IAddToCartSection> = ({
       return;
     }
     setVariantId(selectedVariant.id);
-    setVariantPricing(selectedVariant?.pricing);
-    setVariantStock(selectedVariant?.quantityAvailable);
+    setVariantPricing(selectedVariant ?.pricing);
+    setVariantStock(selectedVariant ?.quantityAvailable);
   };
   const desc = metadata.Beskrivelse.replaceAll(/(\r\n|\n|\n\s+\n|\r)/g, " ");
   const array = metadata.Beskrivelse.split("\n").filter(
@@ -153,7 +153,6 @@ const AddToCartSection: React.FC<IAddToCartSection> = ({
   return (
     <S.AddToCartSelection>
       <S.ProductNameHeader data-test="productName">{name}</S.ProductNameHeader>
-
       <div className="cfinner">
         <div className="finner1">Varenr.: {metadata.Varenummer}</div>
         <div className="finner1">DB nr.: {metadata["DB number"]}</div>
@@ -203,7 +202,8 @@ const AddToCartSection: React.FC<IAddToCartSection> = ({
           onAttributeChangeHandler={onAttributeChangeHandler}
         />
       </S.VariantPicker> */}
-      <S.QuantityInput>
+
+      {/* <S.QuantityInput>
         <QuantityInput
           quantity={quantity}
           maxQuantity={availableQuantity}
@@ -212,7 +212,7 @@ const AddToCartSection: React.FC<IAddToCartSection> = ({
           hideErrors={!variantId || isOutOfStock || isNoItemsAvailable}
           testingContext="addToCartQuantity"
         />
-      </S.QuantityInput>
+      </S.QuantityInput> */}
 
       {/* {isOutOfStock ? (
                 renderErrorMessage(
@@ -224,10 +224,12 @@ const AddToCartSection: React.FC<IAddToCartSection> = ({
                         {getProductPrice(productPricing, variantPricing)}
                     </S.ProductPricing>
                 )} */}
-      <AddToCartButton
-        onSubmit={() => onAddToCart(variantId, quantity)}
-        disabled={disableButton}
-      />
+      <div className="btn-cart">
+        <AddToCartButton
+          onSubmit={() => onAddToCart(variantId, quantity)}
+          disabled={disableButton}
+        />
+      </div>
       <div className="btn-blo">
         <button className="btnIn2">Se forhandlerliste</button>
       </div>
@@ -242,18 +244,18 @@ const AddToCartSection: React.FC<IAddToCartSection> = ({
           <div className="addmetbox">
             {otherMaterials.length
               ? otherMaterials.map((item, index) => {
-                  const { thumbnails, url } = item || {};
-                  const { small } = thumbnails;
-                  return (
-                    <a href={url} target="_blank" rel="noopener noreferrer">
-                      <img
-                        src={small.url}
-                        alt="addMeticon"
-                        style={{ width: 80, height: 80 }}
-                      />
-                    </a>
-                  );
-                })
+                const { thumbnails, url } = item || {};
+                const { small } = thumbnails;
+                return (
+                  <a href={url} target="_blank" rel="noopener noreferrer">
+                    <img
+                      src={small.url}
+                      alt="addMeticon"
+                      style={{ width: 80, height: 80 }}
+                    />
+                  </a>
+                );
+              })
               : null}
           </div>
         </div>
@@ -272,7 +274,7 @@ const AddToCartSection: React.FC<IAddToCartSection> = ({
             }
             className="accordian-list"
           >
-            <span>{title}</span>
+            <span className="accordianTitle">{title}</span>
             <IconAssetWrapper source={ChevronRightBlackIcon} />
           </div>
         );

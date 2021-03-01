@@ -3,7 +3,7 @@
 .product-page {
     display: flex;
     flex-direction: column;
-  background-color: $white;
+   background-color: $white;
 
 
   .image-thumnbnail{
@@ -38,7 +38,8 @@
   .breadcrumbs {
     background-color: $white;
     padding: $spacer / 2 $spacer $spacer / 2 $spacer * 1.5;
-    margin-top: $spacer * 2;
+    margin-top: $spacer * 3;
+    padding-bottom: 32px;
   }
  button.sc-htoDjs.jdEray {
     background: #F5A930 !important;
@@ -48,14 +49,14 @@
       display: inline-block;
       font-size: 1rem !important;
       text-transform: unset;
-      font-weight: 300 !important;
+      font-weight: 400 !important;
       line-height: 1.25rem;
   }
   }
   &__product {
     display: flex;
     margin-top: $spacer;
-    padding-bottom: $spacer * 5;
+    padding-bottom: $spacer * 3;
 
     @media (max-width: $small-screen) {
       display: block;
@@ -94,17 +95,25 @@ h3{
     display: flex;
     width: 100%;
     flex-direction: row;
+    margin-top: 15px;
 	
 	.finner1 {
-    font-size: 0.9rem;
-    color: #aeabab;
     margin: 0 2rem 0 0;
+    font-style: normal;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 18px;
+    color: #888888;
 }
 }
 .Maindes {
-    font-size: 1rem;
-    margin: 1rem 0 0 0;
-    line-height: 1.5rem;
+    margin: 1.5rem 0 0 0;
+   // font-family: Helvetica Neue;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 15px;
+    line-height: 26px;
+    color: #373737;
 }
 .dqteCy {
    
@@ -122,13 +131,13 @@ h3{
 }
 .featurelists {
     display: flex;
-    margin: 1.5rem 0 0 0;
+    margin: 2rem 0 0 0;
     flex-direction: revert;
     height: 100%;
     vertical-align: middle;
 	border-bottom: 1px solid #E6E6E6;
     padding-bottom: 1.5rem;
-	font-weight: 600;
+	font-weight: 500;
 	svg{
 	margin: 0 1rem 0 0;
 	}
@@ -154,13 +163,19 @@ h3{
 
 
 .addsmettel {
- margin: 1rem 0;
+ margin: 1.5rem 0;
 
 
 .addstitle {
-    font-size: 0.8rem;
 	margin-bottom: 1rem;
-	font-weight:600;
+  font-family: Helvetica Neue;
+  font-style: normal;
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 24px;
+  letter-spacing: 0.02em;
+  text-transform: uppercase;
+  color: #131313;
 }
 
 .addmetlist {
@@ -178,13 +193,12 @@ h3{
       &--fixed {
         top: 0;
         position: sticky;
-        width: auto;
-		   padding-right: 2rem;
-    padding-left: 2rem;
-
-        @media (min-width: $container-width) {
-          width: calc(#{$container-width} * 50 / 100);
-        }
+		    padding-right: 2rem;
+        padding-left: 3rem;
+        max-width:500px;
+        // @media (min-width: $container-width) {
+        //   width: calc(#{$container-width} * 50 / 100);
+        // }
       }
     }
 
@@ -234,9 +248,8 @@ h3{
     padding: $spacer * 4 0;
 
     &__title {
-      text-transform: uppercase;
-      font-weight: $bold-font-weight;
-      margin-bottom: $spacer * 2;
+      font-weight: 500;
+      margin-bottom: $spacer * .5;
     }
 	.bPHtOO {
     background: transparent !important;
