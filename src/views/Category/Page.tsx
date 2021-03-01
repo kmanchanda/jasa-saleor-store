@@ -1,30 +1,21 @@
 import "./scss/index.scss";
 
 import * as React from "react";
-import { useIntl } from "react-intl";
 
-import { commonMessages } from "@temp/intl";
 import { IFilterAttributes, IFilters } from "@types";
 import FilterChips from "@temp/components/Filter-Chips/filterChips.componet";
-import { Typography } from "@material-ui/core";
 import Fab from "@material-ui/core/Fab";
 import NavigationIcon from "@material-ui/icons/Navigation";
-import Grid from "@material-ui/core/Grid";
-import Box from "@material-ui/core/Box";
-import { ChevronRightBlackIcon } from "@temp/ImageMapping/imageMapping";
 import Media from "react-media";
 import ExpandMoreIcon from "@material-ui/icons/ExpandMore";
 import {
   Breadcrumbs,
   extractBreadcrumbs,
-  ProductsFeatured,
   OverlayContext,
   OverlayTheme,
   OverlayType,
 } from "../../components";
 
-import { ProductListHeader } from "../../@next/components/molecules";
-import { ProductList } from "../../@next/components/organisms";
 import { FilterSidebar } from "../../@next/components/organisms/FilterSidebar";
 
 import { maybe } from "../../core/utils";
@@ -32,12 +23,8 @@ import { maybe } from "../../core/utils";
 import { Category_category } from "./gqlTypes/Category";
 import { CategoryProducts_products } from "./gqlTypes/CategoryProducts";
 import ProductListModule from "../ProductList";
-import IconAssetWrapper from "../../components/IconAssetWrapper/index";
 
-import {
-  smallScreen,
-  mediumScreen,
-} from "../../globalStyles/scss/variables.scss";
+import { mediumScreen } from "../../globalStyles/scss/variables.scss";
 
 interface SortItem {
   label: string;
@@ -80,9 +67,8 @@ const Page: React.FC<PageProps> = ({
   const canDisplayProducts = maybe(
     () => !!products.edges && products.totalCount !== undefined
   );
-  const hasProducts = canDisplayProducts && !!products.totalCount;
+
   const [showFilters, setShowFilters] = React.useState(false);
-  const intl = useIntl();
   const [header, setHeader] = React.useState(false);
   const overlayContext = React.useContext(OverlayContext);
   const getAttribute = (attributeSlug: string, valueSlug: string) => {

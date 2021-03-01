@@ -103,32 +103,44 @@ export const View: React.FC<ViewProps> = ({ match }) => {
 
   const sortOptions = [
     {
-      label: intl.formatMessage(prodListHeaderCommonMsg.sortOptionsClear),
+      label: intl.formatMessage(
+        (prodListHeaderCommonMsg as any).sortOptionsClear
+      ),
       value: null,
     },
     {
-      label: intl.formatMessage(prodListHeaderCommonMsg.sortOptionsPrice),
+      label: intl.formatMessage(
+        (prodListHeaderCommonMsg as any).sortOptionsPrice
+      ),
       value: "price",
     },
     {
-      label: intl.formatMessage(prodListHeaderCommonMsg.sortOptionsPriceDsc),
+      label: intl.formatMessage(
+        (prodListHeaderCommonMsg as any).sortOptionsPriceDsc
+      ),
       value: "-price",
     },
     {
-      label: intl.formatMessage(prodListHeaderCommonMsg.sortOptionsName),
+      label: intl.formatMessage(
+        (prodListHeaderCommonMsg as any).sortOptionsName
+      ),
       value: "name",
     },
     {
-      label: intl.formatMessage(prodListHeaderCommonMsg.sortOptionsNameDsc),
+      label: intl.formatMessage(
+        (prodListHeaderCommonMsg as any).sortOptionsNameDsc
+      ),
       value: "-name",
     },
     {
-      label: intl.formatMessage(prodListHeaderCommonMsg.sortOptionsUpdatedAt),
+      label: intl.formatMessage(
+        (prodListHeaderCommonMsg as any).sortOptionsUpdatedAt
+      ),
       value: "updated_at",
     },
     {
       label: intl.formatMessage(
-        prodListHeaderCommonMsg.sortOptionsUpdatedAtDsc
+        (prodListHeaderCommonMsg as any).sortOptionsUpdatedAtDsc
       ),
       value: "-updated_at",
     },

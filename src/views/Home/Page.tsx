@@ -1,11 +1,9 @@
 import "./scss/index.scss";
 
-import classNames from "classnames";
 import * as React from "react";
-import { FormattedMessage, useIntl } from "react-intl";
 import { Link } from "react-router-dom";
 
-import { Button, Loader, ProductsFeatured } from "../../components";
+import { Loader } from "../../components";
 import { generateCategoryUrl } from "../../core/utils";
 
 import {
@@ -16,8 +14,6 @@ import {
 
 import { structuredData } from "../../core/SEO/Homepage/structuredData";
 
-import noPhotoImg from "../../images/no-photo.svg";
-
 const Page: React.FC<{
   loading: boolean;
   categories: ProductsList_categories;
@@ -27,7 +23,6 @@ const Page: React.FC<{
   const categoriesExist = () => {
     return categories && categories.edges && categories.edges.length > 0;
   };
-  const intl = useIntl();
   return (
     <>
       <script className="structured-data-list" type="application/ld+json">

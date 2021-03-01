@@ -1,24 +1,18 @@
 import React, { useContext, useState } from "react";
 import { useIntl } from "react-intl";
-import { sanitize } from "dompurify";
-import draftToHtml from "draftjs-to-html";
 import { commonMessages } from "@temp/intl";
 import { ICheckoutModelLine } from "@saleor/sdk/lib/helpers";
 import {
   ProductDetails_product_pricing,
   ProductDetails_product_variants,
-  ProductDetails_product_variants_pricing,
 } from "@saleor/sdk/lib/queries/gqlTypes/ProductDetails";
 
-import { IProductVariantsAttributesSelectedValues } from "@types";
 import ReactSVG from "react-svg";
 import { ChevronRightBlackIcon } from "@temp/ImageMapping/imageMapping";
-import QuantityInput from "../../molecules/QuantityInput";
 import AddToCartButton from "../../molecules/AddToCartButton";
 import "react-accessible-accordion/dist/fancy-example.css";
 
 import featureImg from "../../../../images/feature-icon.svg";
-import addMeticon from "../../../../images/addM.png";
 import IconAssetWrapper from "../../../../components/IconAssetWrapper/index";
 import "./scss/index.scss";
 
@@ -28,11 +22,7 @@ import {
   OverlayType,
 } from "../../../../components/index";
 import * as S from "./styles";
-import {
-  getAvailableQuantity,
-  getProductPrice,
-  canAddToCart,
-} from "./stockHelpers";
+import { getAvailableQuantity, canAddToCart } from "./stockHelpers";
 
 const LOW_STOCK_QUANTITY: number = 5;
 
@@ -72,12 +62,8 @@ const AddToCartSection: React.FC<IAddToCartSection> = ({
 }) => {
   const intl = useIntl();
 
-  const [quantity, setQuantity] = useState<number>(1);
-  const [variantStock, setVariantStock] = useState<number>(0);
-  const [
-    variantPricing,
-    setVariantPricing,
-  ] = useState<ProductDetails_product_variants_pricing | null>(null);
+  const [quantity] = useState<number>(1);
+  const [variantStock] = useState<number>(0);
 
   const overlayContext = useContext(OverlayContext);
 
@@ -114,25 +100,6 @@ const AddToCartSection: React.FC<IAddToCartSection> = ({
     >
       {message}
     </S.ErrorMessage>
-  );
-
-  const onVariantPickerChange = (
-    _selectedAttributesValues?: IProductVariantsAttributesSelectedValues,
-    selectedVariant?: ProductDetails_product_variants
-  ): undefined => {
-    if (!selectedVariant) {
-      setVariantId("");
-      setVariantPricing(null);
-      setVariantStock(0);
-      return;
-    }
-    setVariantId(selectedVariant.id);
-    setVariantPricing(selectedVariant?.pricing);
-    setVariantStock(selectedVariant?.quantityAvailable);
-  };
-  const desc = metadata.Beskrivelse.replaceAll(/(\r\n|\n|\n\s+\n|\r)/g, " ");
-  const array = metadata.Beskrivelse.split("\n").filter(
-    (item: string) => item !== "\n"
   );
 
   const otherMaterials = JSON.parse(metadata["Product image (Tryk)"]);

@@ -21,11 +21,11 @@ const GalleryCarousel: React.FC<{
 
   const bottomImageRef = React.useRef<HTMLDivElement | null>(null);
   const topImageRef = React.useRef<HTMLDivElement | null>(null);
-  const [topImageIntersectionObserver, topImageInView] = useInView({
+  const [topImageIntersectionObserver] = useInView({
     threshold: 0.5,
   });
 
-  const [bottomImageIntersectionObserver, bottomImageInView] = useInView({
+  const [bottomImageIntersectionObserver] = useInView({
     threshold: 0.5,
   });
 
@@ -105,11 +105,7 @@ const GalleryCarousel: React.FC<{
                 onClick={() => setImageIndex(index)}
                 onMouseEnter={() => setImageIndex(index)}
               >
-                <CachedImage
-                  alt={image.alt}
-                  url={image.url}
-                  style={{ width: 80 }}
-                />
+                <CachedImage alt={image.alt} url={image.url} />
               </div>
             );
           })}

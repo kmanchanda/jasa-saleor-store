@@ -1,8 +1,5 @@
 import * as React from "react";
 
-import { NavLink } from "..";
-import { TypedSecondaryMenuQuery } from "./queries";
-
 import "./scss/index.scss";
 
 class Nav extends React.PureComponent {

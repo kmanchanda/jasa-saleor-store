@@ -11,8 +11,6 @@ import { Category_category } from "../../views/Category/gqlTypes/Category";
 
 import { smallScreen } from "../../globalStyles/scss/variables.scss";
 import "./scss/index.scss";
-import IconAssetWrapper from "../IconAssetWrapper";
-import { ChevronLeftBlackIcon } from "../../ImageMapping/imageMapping";
 
 export interface Breadcrumb {
   value: string;
@@ -39,9 +37,6 @@ export const extractBreadcrumbs = (category: Category_category) => {
   }
   return breadcrumbs;
 };
-
-const getBackLink = (breadcrumbs: Breadcrumb[]) =>
-  breadcrumbs.length > 1 ? breadcrumbs[breadcrumbs.length - 2].link : "/";
 
 const Breadcrumbs: React.FC<{
   breadcrumbs: Breadcrumb[];

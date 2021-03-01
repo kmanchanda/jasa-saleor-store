@@ -1,6 +1,5 @@
 import React from "react";
 import { useInView } from "react-intersection-observer";
-import { Icon } from "@components/atoms";
 import { CachedImage } from "@components/molecules";
 
 import * as S from "./styles";
@@ -14,8 +13,6 @@ export const ProductGallery: React.FC<IProps> = ({
 }: IProps) => {
   const [imageIndex, setImageIndex] = React.useState<number>(0);
 
-  const displayButtons = images.length > MINIMAL_NUMBER_OF_IMAGES_FOR_BUTTONS;
-
   React.useEffect(() => {
     if (imageIndex >= images.length) {
       setImageIndex(0);
@@ -24,11 +21,11 @@ export const ProductGallery: React.FC<IProps> = ({
 
   const bottomImageRef = React.useRef<HTMLDivElement | null>(null);
   const topImageRef = React.useRef<HTMLDivElement | null>(null);
-  const [topImageIntersectionObserver, topImageInView] = useInView({
+  const [topImageIntersectionObserver] = useInView({
     threshold: 0.5,
   });
 
-  const [bottomImageIntersectionObserver, bottomImageInView] = useInView({
+  const [bottomImageIntersectionObserver] = useInView({
     threshold: 0.5,
   });
 
