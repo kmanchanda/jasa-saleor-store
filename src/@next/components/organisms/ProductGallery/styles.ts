@@ -77,15 +77,21 @@ export const ThumbnailList = styled.div`
 
 export const Preview = styled.div`
   grid-area: preview;
-  width: 460px;
-  max-height: 520px;
+  width: 464px;
+  max-height: 540px;
   background: #f9f9f9;
-  padding-inline:40px;
-  padding-top:60px;
-  padding-bottom:60px;
-    img {
-      width: 100%;
-      object-fit: contain;
-        width: 100%;
-    }
+  padding-inline: 40px;
+  padding-top: 60px;
+  padding-bottom: 92px;
+
+  ${media.xLargeScreen`
+  width: 410px !important;
+  max-height: 450px !important;
+  `}
+
+  img {
+    width: 100%;
+    object-fit: contain;
+    width: 100%;
+  }
 `;

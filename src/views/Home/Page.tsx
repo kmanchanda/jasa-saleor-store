@@ -35,13 +35,13 @@ const Page: React.FC<{
       </script>
       <div
         className="home-page__hero"
-        style={
-          backgroundImage
-            ? { backgroundImage: `url(${backgroundImage.url})` }
-            : null
-        }
+      // style={
+      //   backgroundImage
+      //     ? { backgroundImage: `url(${backgroundImage.url})` }
+      //     : null
+      // }
       >
-        <div className="home-page__hero-text">
+        {/* <div className="home-page__hero-text">
           <div>
             <span className="home-page__hero__title">
               <h1>
@@ -56,30 +56,30 @@ const Page: React.FC<{
               </h1>
             </span>
           </div>
-        </div>
+        </div> */}
         <div className="home-page__hero-action">
           {loading && !categories ? (
             <Loader />
           ) : (
-            categoriesExist() && (
-              <Link
-                to={generateCategoryUrl(
-                  categories.edges[0].node.id,
-                  categories.edges[0].node.name
-                )}
-              >
-                <Button testingContext="homepageHeroActionButton">
-                  <FormattedMessage defaultMessage="Shop sale" />
-                </Button>
-              </Link>
-            )
-          )}
+              categoriesExist() && (
+                <Link
+                  to={generateCategoryUrl(
+                    categories.edges[0].node.id,
+                    categories.edges[0].node.name
+                  )}
+                >
+                  {/* <Button testingContext="homepageHeroActionButton">
+                    <FormattedMessage defaultMessage="Shop sale" />
+                  </Button> */}
+                </Link>
+              )
+            )}
         </div>
       </div>
-      <ProductsFeatured
+      {/* <ProductsFeatured
         title={intl.formatMessage({ defaultMessage: "Featured" })}
-      />
-      {categoriesExist() && (
+      /> */}
+      {/* {categoriesExist() && (
         <div className="home-page__categories">
           <div className="container">
             <h3>
@@ -104,17 +104,17 @@ const Page: React.FC<{
                           category.backgroundImage
                             ? category.backgroundImage.url
                             : noPhotoImg
-                        })`,
+                          })`,
                       }}
                     />
-                    <h3>{category.name} Hello</h3>
+                    <h3>{category.name}</h3>
                   </Link>
                 </div>
               ))}
             </div>
           </div>
         </div>
-      )}
+      )} */}
     </>
   );
 };

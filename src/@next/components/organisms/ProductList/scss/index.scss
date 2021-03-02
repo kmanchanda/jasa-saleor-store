@@ -2,14 +2,12 @@
     display: flex;
     flex-wrap: nowrap;
     overflow-x:scroll;
+    overflow-y:hidden;
     width: 100%;
     position: relative;
-
     .image-item{
-        min-width:25%
-    }
-    .right-scroll-icon{
-
+        min-width:23%;
+        margin-right:32px;
     }
 }
 
@@ -23,8 +21,6 @@
 .product-list::-webkit-scrollbar-track {
 background: transparent; 
 }
-
-
 
 @media only screen and (max-width: 600px) {
     

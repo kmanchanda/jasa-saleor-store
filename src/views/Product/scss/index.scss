@@ -34,14 +34,14 @@
     border-radius: 2px;
     border-style: solid;
     border-color: #F5A930;
-}
+  }
   .breadcrumbs {
     background-color: $white;
     padding: $spacer / 2 $spacer $spacer / 2 $spacer * 1.5;
     margin-top: $spacer * 3;
     padding-bottom: 32px;
   }
- button.sc-htoDjs.jdEray {
+  button.sc-htoDjs.jdEray {
     background: #F5A930 !important;
     border-radius: 5rem;
 	padding: 1.2rem 1rem;
@@ -57,12 +57,17 @@
     display: flex;
     margin-top: $spacer;
     padding-bottom: $spacer * 3;
-
     @media (max-width: $small-screen) {
       display: block;
       margin-bottom: $spacer * 2;
     }
 
+    @media (max-width: '1650px')and(min-width:'1300px')
+    {
+      padding-left: 108px;
+      padding-right: 170px;
+    }
+   
     &__description {
       width: 100%;
       min-height: $spacer * 10;
@@ -193,12 +198,15 @@ h3{
       &--fixed {
         top: 0;
         position: sticky;
-		    padding-right: 2rem;
-        padding-left: 3rem;
         max-width:500px;
-        // @media (min-width: $container-width) {
-        //   width: calc(#{$container-width} * 50 / 100);
-        // }
+        @media (min-width: 900px) and (max-width:1299px) {
+          padding-right: 2rem;
+        padding-left: 3rem;
+        }
+        @media (min-width: 1300px) and (max-width:1650px) {
+          padding-left: 5rem;
+          padding-right: 0px;
+        }
       }
     }
 
@@ -248,8 +256,13 @@ h3{
     padding: $spacer * 4 0;
 
     &__title {
-      font-weight: 500;
       margin-bottom: $spacer * .5;
+      font-family: Arimo;
+      font-style: normal;
+      font-weight: 600;
+      font-size: 28px;
+      line-height: 36px;
+      color: #131313;
     }
 	.bPHtOO {
     background: transparent !important;

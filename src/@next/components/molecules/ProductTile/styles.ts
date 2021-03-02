@@ -8,9 +8,9 @@ const textProps = css`
 `;
 
 export const Wrapper = styled.div`
-  padding: 1.1rem;
+  padding-top:1.3rem;
+  padding:right:2rem
   text-align: center;
-  max-height: 30rem;
   transition: 0.3s;
 
   ${media.largeScreen`
@@ -20,19 +20,19 @@ export const Wrapper = styled.div`
 
 export const Title = styled.h4`
   ${textProps}
+  padding-top: 12px;
+  font-family: Arimo;
   font-style: normal;
   font-weight: 600;
-  font-size: 16px;
+  font-size: 18px;
   line-height: 26px;
-  color: #131313;
-  padding-top:12px
-
+  color: #131313
 `;
 
 export const Price = styled.p`
   ${textProps}
   font-style: normal;
-  font-weight: 600;
+  font-weight: 500;
   font-size: 14px;
   line-height: 24px;
   letter-spacing: 0.02em;
@@ -42,23 +42,25 @@ export const Price = styled.p`
 
 export const Description = styled.p`
   ${textProps}
-  font-weight: normal;
+  font-family: Helvetica Neue;
   font-style: normal;
-  font-size: 14px;
-  line-height: 24px;
+  font-weight: normal;
+  font-size: 16px;
+  line-height: 26px;
+  color: #373737;
 `;
 
 export const Image = styled.div`
   max-width: 100%;
-  width: 250px;
-  height: 320px;
   background-color: #f9f9f9;
   border-radius: 2px;
   overflow: hidden;
   padding: 50px 20px;
+  max-width: 340px;
+  max-height: 440px;
 
   > img {
     height: 100% !important;
-    width:100% !important
+    width: 100% !important;
   }
 `;

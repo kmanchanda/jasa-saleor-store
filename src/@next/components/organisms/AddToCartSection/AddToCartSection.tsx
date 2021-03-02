@@ -127,8 +127,8 @@ const AddToCartSection: React.FC<IAddToCartSection> = ({
       return;
     }
     setVariantId(selectedVariant.id);
-    setVariantPricing(selectedVariant ?.pricing);
-    setVariantStock(selectedVariant ?.quantityAvailable);
+    setVariantPricing(selectedVariant?.pricing);
+    setVariantStock(selectedVariant?.quantityAvailable);
   };
   const desc = metadata.Beskrivelse.replaceAll(/(\r\n|\n|\n\s+\n|\r)/g, " ");
   const array = metadata.Beskrivelse.split("\n").filter(
@@ -244,18 +244,18 @@ const AddToCartSection: React.FC<IAddToCartSection> = ({
           <div className="addmetbox">
             {otherMaterials.length
               ? otherMaterials.map((item, index) => {
-                const { thumbnails, url } = item || {};
-                const { small } = thumbnails;
-                return (
-                  <a href={url} target="_blank" rel="noopener noreferrer">
-                    <img
-                      src={small.url}
-                      alt="addMeticon"
-                      style={{ width: 80, height: 80 }}
-                    />
-                  </a>
-                );
-              })
+                  const { thumbnails, url } = item || {};
+                  const { small } = thumbnails;
+                  return (
+                    <a href={url} target="_blank" rel="noopener noreferrer">
+                      <img
+                        src={small.url}
+                        alt="addMeticon"
+                        style={{ width: 80, height: 80 }}
+                      />
+                    </a>
+                  );
+                })
               : null}
           </div>
         </div>
