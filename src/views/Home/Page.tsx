@@ -35,11 +35,11 @@ const Page: React.FC<{
       </script>
       <div
         className="home-page__hero"
-      // style={
-      //   backgroundImage
-      //     ? { backgroundImage: `url(${backgroundImage.url})` }
-      //     : null
-      // }
+        // style={
+        //   backgroundImage
+        //     ? { backgroundImage: `url(${backgroundImage.url})` }
+        //     : null
+        // }
       >
         {/* <div className="home-page__hero-text">
           <div>
@@ -61,19 +61,19 @@ const Page: React.FC<{
           {loading && !categories ? (
             <Loader />
           ) : (
-              categoriesExist() && (
-                <Link
-                  to={generateCategoryUrl(
-                    categories.edges[0].node.id,
-                    categories.edges[0].node.name
-                  )}
-                >
-                  {/* <Button testingContext="homepageHeroActionButton">
+            categoriesExist() && (
+              <Link
+                to={generateCategoryUrl(
+                  categories.edges[0].node.id,
+                  categories.edges[0].node.name
+                )}
+              >
+                {/* <Button testingContext="homepageHeroActionButton">
                     <FormattedMessage defaultMessage="Shop sale" />
                   </Button> */}
-                </Link>
-              )
-            )}
+              </Link>
+            )
+          )}
         </div>
       </div>
       {/* <ProductsFeatured

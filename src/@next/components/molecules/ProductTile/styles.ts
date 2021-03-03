@@ -26,7 +26,7 @@ export const Title = styled.h4`
   font-weight: 600;
   font-size: 18px;
   line-height: 26px;
-  color: #131313
+  color: #131313;
 `;
 
 export const Price = styled.p`
