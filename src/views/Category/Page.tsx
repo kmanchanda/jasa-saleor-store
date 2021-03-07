@@ -31,7 +31,7 @@ interface SortItem {
   value?: string;
 }
 
-interface SortOptions extends Array<SortItem> {}
+interface SortOptions extends Array<SortItem> { }
 
 interface PageProps {
   activeFilters: number;

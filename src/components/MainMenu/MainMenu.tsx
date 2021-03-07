@@ -238,7 +238,7 @@ const MainMenu: React.FC<MainMenuProps> = ({ demoMode }) => {
                     query={{ minWidth: mediumScreen }}
                     render={() =>
                       items.map(item => {
-                        const hasSubNavigation = !!item?.children?.length;
+                        const hasSubNavigation = !!item ?.children ?.length;
                         return (
                           <li
                             data-test="mainMenuItem"
@@ -309,19 +309,19 @@ const MainMenu: React.FC<MainMenuProps> = ({ demoMode }) => {
                               }
                             />
                           ) : (
-                            <li
-                              data-test="mobileMenuLoginLink"
-                              className="main-menu__icon"
-                              onClick={() =>
-                                overlayContext.show(
-                                  OverlayType.login,
-                                  OverlayTheme.left
-                                )
-                              }
-                            >
-                              <ReactSVG path={userImg} />
-                            </li>
-                          )}
+                              <li
+                                data-test="mobileMenuLoginLink"
+                                className="main-menu__icon"
+                                onClick={() =>
+                                  overlayContext.show(
+                                    OverlayType.login,
+                                    OverlayTheme.left
+                                  )
+                                }
+                              >
+                                <ReactSVG path={userImg} />
+                              </li>
+                            )}
                         </>
                       )}
                     />
@@ -378,7 +378,7 @@ const MainMenu: React.FC<MainMenuProps> = ({ demoMode }) => {
                     <a href="/">Kataloger</a>
                   </li>
                   <li>
-                    <a href="contact-us">Kontakt</a>
+                    <a href="/">Kontakt</a>
                   </li>
                 </>
               )}
@@ -428,19 +428,19 @@ const MainMenu: React.FC<MainMenuProps> = ({ demoMode }) => {
                         }
                       />
                     ) : (
-                      <li
-                        data-test="desktopMenuLoginOverlayLink"
-                        className="main-menu__icon"
-                        onClick={() =>
-                          overlayContext.show(
-                            OverlayType.login,
-                            OverlayTheme.right
-                          )
-                        }
-                      >
-                        <ReactSVG path={userImg} />
-                      </li>
-                    )}
+                        <li
+                          data-test="desktopMenuLoginOverlayLink"
+                          className="main-menu__icon"
+                          onClick={() =>
+                            overlayContext.show(
+                              OverlayType.login,
+                              OverlayTheme.right
+                            )
+                          }
+                        >
+                          <ReactSVG path={userImg} />
+                        </li>
+                      )}
                   </>
                 )}
               />

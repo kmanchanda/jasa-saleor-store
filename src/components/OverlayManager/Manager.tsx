@@ -14,6 +14,7 @@ import Search from "./Search";
 const OverlayManager: React.FC = props => (
   <OverlayContext.Consumer>
     {overlay => {
+      console.log("overlay", overlay)
       switch (overlay.type) {
         case OverlayType.modal:
           return <Modal testingContext="modal" overlay={overlay} />;

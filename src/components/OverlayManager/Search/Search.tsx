@@ -149,14 +149,14 @@ class Search extends React.Component<SearchProps, SearchState> {
                                 {loading ? (
                                   <Loader />
                                 ) : (
-                                  <Button
-                                    testingContext="searchProductsButton"
-                                    btnRef={this.submitBtnRef}
-                                    type="submit"
-                                  >
-                                    <FormattedMessage defaultMessage="Show all results" />
-                                  </Button>
-                                )}
+                                    <Button
+                                      testingContext="searchProductsButton"
+                                      btnRef={this.submitBtnRef}
+                                      type="submit"
+                                    >
+                                      <FormattedMessage defaultMessage="Show all results" />
+                                    </Button>
+                                  )}
                               </div>
                             </>
                           );
@@ -166,8 +166,8 @@ class Search extends React.Component<SearchProps, SearchState> {
                           return isOnline ? (
                             <Error error={error.message} />
                           ) : (
-                            <OfflinePlaceholder />
-                          );
+                              <OfflinePlaceholder />
+                            );
                         }
 
                         return <NothingFound search={this.state.search} />;
