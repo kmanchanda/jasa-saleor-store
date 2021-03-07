@@ -99,8 +99,40 @@ export const View: React.FC<ViewProps> = ({ match }) => {
     id: getGraphqlIdFromDBId(match.params.id, "Category"),
     sortBy: convertSortByFromString(filters.sortBy),
   };
-
   const sortOptions = [
+    {
+      label: intl.formatMessage(prodListHeaderCommonMsg.sortOptionsClear),
+      value: null,
+    },
+    {
+      label: intl.formatMessage(prodListHeaderCommonMsg.sortOptionsPrice),
+      value: "price",
+    },
+    {
+      label: intl.formatMessage(prodListHeaderCommonMsg.sortOptionsPriceDsc),
+      value: "-price",
+    },
+    {
+      label: intl.formatMessage(prodListHeaderCommonMsg.sortOptionsName),
+      value: "name",
+    },
+    {
+      label: intl.formatMessage(prodListHeaderCommonMsg.sortOptionsNameDsc),
+      value: "-name",
+    },
+    {
+      label: intl.formatMessage(prodListHeaderCommonMsg.sortOptionsUpdatedAt),
+      value: "updated_at",
+    },
+    {
+      label: intl.formatMessage(
+        prodListHeaderCommonMsg.sortOptionsUpdatedAtDsc
+      ),
+      value: "-updated_at",
+    },
+  ];
+
+  const sortOptions1 = [
     {
       label: intl.formatMessage(
         prodListHeaderCommonMsg.sortOptionsDørgrebTilbehør
@@ -193,8 +225,8 @@ export const View: React.FC<ViewProps> = ({ match }) => {
             }
 
             const canDisplayFilters =
-              !!categoryData.data?.attributes?.edges &&
-              !!categoryData.data?.category?.name;
+              !!categoryData.data ?.attributes ?.edges &&
+                !!categoryData.data ?.category ?.name;
 
             return (
               <TypedCategoryProductsQuery variables={variables}>
@@ -240,7 +272,7 @@ export const View: React.FC<ViewProps> = ({ match }) => {
                           category={categoryData.data.category}
                           displayLoader={categoryData.loading}
                           hasNextPage={
-                            categoryProducts.data?.products?.pageInfo
+                            categoryProducts.data ?.products ?.pageInfo
                               .hasNextPage
                           }
                           sortOptions={sortOptions}

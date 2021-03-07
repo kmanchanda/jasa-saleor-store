@@ -8,6 +8,25 @@
   // width: 100%;
 }
 
+.placeholder{
+  // border: 0;
+  // color: #888888;
+  // width: 100%;
+  // outline: 0 !important;
+  // padding: 12px 10px;
+  // font-size: 1rem;
+  // background: #f9f9f9;
+  
+    font-style: normal;
+    font-weight: normal;
+    font-size: 16px;
+    line-height: 26px;
+    color: #888888;
+    flex: none;
+    margin: 10px 14px!important;
+    text-transform: none!important;
+}
+
 .searchBox {
   .MuiOutlinedInput-root{
     border-radius: 90px;
@@ -71,6 +90,7 @@
       font-size: 1rem;
       background: #f9f9f9;
     }
+
 
   }
 }
@@ -246,7 +266,7 @@
   }
 
   &__search {
-    padding: 5px  $spacer;
+    padding: 10px  $spacer;
     cursor: pointer;
     line-height: 24px;
     transition: 0.3s;

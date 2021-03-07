@@ -181,27 +181,27 @@ export const checkoutMessages = defineMessages({
 });
 
 export const prodListHeaderCommonMsg = defineMessages({
-  // sortOptionsClear: {
-  //   defaultMessage: "Clear...",
-  // },
-  // sortOptionsPrice: {
-  //   defaultMessage: "Price Low-High",
-  // },
-  // sortOptionsPriceDsc: {
-  //   defaultMessage: "Price High-Low",
-  // },
-  // sortOptionsName: {
-  //   defaultMessage: "Name Increasing",
-  // },
-  // sortOptionsNameDsc: {
-  //   defaultMessage: "Name Decreasing",
-  // },
-  // sortOptionsUpdatedAt: {
-  //   defaultMessage: "Last updated Ascending",
-  // },
-  // sortOptionsUpdatedAtDsc: {
-  //   defaultMessage: "Last updated Descending",
-  // },
+  sortOptionsClear: {
+    defaultMessage: "Clear...",
+  },
+  sortOptionsPrice: {
+    defaultMessage: "Price Low-High",
+  },
+  sortOptionsPriceDsc: {
+    defaultMessage: "Price High-Low",
+  },
+  sortOptionsName: {
+    defaultMessage: "Name Increasing",
+  },
+  sortOptionsNameDsc: {
+    defaultMessage: "Name Decreasing",
+  },
+  sortOptionsUpdatedAt: {
+    defaultMessage: "Last updated Ascending",
+  },
+  sortOptionsUpdatedAtDsc: {
+    defaultMessage: "Last updated Descending",
+  },
   sortOptionsDørgrebTilbehør: {
     defaultMessage: "Dørgreb & tilbehør",
   },

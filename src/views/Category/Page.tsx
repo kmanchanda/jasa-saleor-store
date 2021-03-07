@@ -3,11 +3,11 @@ import "./scss/index.scss";
 import * as React from "react";
 
 import { IFilterAttributes, IFilters } from "@types";
-import FilterChips from "@temp/components/Filter-Chips/filterChips.componet";
 import Fab from "@material-ui/core/Fab";
 import NavigationIcon from "@material-ui/icons/Navigation";
 import Media from "react-media";
 import ExpandMoreIcon from "@material-ui/icons/ExpandMore";
+import FilterChips from "@temp/components/Filter-Chips/filterChips.componet";
 import {
   Breadcrumbs,
   extractBreadcrumbs,
@@ -15,7 +15,7 @@ import {
   OverlayTheme,
   OverlayType,
 } from "../../components";
-
+import { ProductListHeader } from "../../@next/components/molecules";
 import { FilterSidebar } from "../../@next/components/organisms/FilterSidebar";
 
 import { maybe } from "../../core/utils";
@@ -25,7 +25,6 @@ import { CategoryProducts_products } from "./gqlTypes/CategoryProducts";
 import ProductListModule from "../ProductList";
 
 import { mediumScreen } from "../../globalStyles/scss/variables.scss";
-
 interface SortItem {
   label: string;
   value?: string;
@@ -71,6 +70,7 @@ const Page: React.FC<PageProps> = ({
   const [showFilters, setShowFilters] = React.useState(false);
   const [header, setHeader] = React.useState(false);
   const overlayContext = React.useContext(OverlayContext);
+
   const getAttribute = (attributeSlug: string, valueSlug: string) => {
     return {
       attributeSlug,
@@ -80,6 +80,17 @@ const Page: React.FC<PageProps> = ({
       valueSlug,
     };
   };
+
+  const activeFiltersAttributes =
+    filters &&
+    filters.attributes &&
+    Object.keys(filters.attributes).reduce(
+      (acc, key) =>
+        acc.concat(
+          filters.attributes[key].map(valueSlug => getAttribute(key, valueSlug))
+        ),
+      []
+    );
 
   const content = sortOptions;
   const title = "Dørgreb";
@@ -121,6 +132,17 @@ const Page: React.FC<PageProps> = ({
         <Breadcrumbs breadcrumbs={extractBreadcrumbs(category)} />
       </div>
 
+      <div className="container">
+        <FilterSidebar
+          show={showFilters}
+          hide={() => setShowFilters(false)}
+          onAttributeFiltersChange={onAttributeFiltersChange}
+          attributes={attributes}
+          filters={filters}
+        />
+      </div>
+
+
       <div className="container col-flex">
         <span className="title-heading">Dørgreb & tilbehør</span>
 
@@ -140,7 +162,22 @@ const Page: React.FC<PageProps> = ({
           query={{ minWidth: mediumScreen }}
           render={() => (
             <>
-              <FilterChips applicableFilters={sortOptions} />
+              {/* <FilterChips applicableFilters={sortOptions} /> */}
+              {activeFilters > 0 && (
+                <>
+                  <ProductListHeader
+                    activeSortOption={activeSortOption}
+                    openFiltersMenu={() => setShowFilters(true)}
+                    numberOfProducts={products ? products.totalCount : 0}
+                    activeFilters={activeFilters}
+                    activeFiltersAttributes={activeFiltersAttributes}
+                    clearFilters={clearFilters}
+                    sortOptions={sortOptions}
+                    onChange={onOrder}
+                    onCloseFilterAttribute={onAttributeFiltersChange}
+                  />
+                </>
+              )}
               <div className="filterButtonContainer">
                 <div className={header ? "centerCategoryFixed" : null}>
                   <Fab

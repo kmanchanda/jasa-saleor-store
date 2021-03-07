@@ -22,16 +22,23 @@ export const Primary = styled.div<{
   fullWidth?: boolean;
   size: Size;
 }>`
-  background-color: ${props => props.theme.chip.colors[props.color].background};
+  background-color: #F9F9F9;
   padding: ${props => padding[props.size]};
   border: none;
   transition: 0.3s;
   outline: none;
-  border-radius: 2rem;
-  color: ${props => props.theme.chip.colors[props.color].color};
+  color: #131313;
   width: ${props => (props.fullWidth ? "100%" : "auto")}
   display: inline-block;
   cursor: default;
+  border: 1px solid #E6E6E6;
+  box-sizing: border-box;
+  border-radius: 40px;
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 22px;
+  text-align: center;
+  letter-spacing: 0.01em;
 `;
 
 export const Secondary = styled(Primary)`
@@ -44,11 +51,11 @@ export const Secondary = styled(Primary)`
 export const Text = styled.span<{ size: Size }>`
   display: inline-block;
   font-size: ${({
-    size,
-    theme: {
-      chip: { typography },
-    },
-  }) => fontSize(typography.fontSize, typography.smallFontSize)[size]};
+  size,
+  theme: {
+    chip: { typography },
+  },
+}) => fontSize(typography.fontSize, typography.smallFontSize)[size]};
   font-weight: ${props => props.theme.typography.boldFontWeight};
   line-height: ${props => props.theme.typography.baseLineHeight};
   margin-right: ${props => paddingCloseButton[props.size]};
@@ -70,7 +77,7 @@ export const CloseButton = styled.button<{
 
   &:hover {
     background-color: ${props =>
-      props.theme.chip.colors[props.color].hoverBackground};
+    props.theme.chip.colors[props.color].hoverBackground};
     > svg > path {
       fill: ${props => props.theme.chip.colors[props.color].hoverColor};
     }
@@ -78,7 +85,7 @@ export const CloseButton = styled.button<{
 
   &:active {
     background-color: ${props =>
-      props.theme.chip.colors[props.color].activeBackground};
+    props.theme.chip.colors[props.color].activeBackground};
   }
 
   &:disabled {

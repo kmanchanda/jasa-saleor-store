@@ -1,19 +1,18 @@
 import { styled } from "@styles";
 
 export const Wrapper = styled.div`
-  margin-bottom: 1.4rem;
+  margin-bottom: 0rem;
 `;
 
 export const Bar = styled.div`
-  height: 5rem;
-  background-color: ${props => props.theme.tile.backgroundColor};
+  // height: 5rem;
+  // background-color: ${props => props.theme.tile.backgroundColor};
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 0 2rem;
   font-size: ${props => props.theme.typography.smallFontSize};
   margin-top: 1rem;
-  margin-bottom: 1.4rem;
+  // margin-bottom: 1.4rem;
 `;
 
 export const LeftSide = styled.div`
@@ -44,7 +43,7 @@ export const Element = styled.span`
 
 export const Filters = styled.span`
   font-weight: ${props => props.theme.typography.boldFontWeight};
-  padding: 0 0.6rem;
+  padding: 0 0.5rem;
 `;
 
 export const Label = styled.span`
@@ -58,6 +57,6 @@ export const Sort = styled.div`
 
 export const FiltersChipsWrapper = styled.div`
   > div {
-    margin: 0.4rem;
+    margin: 0.6rem;
   }
 `;

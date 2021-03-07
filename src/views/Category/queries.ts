@@ -21,7 +21,7 @@ export const categoryProductsDataQuery = gql`
       backgroundImage {
         url
       }
-      ancestors(last: 5) {
+      ancestors(last: 20) {
         edges {
           node {
             id
