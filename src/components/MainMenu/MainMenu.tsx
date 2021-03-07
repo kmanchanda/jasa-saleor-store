@@ -345,27 +345,45 @@ const MainMenu: React.FC<MainMenuProps> = ({ demoMode }) => {
         <Media
           query={{ minWidth: mediumScreen }}
           render={() => (
-            <Autocomplete
-              options={top100Films}
-              getOptionLabel={option => option.title}
-              style={{ width: 400, borderRadius: "40px" }}
-              renderInput={params => (
-                <TextField
-                  {...params}
-                  placeholder="Hvad er du på udkig efter?"
-                  variant="outlined"
-                  className="searchBox"
-                  InputProps={{
-                    ...params.InputProps,
-                    startAdornment: (
-                      <InputAdornment position="start">
-                        <ReactSVG path={NewSearchIcon} />
-                      </InputAdornment>
-                    ),
-                  }}
-                />
-              )}
-            />
+
+            <li
+              data-test="menuSearchOverlayLink"
+              className="main-menu__search"
+              onClick={() =>
+                overlayContext.show(OverlayType.search, OverlayTheme.right)
+              }
+            >
+              <Media
+                query={{ minWidth: mediumScreen }}
+                render={() => (
+                  <span>
+                    Hvad er du på udkig efter?
+                  </span>
+                )}
+              />
+              <ReactSVG path={searchImg} />
+            </li>
+            // <Autocomplete
+            //   options={top100Films}
+            //   getOptionLabel={option => option.title}
+            //   style={{ width: 400, borderRadius: "40px" }}
+            //   renderInput={params => (
+            //     <TextField
+            //       {...params}
+            //       placeholder="Hvad er du på udkig efter?"
+            //       variant="outlined"
+            //       className="searchBox"
+            //       InputProps={{
+            //         ...params.InputProps,
+            //         startAdornment: (
+            //           <InputAdornment position="start">
+            //             <ReactSVG path={NewSearchIcon} />
+            //           </InputAdornment>
+            //         ),
+            //       }}
+            //     />
+            //   )}
+            // />
           )}
         />
         <div className="main-menu__right">
