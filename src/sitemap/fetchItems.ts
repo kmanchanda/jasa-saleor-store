@@ -53,3 +53,22 @@ export const getProducts = async callback => {
     callback({ url: generateProductUrl(id, name) });
   });
 };
+
+export const SearchProduct = async(query) => {
+  const result = await fetch(API_URL, {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json',
+    },
+    body: JSON.stringify({query})
+  })
+  .then(response => response.json())
+  .then(data => {
+    return data
+  })
+  .catch((e) => {
+    console.log(e)
+  })
+
+  return result.data.products.edges
+}
