@@ -36,6 +36,7 @@ import {
   smallScreen,
 } from "../../globalStyles/scss/variables.scss";
 import "./scss/index.scss";
+import { SearchProduct } from "@temp/sitemap/fetchItems";
 
 interface MainMenuProps {
   demoMode: boolean;
@@ -76,6 +77,44 @@ const MainMenu: React.FC<MainMenuProps> = ({ demoMode }) => {
       setActiveDropdown(undefined);
     }
   };
+
+  const searchProduct = async(e) => {   
+    if(e.target.value && e.target.value.length < 3) {
+      return;
+    }
+    const searchResultsQuery = `
+      query {
+        products(filter: { search: "${e.target.value}" }, first: 20) {
+          edges {
+            node {
+              id
+              name
+              thumbnail {
+                url
+                alt
+              }
+              thumbnail2x: thumbnail(size: 510) {
+                url
+              }
+              category {
+                id
+                name
+              }
+            }
+          }
+          pageInfo {
+            endCursor
+            hasNextPage
+            hasPreviousPage
+            startCursor
+          }
+        }
+      }
+    `;   
+      
+    let result = await SearchProduct(searchResultsQuery);  
+            
+}
 
   return (
     <header
