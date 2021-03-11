@@ -2,6 +2,7 @@ import React from "react";
 import { Chip } from "@components/atoms";
 import * as S from "./styles";
 import { IProps } from "./types";
+
 export const ProductListHeader: React.FC<IProps> = ({
   numberOfProducts = 0,
   openFiltersMenu,
@@ -21,7 +22,9 @@ export const ProductListHeader: React.FC<IProps> = ({
             {activeFiltersAttributes.map(
               ({ attributeSlug, valueName, valueSlug }) => (
                 <Chip
-                  onClose={() => onCloseFilterAttribute(attributeSlug, valueSlug)}
+                  onClose={() =>
+                    onCloseFilterAttribute(attributeSlug, valueSlug)
+                  }
                 >
                   {valueName}
                 </Chip>
@@ -37,7 +40,6 @@ export const ProductListHeader: React.FC<IProps> = ({
           )}
         </S.RightSide> */}
       </S.Bar>
-
     </S.Wrapper>
   );
 };

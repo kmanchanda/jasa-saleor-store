@@ -8,7 +8,7 @@ import Media from "react-media";
 import { Link } from "react-router-dom";
 import ReactSVG from "react-svg";
 
-import { DemoBanner } from "@components/atoms";
+import { DemoBanner, Loader, Button } from "@components/atoms";
 import classNames from "classnames";
 import TextField from "@material-ui/core/TextField";
 import {
@@ -18,6 +18,10 @@ import {
   OverlayContext,
   OverlayTheme,
   OverlayType,
+  OfflinePlaceholder,
+  NetworkStatus,
+  Overlay,
+  OverlayContextInterface,
 } from "..";
 import * as appPaths from "../../app/routes";
 import { maybe } from "../../core/utils";
@@ -31,22 +35,58 @@ import logoImg from "../../images/logo.svg";
 import searchImg from "../../images/search.svg";
 import NewSearchIcon from "../../images/search-icon.svg";
 import userImg from "../../images/user.svg";
+import { DebouncedTextField } from "../Debounce";
 import {
   mediumScreen,
   smallScreen,
 } from "../../globalStyles/scss/variables.scss";
 import "./scss/index.scss";
 import { SearchProduct } from "@temp/sitemap/fetchItems";
+import NothingFound from "../OverlayManager/Search/NothingFound";
+import ProductItem from "../OverlayManager/Search/ProductItem";
+import { SearchResults } from "../OverlayManager/Search/gqlTypes/SearchResults";
+import closeImg from "../../images/x.svg";
+import Modal from "@material-ui/core/Modal";
+import { makeStyles } from "@material-ui/core/styles";
+import { xxLargeScreen, largeScreen, xLargeScreen } from "@styles/constants";
 
 interface MainMenuProps {
   demoMode: boolean;
 }
+function getModalStyle() {
+  return {
+    top: `0%`,
+    left: `32%`,
+    borderRadius: `8px`,
+    minWidth: window.innerWidth > 1600 ? `43%` : `38%`,
+    maxWidth: window.innerWidth > 1600 ? `43%` : `38%`,
+    border: `1px solid #000`,
+  };
+}
 
+const useStyles = makeStyles(theme => ({
+  paper: {
+    position: "absolute",
+    maxHeight: 500,
+    overflow: "scroll",
+    backgroundColor: theme.palette.background.paper,
+    border: "1px solid #000",
+    boxShadow: theme.shadows[5],
+    padding: theme.spacing(1, 2, 1),
+  },
+}));
 const MainMenu: React.FC<MainMenuProps> = ({ demoMode }) => {
   const overlayContext = useContext(OverlayContext);
-
   const { user, signOut } = useAuth();
   const { items } = useCart();
+  const [searchResult, setSearchResult] = useState([]);
+  const [searchString, setSearchString] = useState("");
+  const [isLoading, setIsLoading] = useState(false);
+
+  const classes = useStyles();
+  // getModalStyle is not a pure function, we roll the style only on the first render
+  const [modalStyle] = React.useState(getModalStyle);
+  const [open, setOpen] = React.useState(false);
 
   const handleSignOut = () => {
     signOut();
@@ -78,13 +118,21 @@ const MainMenu: React.FC<MainMenuProps> = ({ demoMode }) => {
     }
   };
 
-  const searchProduct = async(e) => {   
-    if(e.target.value && e.target.value.length < 3) {
+  const clearInput = () => {
+    // alert("clearInput")
+    setSearchString("");
+    setSearchResult([]);
+  };
+  const onSearch = async e => {
+    console.log("searchProduct -> e", e);
+    setSearchString(e);
+    if (e && e.length < 1) {
       return;
     }
+    setIsLoading(true);
     const searchResultsQuery = `
       query {
-        products(filter: { search: "${e.target.value}" }, first: 20) {
+        products(filter: { search: "${e}" }, first: 20) {
           edges {
             node {
               id
@@ -110,11 +158,60 @@ const MainMenu: React.FC<MainMenuProps> = ({ demoMode }) => {
           }
         }
       }
-    `;   
-      
-    let result = await SearchProduct(searchResultsQuery);  
-            
-}
+    `;
+    const result = await SearchProduct(searchResultsQuery);
+    setIsLoading(false);
+    setSearchResult(result);
+    console.log("result", result);
+  };
+
+  const handleOpen = () => {
+    setOpen(true);
+  };
+
+  const handleClose = () => {
+    console.log("handleClose");
+    setOpen(false);
+  };
+
+  const body = (
+    <div style={modalStyle} className={classes.paper}>
+      <TextField
+        fullWidth
+        variant="outlined"
+        className="searchInput"
+        onChange={evt => onSearch(evt.target.value)}
+        value={searchString}
+        autoFocus
+        InputProps={{
+          startAdornment: (
+            <InputAdornment position="start">
+              <ReactSVG
+                path={closeImg}
+                onClick={() => clearInput()}
+                className="search__input__close-btn"
+              />
+            </InputAdornment>
+          ),
+        }}
+      // onBlur={this.handleInputBlur}
+      />
+      {searchResult.length > 0 ? (
+        <ul>
+          {searchResult.map(product => (
+            <ProductItem
+              {...product}
+              onClose={handleClose}
+              key={product.node.id}
+            />
+          ))}
+        </ul>
+      ) : (
+          <NothingFound search={searchString} />
+        )}
+      {isLoading ? <Loader /> : null}
+    </div>
+  );
 
   return (
     <header
@@ -263,7 +360,6 @@ const MainMenu: React.FC<MainMenuProps> = ({ demoMode }) => {
             }}
           </TypedMainMenuQuery>
         </div>
-
         <Media
           query={{ maxWidth: mediumScreen }}
           render={() => (
@@ -274,53 +370,64 @@ const MainMenu: React.FC<MainMenuProps> = ({ demoMode }) => {
             </div>
           )}
         />
+
         <Media
-          query={{ minWidth: mediumScreen }}
+          query={{ minWidth: xxLargeScreen }}
           render={() => (
-
-            <div
-              data-test="menuSearchOverlayLink"
-              className="main-menu__search"
-              onClick={() =>
-                overlayContext.show(OverlayType.search, OverlayTheme.right)
-              }
-            >
+            <div className="main-menu__search">
               <ReactSVG path={searchImg} />
-              <Media
-                query={{ minWidth: mediumScreen }}
-                render={() => (
-                  <span className="placeholder">
-                    Hvad er du på udkig efter?
-
-                  </span>
-                )}
-              />
-
+              <button
+                style={{
+                  marginLeft: "30px",
+                  fontSize: '16px',
+                  lineHeight: ' 26px',
+                  color: '#373737',
+                }}
+                type="button"
+                onClick={handleOpen}
+              >
+                {searchString === "" ? "Hvad er du på udkig efter?" : searchString}
+              </button>
+              <Modal
+                open={open}
+                onClose={handleClose}
+                aria-labelledby="simple-modal-title"
+                aria-describedby="simple-modal-description"
+              >
+                {body}
+              </Modal>
             </div>
-            // <Autocomplete
-            //   options={top100Films}
-            //   getOptionLabel={option => option.title}
-            //   style={{ width: 400, borderRadius: "40px" }}
-            //   renderInput={params => (
-            //     <TextField
-            //       {...params}
-            //       placeholder="Hvad er du på udkig efter?"
-            //       variant="outlined"
-            //       className="searchBox"
-            //       InputProps={{
-            //         ...params.InputProps,
-            //         startAdornment: (
-            //           <InputAdornment position="start">
-            //             <ReactSVG path={NewSearchIcon} />
-            //           </InputAdornment>
-            //         ),
-            //       }}
-            //     />
-            //   )}
-            // />
           )}
         />
-        <div className="main-menu__right">
+        <Media
+          query={{ minWidth: largeScreen, maxWidth: xLargeScreen }}
+          render={() => (
+            <div className="main-menu__search">
+              <ReactSVG path={searchImg} />
+              <button style={{
+                marginLeft: "30px",
+                fontSize: '16px',
+                lineHeight: ' 26px',
+                color: '#373737',
+              }}
+                type="button"
+                onClick={handleOpen}
+              >
+                {searchString === "" ? "Hvad er du på udkig efter?" : searchString}
+              </button>
+              <Modal
+                open={open}
+                onClose={handleClose}
+                aria-labelledby="simple-modal-title"
+                aria-describedby="simple-modal-description"
+              >
+                {body}
+              </Modal>
+            </div>
+          )}
+        />
+
+        <div style={{ flex: 1 }} className="main-menu__right">
           <ul>
             <Media
               query={{ minWidth: mediumScreen }}

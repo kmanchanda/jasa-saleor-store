@@ -7,6 +7,20 @@
   padding: 0px 10px;
   // width: 100%;
 }
+.searchInput {
+  .MuiOutlinedInput-root{
+    border-radius: 90px;
+    height: 56px;
+  }
+  .MuiOutlinedInput-root.Mui-focused .MuiOutlinedInput-notchedOutline {
+    border-color: gray;
+    border-width: 2px;
+  }
+  .MuiOutlinedInput-inputAdornedStart {
+    padding-left: 8px;
+    border-color: gray;
+  }
+}
 
 .placeholder{
   // border: 0;
@@ -31,11 +45,13 @@
   .MuiOutlinedInput-root{
     border-radius: 90px;
     height: 56px;
+    margin-bottom: 5px;
   }
   .MuiOutlinedInput-root.Mui-focused .MuiOutlinedInput-notchedOutline {
     border-color: gray;
     border-width: 2px;
 }
+
 }
 
 .main-menu {

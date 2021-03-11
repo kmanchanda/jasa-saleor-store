@@ -51,11 +51,11 @@ export const Secondary = styled(Primary)`
 export const Text = styled.span<{ size: Size }>`
   display: inline-block;
   font-size: ${({
-  size,
-  theme: {
-    chip: { typography },
-  },
-}) => fontSize(typography.fontSize, typography.smallFontSize)[size]};
+    size,
+    theme: {
+      chip: { typography },
+    },
+  }) => fontSize(typography.fontSize, typography.smallFontSize)[size]};
   font-weight: ${props => props.theme.typography.boldFontWeight};
   line-height: ${props => props.theme.typography.baseLineHeight};
   margin-right: ${props => paddingCloseButton[props.size]};
@@ -77,7 +77,7 @@ export const CloseButton = styled.button<{
 
   &:hover {
     background-color: ${props =>
-    props.theme.chip.colors[props.color].hoverBackground};
+      props.theme.chip.colors[props.color].hoverBackground};
     > svg > path {
       fill: ${props => props.theme.chip.colors[props.color].hoverColor};
     }
@@ -85,7 +85,7 @@ export const CloseButton = styled.button<{
 
   &:active {
     background-color: ${props =>
-    props.theme.chip.colors[props.color].activeBackground};
+      props.theme.chip.colors[props.color].activeBackground};
   }
 
   &:disabled {

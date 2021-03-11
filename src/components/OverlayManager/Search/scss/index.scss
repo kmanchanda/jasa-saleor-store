@@ -2,6 +2,24 @@
 
 $drawer-width: 25rem;
 
+.product-name{
+  font-family: Helvetica Neue;
+  font-style: normal;
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 20px;
+  letter-spacing: 0.01em;
+  color: #131313;
+}
+.product-detail{
+  font-family: Helvetica Neue;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 13px;
+  line-height: 18px;
+  color: #888888;
+}
+
 .search {
   width: 100vw;
 

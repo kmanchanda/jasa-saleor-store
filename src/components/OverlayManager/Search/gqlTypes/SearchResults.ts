@@ -59,6 +59,7 @@ export interface SearchResults_products_edges {
    * The item at the end of the edge.
    */
   node: SearchResults_products_edges_node;
+  onClose?: () => void;
 }
 
 export interface SearchResults_products_pageInfo {

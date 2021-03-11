@@ -89,7 +89,7 @@ export const fieldSpacer = "1.875rem";
 // breakpoints
 export const xxxLargeScreen = 1920;
 export const xxLargeScreen = 1600;
-export const xLargeScreen = 1280;
+export const xLargeScreen = 1380;
 export const largeScreen = 992;
 export const mediumScreen = 720;
 export const smallScreen = 540;

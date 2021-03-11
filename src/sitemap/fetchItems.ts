@@ -54,21 +54,20 @@ export const getProducts = async callback => {
   });
 };
 
-export const SearchProduct = async(query) => {
+export const SearchProduct = async query => {
   const result = await fetch(API_URL, {
-    method: 'POST',
+    method: "POST",
     headers: {
-      'Content-Type': 'application/json',
+      "Content-Type": "application/json",
     },
-    body: JSON.stringify({query})
+    body: JSON.stringify({ query }),
   })
-  .then(response => response.json())
-  .then(data => {
-    return data
-  })
-  .catch((e) => {
-    console.log(e)
-  })
-
-  return result.data.products.edges
-}
+    .then(response => response.json())
+    .then(data => {
+      return data;
+    })
+    .catch(e => {
+      console.log(e);
+    });
+  return result.data.products.edges;
+};

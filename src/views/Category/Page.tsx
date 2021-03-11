@@ -25,12 +25,13 @@ import { CategoryProducts_products } from "./gqlTypes/CategoryProducts";
 import ProductListModule from "../ProductList";
 
 import { mediumScreen } from "../../globalStyles/scss/variables.scss";
+
 interface SortItem {
   label: string;
   value?: string;
 }
 
-interface SortOptions extends Array<SortItem> { }
+interface SortOptions extends Array<SortItem> {}
 
 interface PageProps {
   activeFilters: number;
@@ -141,7 +142,6 @@ const Page: React.FC<PageProps> = ({
           filters={filters}
         />
       </div>
-
 
       <div className="container col-flex">
         <span className="title-heading">Dørgreb & tilbehør</span>

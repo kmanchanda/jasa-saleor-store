@@ -33,16 +33,15 @@ const Page: React.FC<{
           {loading && !categories ? (
             <Loader />
           ) : (
-              categoriesExist() && (
-                <Link
-                  to={generateCategoryUrl(
-                    categories.edges[0].node.id,
-                    categories.edges[0].node.name
-                  )}
-                >
-                </Link>
-              )
-            )}
+            categoriesExist() && (
+              <Link
+                to={generateCategoryUrl(
+                  categories.edges[0].node.id,
+                  categories.edges[0].node.name
+                )}
+              />
+            )
+          )}
         </div>
       </div>
     </>
