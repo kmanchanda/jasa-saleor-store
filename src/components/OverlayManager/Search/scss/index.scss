@@ -10,6 +10,7 @@ $drawer-width: 25rem;
   line-height: 20px;
   letter-spacing: 0.01em;
   color: #131313;
+  margin: auto;
 }
 .product-detail{
   font-family: Helvetica Neue;
@@ -17,6 +18,30 @@ $drawer-width: 25rem;
   font-weight: normal;
   font-size: 13px;
   line-height: 18px;
+  color: #888888;
+}
+.search-image{
+    height: 2rem;
+    display: inline-block;
+    margin-right: 1.6rem;
+    margin-top: 16px;
+    margin-left: 10px;
+}
+.name{
+  font-family: Helvetica Neue;
+  font-style: normal;
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 20px;
+  letter-spacing: 0.01em;
+  color: #131313;
+}
+.detail{
+  font-family: Helvetica Neue;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 13px;
+  line-height: 28px;
   color: #888888;
 }
 
@@ -93,8 +118,8 @@ $drawer-width: 25rem;
       padding: $spacer / 2 $spacer;
 
       img {
-        width: 3.6rem;
-        height: 3.6rem;
+        width: 3rem;
+        height: 3rem;
         display: inline-block;
         margin-right: $spacer;
         vertical-align: top;
@@ -111,11 +136,6 @@ $drawer-width: 25rem;
         padding: $spacer / 4 0;
         color: $base-font-color;
       }
-
-      p {
-        color: $gray;
-      }
-
       &:hover {
         background-color: $gray-light;
       }

@@ -18,6 +18,8 @@ export const ProductGallery: React.FC<IProps> = ({
       setImageIndex(0);
     }
   }, [images]);
+  console.log("images", images)
+
 
   const bottomImageRef = React.useRef<HTMLDivElement | null>(null);
   const topImageRef = React.useRef<HTMLDivElement | null>(null);

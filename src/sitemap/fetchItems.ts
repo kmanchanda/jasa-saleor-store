@@ -71,3 +71,21 @@ export const SearchProduct = async query => {
     });
   return result.data.products.edges;
 };
+
+export const SearchCategory = async query => {
+  const result = await fetch(API_URL, {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify({ query }),
+  })
+    .then(response => response.json())
+    .then(data => {
+      return data;
+    })
+    .catch(e => {
+      console.log(e);
+    });
+  return result.data.categories.edges;
+};

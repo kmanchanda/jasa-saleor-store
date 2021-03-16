@@ -44,8 +44,8 @@ const Page: React.FC<
   const dataHash = {};
   if (metadata.length) {
     metadata.forEach(element => {
-      if (element?.key)
-        dataHash[element.key] = element?.value ? element.value : "";
+      if (element ?.key)
+        dataHash[element.key] = element ?.value ? element.value : "";
     });
   }
 
@@ -62,7 +62,7 @@ const Page: React.FC<
       }
     }
 
-    return [...product.images, ...product.images, ...product.images]; // @todo
+    return [...product.images];
   };
 
   const handleAddToCart = (variantId, quantity) => {
@@ -109,24 +109,24 @@ const Page: React.FC<
                   </div>
                 </>
               ) : (
-                <>
-                  <div
-                    className="product-page__product__gallery"
-                    ref={productGallery}
-                  >
-                    <ProductGallery images={getImages()} />
-                  </div>
-                  <div className="product-page__product__info">
+                  <>
                     <div
-                      className={classNames(
-                        "product-page__product__info--fixed"
-                      )}
+                      className="product-page__product__gallery"
+                      ref={productGallery}
                     >
-                      {addToCartSection}
+                      <ProductGallery images={getImages()} />
                     </div>
-                  </div>
-                </>
-              )
+                    <div className="product-page__product__info">
+                      <div
+                        className={classNames(
+                          "product-page__product__info--fixed"
+                        )}
+                      >
+                        {addToCartSection}
+                      </div>
+                    </div>
+                  </>
+                )
             }
           </Media>
         </div>

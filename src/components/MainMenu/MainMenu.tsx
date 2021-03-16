@@ -41,7 +41,7 @@ import {
   smallScreen,
 } from "../../globalStyles/scss/variables.scss";
 import "./scss/index.scss";
-import { SearchProduct } from "@temp/sitemap/fetchItems";
+import { SearchProduct, SearchCategory } from "@temp/sitemap/fetchItems";
 import NothingFound from "../OverlayManager/Search/NothingFound";
 import ProductItem from "../OverlayManager/Search/ProductItem";
 import { SearchResults } from "../OverlayManager/Search/gqlTypes/SearchResults";
@@ -123,14 +123,16 @@ const MainMenu: React.FC<MainMenuProps> = ({ demoMode }) => {
     setSearchString("");
     setSearchResult([]);
   };
+  console.log(searchResult)
+
   const onSearch = async e => {
     console.log("searchProduct -> e", e);
     setSearchString(e);
-    if (e && e.length < 1) {
+    if (e && e.length < 3 || e === "") {
       return;
     }
     setIsLoading(true);
-    const searchResultsQuery = `
+    const searchProductResultsQuery = `
       query {
         products(filter: { search: "${e}" }, first: 20) {
           edges {
@@ -159,10 +161,31 @@ const MainMenu: React.FC<MainMenuProps> = ({ demoMode }) => {
         }
       }
     `;
-    const result = await SearchProduct(searchResultsQuery);
+    const searchCategory = `
+      query {
+        categories(filter: { search: "${e}" }, first: 50) {
+          edges {
+            node {
+              id
+              name,
+              products {
+                totalCount
+              }
+            }
+          }
+        }
+      }
+    `;
+
+    const productResult = await SearchProduct(searchProductResultsQuery);
+    const categoryResult = await SearchCategory(searchCategory);
+
     setIsLoading(false);
-    setSearchResult(result);
-    console.log("result", result);
+    setSearchResult([...categoryResult, ...productResult]);
+
+    console.log("productResult", productResult);
+    console.log("categoryResult", categoryResult);
+    console.log("searchResult", searchResult);
   };
 
   const handleOpen = () => {
@@ -199,6 +222,7 @@ const MainMenu: React.FC<MainMenuProps> = ({ demoMode }) => {
       {searchResult.length > 0 ? (
         <ul>
           {searchResult.map(product => (
+            // <span>{JSON.stringify(product)}</span>
             <ProductItem
               {...product}
               onClose={handleClose}
@@ -374,7 +398,7 @@ const MainMenu: React.FC<MainMenuProps> = ({ demoMode }) => {
         <Media
           query={{ minWidth: xxLargeScreen }}
           render={() => (
-            <div className="main-menu__search">
+            <div className="main-menu__search" onClick={handleOpen}>
               <ReactSVG path={searchImg} />
               <button
                 style={{
@@ -384,7 +408,6 @@ const MainMenu: React.FC<MainMenuProps> = ({ demoMode }) => {
                   color: '#373737',
                 }}
                 type="button"
-                onClick={handleOpen}
               >
                 {searchString === "" ? "Hvad er du på udkig efter?" : searchString}
               </button>
