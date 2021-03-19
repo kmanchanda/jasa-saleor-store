@@ -3,14 +3,17 @@ import { FormattedMessage } from "react-intl";
 import { commonMessages } from "@temp/intl";
 import { useAuth, useCart } from "@saleor/sdk";
 import InputAdornment from "@material-ui/core/InputAdornment";
-import Autocomplete from "@material-ui/lab/Autocomplete";
 import Media from "react-media";
 import { Link } from "react-router-dom";
 import ReactSVG from "react-svg";
-
-import { DemoBanner, Loader, Button } from "@components/atoms";
-import classNames from "classnames";
+import { SearchProduct, SearchCategory } from "@temp/sitemap/fetchItems";
+import Modal from "@material-ui/core/Modal";
+import { makeStyles } from "@material-ui/core/styles";
 import TextField from "@material-ui/core/TextField";
+import { DemoBanner, Loader } from "@components/atoms";
+import classNames from "classnames";
+import { xxLargeScreen, largeScreen, xLargeScreen } from "@styles/constants";
+
 import {
   MenuDropdown,
   Offline,
@@ -18,10 +21,6 @@ import {
   OverlayContext,
   OverlayTheme,
   OverlayType,
-  OfflinePlaceholder,
-  NetworkStatus,
-  Overlay,
-  OverlayContextInterface,
 } from "..";
 import * as appPaths from "../../app/routes";
 import { maybe } from "../../core/utils";
@@ -33,22 +32,16 @@ import hamburgerHoverImg from "../../images/hamburger-hover.svg";
 import hamburgerImg from "../../images/hamburger.svg";
 import logoImg from "../../images/logo.svg";
 import searchImg from "../../images/search.svg";
-import NewSearchIcon from "../../images/search-icon.svg";
 import userImg from "../../images/user.svg";
-import { DebouncedTextField } from "../Debounce";
 import {
   mediumScreen,
   smallScreen,
 } from "../../globalStyles/scss/variables.scss";
 import "./scss/index.scss";
-import { SearchProduct, SearchCategory } from "@temp/sitemap/fetchItems";
+
 import NothingFound from "../OverlayManager/Search/NothingFound";
 import ProductItem from "../OverlayManager/Search/ProductItem";
-import { SearchResults } from "../OverlayManager/Search/gqlTypes/SearchResults";
 import closeImg from "../../images/x.svg";
-import Modal from "@material-ui/core/Modal";
-import { makeStyles } from "@material-ui/core/styles";
-import { xxLargeScreen, largeScreen, xLargeScreen } from "@styles/constants";
 
 interface MainMenuProps {
   demoMode: boolean;
@@ -123,12 +116,10 @@ const MainMenu: React.FC<MainMenuProps> = ({ demoMode }) => {
     setSearchString("");
     setSearchResult([]);
   };
-  console.log(searchResult)
 
   const onSearch = async e => {
-    console.log("searchProduct -> e", e);
     setSearchString(e);
-    if (e && e.length < 3 || e === "") {
+    if ((e && e.length < 3) || e === "") {
       return;
     }
     setIsLoading(true);
@@ -182,10 +173,6 @@ const MainMenu: React.FC<MainMenuProps> = ({ demoMode }) => {
 
     setIsLoading(false);
     setSearchResult([...categoryResult, ...productResult]);
-
-    console.log("productResult", productResult);
-    console.log("categoryResult", categoryResult);
-    console.log("searchResult", searchResult);
   };
 
   const handleOpen = () => {
@@ -193,7 +180,6 @@ const MainMenu: React.FC<MainMenuProps> = ({ demoMode }) => {
   };
 
   const handleClose = () => {
-    console.log("handleClose");
     setOpen(false);
   };
 
@@ -217,7 +203,7 @@ const MainMenu: React.FC<MainMenuProps> = ({ demoMode }) => {
             </InputAdornment>
           ),
         }}
-      // onBlur={this.handleInputBlur}
+        // onBlur={this.handleInputBlur}
       />
       {searchResult.length > 0 ? (
         <ul>
@@ -231,8 +217,8 @@ const MainMenu: React.FC<MainMenuProps> = ({ demoMode }) => {
           ))}
         </ul>
       ) : (
-          <NothingFound search={searchString} />
-        )}
+        <NothingFound search={searchString} />
+      )}
       {isLoading ? <Loader /> : null}
     </div>
   );
@@ -291,7 +277,7 @@ const MainMenu: React.FC<MainMenuProps> = ({ demoMode }) => {
                     query={{ minWidth: mediumScreen }}
                     render={() =>
                       items.map(item => {
-                        const hasSubNavigation = !!item ?.children ?.length;
+                        const hasSubNavigation = !!item?.children?.length;
                         return (
                           <li
                             data-test="mainMenuItem"
@@ -362,19 +348,19 @@ const MainMenu: React.FC<MainMenuProps> = ({ demoMode }) => {
                               }
                             />
                           ) : (
-                              <li
-                                data-test="mobileMenuLoginLink"
-                                className="main-menu__icon"
-                                onClick={() =>
-                                  overlayContext.show(
-                                    OverlayType.login,
-                                    OverlayTheme.left
-                                  )
-                                }
-                              >
-                                <ReactSVG path={userImg} />
-                              </li>
-                            )}
+                            <li
+                              data-test="mobileMenuLoginLink"
+                              className="main-menu__icon"
+                              onClick={() =>
+                                overlayContext.show(
+                                  OverlayType.login,
+                                  OverlayTheme.left
+                                )
+                              }
+                            >
+                              <ReactSVG path={userImg} />
+                            </li>
+                          )}
                         </>
                       )}
                     />
@@ -403,13 +389,15 @@ const MainMenu: React.FC<MainMenuProps> = ({ demoMode }) => {
               <button
                 style={{
                   marginLeft: "30px",
-                  fontSize: '16px',
-                  lineHeight: ' 26px',
-                  color: '#373737',
+                  fontSize: "16px",
+                  lineHeight: " 26px",
+                  color: "#373737",
                 }}
                 type="button"
               >
-                {searchString === "" ? "Hvad er du på udkig efter?" : searchString}
+                {searchString === ""
+                  ? "Hvad er du på udkig efter?"
+                  : searchString}
               </button>
               <Modal
                 open={open}
@@ -427,16 +415,19 @@ const MainMenu: React.FC<MainMenuProps> = ({ demoMode }) => {
           render={() => (
             <div className="main-menu__search">
               <ReactSVG path={searchImg} />
-              <button style={{
-                marginLeft: "30px",
-                fontSize: '16px',
-                lineHeight: ' 26px',
-                color: '#373737',
-              }}
+              <button
+                style={{
+                  marginLeft: "30px",
+                  fontSize: "16px",
+                  lineHeight: " 26px",
+                  color: "#373737",
+                }}
                 type="button"
                 onClick={handleOpen}
               >
-                {searchString === "" ? "Hvad er du på udkig efter?" : searchString}
+                {searchString === ""
+                  ? "Hvad er du på udkig efter?"
+                  : searchString}
               </button>
               <Modal
                 open={open}
@@ -510,19 +501,19 @@ const MainMenu: React.FC<MainMenuProps> = ({ demoMode }) => {
                         }
                       />
                     ) : (
-                        <li
-                          data-test="desktopMenuLoginOverlayLink"
-                          className="main-menu__icon"
-                          onClick={() =>
-                            overlayContext.show(
-                              OverlayType.login,
-                              OverlayTheme.right
-                            )
-                          }
-                        >
-                          <ReactSVG path={userImg} />
-                        </li>
-                      )}
+                      <li
+                        data-test="desktopMenuLoginOverlayLink"
+                        className="main-menu__icon"
+                        onClick={() =>
+                          overlayContext.show(
+                            OverlayType.login,
+                            OverlayTheme.right
+                          )
+                        }
+                      >
+                        <ReactSVG path={userImg} />
+                      </li>
+                    )}
                   </>
                 )}
               />

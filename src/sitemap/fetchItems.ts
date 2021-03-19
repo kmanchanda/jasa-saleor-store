@@ -65,10 +65,10 @@ export const SearchProduct = async query => {
     .then(response => response.json())
     .then(data => {
       return data;
-    })
-    .catch(e => {
-      console.log(e);
     });
+  // .catch(e => {
+  //   console.log(e);
+  // });
   return result.data.products.edges;
 };
 
@@ -83,9 +83,9 @@ export const SearchCategory = async query => {
     .then(response => response.json())
     .then(data => {
       return data;
-    })
-    .catch(e => {
-      console.log(e);
     });
+  // .catch(e => {
+  //   console.log(e);
+  // });
   return result.data.categories.edges;
 };

@@ -7,7 +7,6 @@ import Fab from "@material-ui/core/Fab";
 import NavigationIcon from "@material-ui/icons/Navigation";
 import Media from "react-media";
 import ExpandMoreIcon from "@material-ui/icons/ExpandMore";
-import FilterChips from "@temp/components/Filter-Chips/filterChips.componet";
 import {
   Breadcrumbs,
   extractBreadcrumbs,

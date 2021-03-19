@@ -102,7 +102,9 @@ const AddToCartSection: React.FC<IAddToCartSection> = ({
     </S.ErrorMessage>
   );
 
-  const otherMaterials = (metadata["Product image (Tryk)"] ? JSON.parse(metadata["Product image (Tryk)"]) : null);
+  const otherMaterials = metadata["Product image (Tryk)"]
+    ? JSON.parse(metadata["Product image (Tryk)"])
+    : null;
   /* @todo will replace with api data */
   const dummyData = [
     {
@@ -203,31 +205,30 @@ const AddToCartSection: React.FC<IAddToCartSection> = ({
         <ReactSVG path={featureImg} /> Opnå gratis forsendelse ved køb over 500
         kr.
       </div>
-      {
-        otherMaterials ?
-          <div className="addsmettel">
-            <div className="addstitle">ANDET MATERIALE</div>
-            <div className="addmetlist">
-              <div className="addmetbox">
-                {otherMaterials.length > 0
-                  ? otherMaterials.map((item, index) => {
+      {otherMaterials ? (
+        <div className="addsmettel">
+          <div className="addstitle">ANDET MATERIALE</div>
+          <div className="addmetlist">
+            <div className="addmetbox">
+              {otherMaterials.length > 0
+                ? otherMaterials.map((item, index) => {
                     const { thumbnails, url } = item || {};
                     const { small } = thumbnails || {};
                     return (
                       <a href={url} target="_blank" rel="noopener noreferrer">
                         <img
-                          src={small ?.url}
+                          src={small?.url}
                           alt="addMeticon"
                           style={{ width: 80, height: 80 }}
                         />
                       </a>
                     );
                   })
-                  : null}
-              </div>
+                : null}
             </div>
           </div>
-          : null}
+        </div>
+      ) : null}
       {dummyData.map((item, key) => {
         const { title, content } = item;
 
