@@ -1,7 +1,6 @@
 import { Integrations as ApmIntegrations } from "@sentry/apm";
 import * as Sentry from "@sentry/browser";
 import * as React from "react";
-import { positions, Provider as AlertProvider } from "react-alert";
 import { render } from "react-dom";
 import TagManager from "react-gtm-module";
 import { hot } from "react-hot-loader";
@@ -9,7 +8,6 @@ import { Route, Router } from "react-router-dom";
 import { ThemeProvider } from "styled-components";
 import { QueryParamProvider } from "use-query-params";
 
-import { NotificationTemplate } from "@components/atoms";
 import { ServiceWorkerProvider } from "@components/containers";
 import { SaleorProvider } from "@saleor/sdk";
 import { ConfigInput } from "@saleor/sdk/lib/types";
@@ -42,11 +40,6 @@ const startApp = async () => {
     });
   }
 
-  const notificationOptions = {
-    position: positions.BOTTOM_RIGHT,
-    timeout: 2500,
-  };
-
   const Root = hot(module)(() => {
     return (
       <Router history={history}>
@@ -61,17 +54,12 @@ const startApp = async () => {
 
   render(
     <ThemeProvider theme={defaultTheme}>
-      <AlertProvider
-        template={NotificationTemplate as any}
-        {...notificationOptions}
-      >
-        <ServiceWorkerProvider timeout={serviceWorkerTimeout}>
-          <LocaleProvider>
-            <GlobalStyle />
-            <Root />
-          </LocaleProvider>
-        </ServiceWorkerProvider>
-      </AlertProvider>
+      <ServiceWorkerProvider timeout={serviceWorkerTimeout}>
+        <LocaleProvider>
+          <GlobalStyle />
+          <Root />
+        </LocaleProvider>
+      </ServiceWorkerProvider>
     </ThemeProvider>,
     document.getElementById("root")
   );
