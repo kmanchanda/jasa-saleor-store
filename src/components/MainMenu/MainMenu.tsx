@@ -11,11 +11,7 @@ import { Loader } from "@components/atoms";
 import classNames from "classnames";
 import { xxLargeScreen, largeScreen, xLargeScreen } from "@styles/constants";
 
-import {
-  OverlayContext,
-  OverlayTheme,
-  OverlayType,
-} from "..";
+import { OverlayContext, OverlayTheme, OverlayType } from "..";
 import * as appPaths from "../../app/routes";
 import { maybe } from "../../core/utils";
 import NavDropdown from "./NavDropdown";
@@ -24,9 +20,7 @@ import hamburgerHoverImg from "../../images/hamburger-hover.svg";
 import hamburgerImg from "../../images/hamburger.svg";
 import logoImg from "../../images/logo.svg";
 import searchImg from "../../images/search.svg";
-import {
-  mediumScreen
-} from "../../globalStyles/scss/variables.scss";
+import { mediumScreen } from "../../globalStyles/scss/variables.scss";
 import "./scss/index.scss";
 
 import NothingFound from "../OverlayManager/Search/NothingFound";
