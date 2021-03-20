@@ -14,6 +14,7 @@ import { ConfigInput } from "@saleor/sdk/lib/types";
 import { defaultTheme, GlobalStyle } from "@styles";
 
 import { App } from "./app";
+import { LocaleProvider } from "./components/Locale";
 import {
   apiUrl,
   sentryDsn,
@@ -54,8 +55,10 @@ const startApp = async () => {
   render(
     <ThemeProvider theme={defaultTheme}>
       <ServiceWorkerProvider timeout={serviceWorkerTimeout}>
-        <GlobalStyle />
-        <Root />
+        <LocaleProvider>
+          <GlobalStyle />
+          <Root />
+        </LocaleProvider>
       </ServiceWorkerProvider>
     </ThemeProvider>,
     document.getElementById("root")
