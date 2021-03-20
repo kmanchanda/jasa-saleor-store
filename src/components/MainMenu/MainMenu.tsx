@@ -1,7 +1,4 @@
 import React, { useContext, useEffect, useState } from "react";
-import { FormattedMessage } from "react-intl";
-import { commonMessages } from "@temp/intl";
-import { useAuth, useCart } from "@saleor/sdk";
 import InputAdornment from "@material-ui/core/InputAdornment";
 import Media from "react-media";
 import { Link } from "react-router-dom";
@@ -10,14 +7,11 @@ import { SearchProduct, SearchCategory } from "@temp/sitemap/fetchItems";
 import Modal from "@material-ui/core/Modal";
 import { makeStyles } from "@material-ui/core/styles";
 import TextField from "@material-ui/core/TextField";
-import { DemoBanner, Loader } from "@components/atoms";
+import { Loader } from "@components/atoms";
 import classNames from "classnames";
 import { xxLargeScreen, largeScreen, xLargeScreen } from "@styles/constants";
 
 import {
-  MenuDropdown,
-  Offline,
-  Online,
   OverlayContext,
   OverlayTheme,
   OverlayType,
@@ -26,16 +20,12 @@ import * as appPaths from "../../app/routes";
 import { maybe } from "../../core/utils";
 import NavDropdown from "./NavDropdown";
 import { TypedMainMenuQuery } from "./queries";
-
-import cartImg from "../../images/cart.svg";
 import hamburgerHoverImg from "../../images/hamburger-hover.svg";
 import hamburgerImg from "../../images/hamburger.svg";
 import logoImg from "../../images/logo.svg";
 import searchImg from "../../images/search.svg";
-import userImg from "../../images/user.svg";
 import {
-  mediumScreen,
-  smallScreen,
+  mediumScreen
 } from "../../globalStyles/scss/variables.scss";
 import "./scss/index.scss";
 
@@ -70,8 +60,6 @@ const useStyles = makeStyles(theme => ({
 }));
 const MainMenu: React.FC<MainMenuProps> = ({ demoMode }) => {
   const overlayContext = useContext(OverlayContext);
-  const { user, signOut } = useAuth();
-  const { items } = useCart();
   const [searchResult, setSearchResult] = useState([]);
   const [searchString, setSearchString] = useState("");
   const [isLoading, setIsLoading] = useState(false);
@@ -80,15 +68,6 @@ const MainMenu: React.FC<MainMenuProps> = ({ demoMode }) => {
   // getModalStyle is not a pure function, we roll the style only on the first render
   const [modalStyle] = React.useState(getModalStyle);
   const [open, setOpen] = React.useState(false);
-
-  const handleSignOut = () => {
-    signOut();
-  };
-
-  const cartItemsQuantity =
-    (items &&
-      items.reduce((prevVal, currVal) => prevVal + currVal.quantity, 0)) ||
-    0;
 
   const [activeDropdown, setActiveDropdown] = useState<string>(undefined);
   useEffect(() => {
@@ -229,7 +208,6 @@ const MainMenu: React.FC<MainMenuProps> = ({ demoMode }) => {
         "header-with-dropdown": !!activeDropdown,
       })}
     >
-      {demoMode && <DemoBanner />}
       <nav className="main-menu" id="header">
         <Media
           query={{ minWidth: mediumScreen }}
@@ -300,71 +278,6 @@ const MainMenu: React.FC<MainMenuProps> = ({ demoMode }) => {
                       })
                     }
                   />
-                  <Online>
-                    <Media
-                      query={{ maxWidth: smallScreen }}
-                      render={() => (
-                        <>
-                          {user ? (
-                            <MenuDropdown
-                              suffixClass="__rightdown"
-                              head={
-                                <li className="main-menu__icon main-menu__user--active">
-                                  <ReactSVG path={userImg} />
-                                </li>
-                              }
-                              content={
-                                <ul className="main-menu__dropdown">
-                                  <li data-test="mobileMenuMyAccountLink">
-                                    <Link to={appPaths.accountUrl}>
-                                      <FormattedMessage
-                                        {...commonMessages.myAccount}
-                                      />
-                                    </Link>
-                                  </li>
-                                  <li data-test="mobileMenuOrderHistoryLink">
-                                    <Link to={appPaths.orderHistoryUrl}>
-                                      <FormattedMessage
-                                        {...commonMessages.orderHistory}
-                                      />
-                                    </Link>
-                                  </li>
-                                  <li data-test="mobileMenuAddressBookLink">
-                                    <Link to={appPaths.addressBookUrl}>
-                                      <FormattedMessage
-                                        {...commonMessages.addressBook}
-                                      />
-                                    </Link>
-                                  </li>
-                                  <li
-                                    onClick={handleSignOut}
-                                    data-test="mobileMenuLogoutLink"
-                                  >
-                                    <FormattedMessage
-                                      {...commonMessages.logOut}
-                                    />
-                                  </li>
-                                </ul>
-                              }
-                            />
-                          ) : (
-                            <li
-                              data-test="mobileMenuLoginLink"
-                              className="main-menu__icon"
-                              onClick={() =>
-                                overlayContext.show(
-                                  OverlayType.login,
-                                  OverlayTheme.left
-                                )
-                              }
-                            >
-                              <ReactSVG path={userImg} />
-                            </li>
-                          )}
-                        </>
-                      )}
-                    />
-                  </Online>
                 </ul>
               );
             }}
@@ -454,116 +367,6 @@ const MainMenu: React.FC<MainMenuProps> = ({ demoMode }) => {
                     <a href="/">Kontakt</a>
                   </li>
                 </>
-              )}
-            />
-            <Online>
-              <Media
-                query={{ minWidth: smallScreen }}
-                render={() => (
-                  <>
-                    {user ? (
-                      <MenuDropdown
-                        head={
-                          <li className="main-menu__icon main-menu__user--active">
-                            <ReactSVG path={userImg} />
-                          </li>
-                        }
-                        content={
-                          <ul className="main-menu__dropdown">
-                            <li data-test="desktopMenuMyAccountLink">
-                              <Link to={appPaths.accountUrl}>
-                                <FormattedMessage
-                                  {...commonMessages.myAccount}
-                                />
-                              </Link>
-                            </li>
-                            <li data-test="desktopMenuOrderHistoryLink">
-                              <Link to={appPaths.orderHistoryUrl}>
-                                <FormattedMessage
-                                  {...commonMessages.orderHistory}
-                                />
-                              </Link>
-                            </li>
-                            <li data-test="desktopMenuAddressBookLink">
-                              <Link to={appPaths.addressBookUrl}>
-                                <FormattedMessage
-                                  {...commonMessages.addressBook}
-                                />
-                              </Link>
-                            </li>
-                            <li
-                              onClick={handleSignOut}
-                              data-test="desktopMenuLogoutLink"
-                            >
-                              <FormattedMessage {...commonMessages.logOut} />
-                            </li>
-                          </ul>
-                        }
-                      />
-                    ) : (
-                      <li
-                        data-test="desktopMenuLoginOverlayLink"
-                        className="main-menu__icon"
-                        onClick={() =>
-                          overlayContext.show(
-                            OverlayType.login,
-                            OverlayTheme.right
-                          )
-                        }
-                      >
-                        <ReactSVG path={userImg} />
-                      </li>
-                    )}
-                  </>
-                )}
-              />
-              <li
-                data-test="menuCartOverlayLink"
-                className="main-menu__icon main-menu__cart"
-                onClick={() => {
-                  overlayContext.show(OverlayType.cart, OverlayTheme.right);
-                }}
-              >
-                <ReactSVG path={cartImg} />
-                {cartItemsQuantity > 0 ? (
-                  <span className="main-menu__cart__quantity">
-                    {cartItemsQuantity}
-                  </span>
-                ) : null}
-              </li>
-            </Online>
-            <Offline>
-              <li className="main-menu__offline">
-                <Media
-                  query={{ minWidth: mediumScreen }}
-                  render={() => (
-                    <span>
-                      <FormattedMessage defaultMessage="Offline" />
-                    </span>
-                  )}
-                />
-              </li>
-            </Offline>
-            <Media
-              query={{ maxWidth: mediumScreen }}
-              render={() => (
-                <li
-                  data-test="menuSearchOverlayLink"
-                  className="main-menu__search"
-                  onClick={() =>
-                    overlayContext.show(OverlayType.search, OverlayTheme.right)
-                  }
-                >
-                  <Media
-                    query={{ minWidth: mediumScreen }}
-                    render={() => (
-                      <span>
-                        <FormattedMessage {...commonMessages.search} />
-                      </span>
-                    )}
-                  />
-                  <ReactSVG path={searchImg} />
-                </li>
               )}
             />
           </ul>

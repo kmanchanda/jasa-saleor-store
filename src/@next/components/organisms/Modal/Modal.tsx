@@ -1,6 +1,6 @@
 import React from "react";
 
-import { CardHeader, FormFooter } from "@components/molecules";
+import { FormFooter } from "@components/molecules";
 import { Overlay } from "@components/organisms";
 
 import * as S from "./styles";
@@ -52,9 +52,6 @@ export const Modal: React.FC<IProps> = ({
       target={target}
     >
       <S.Modal>
-        <CardHeader divider onHide={hide}>
-          {title}
-        </CardHeader>
         <S.Content>{children}</S.Content>
         <FormFooter
           divider

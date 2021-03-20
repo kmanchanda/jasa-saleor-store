@@ -1,7 +1,7 @@
 import React from "react";
 
 import { ButtonLink } from "@components/atoms";
-import { CardHeader, OverlayItem } from "@components/molecules";
+import { OverlayItem } from "@components/molecules";
 import { useHandlerWhenClickedOutside } from "@hooks";
 
 import { Overlay } from "..";
@@ -37,9 +37,6 @@ export const SelectSidebar: React.FC<IProps> = ({
       testingContextId={testingContextId}
     >
       <S.Wrapper ref={setElementRef()}>
-        <CardHeader divider onHide={hide}>
-          <span>{title}</span>
-        </CardHeader>
         <S.Content>
           {options.map(option => {
             const isSelected = selectedOptions.some(
