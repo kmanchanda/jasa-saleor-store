@@ -5,7 +5,6 @@ import * as React from "react";
 import { Category_attributes_edges_node } from "../../views/Category/gqlTypes/Category";
 import { Collection_attributes_edges_node } from "../../views/Collection/gqlTypes/Collection";
 import { SearchProducts_attributes_edges_node } from "../../views/Search/gqlTypes/SearchProducts";
-import PriceRangeFilter from "../PriceRangeFilter";
 import SelectField, { SelectValue } from "../SelectField";
 
 export interface AttributeList {
@@ -73,13 +72,6 @@ export const ProductFilters: React.FC<ProductFiltersProps> = ({
             />
           </div>
         ))}
-        <div className="product-filters__grid__filter">
-          <PriceRangeFilter
-            from={filters.priceGte}
-            to={filters.priceLte}
-            onChange={onPriceChange}
-          />
-        </div>
       </div>
     </div>
   </div>

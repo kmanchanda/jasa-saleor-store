@@ -10,7 +10,6 @@ import {
   OverlayManager,
   OverlayProvider,
 } from "../components";
-import ShopProvider from "../components/ShopProvider";
 import "../globalStyles/scss/index.scss";
 import { Routes } from "./routes";
 import Notifications from "./Notifications";
@@ -23,16 +22,14 @@ const App: React.FC = () => {
   }
 
   return (
-    <ShopProvider>
-      <OverlayProvider>
-        <MetaConsumer />
-        <MainMenu demoMode={demoMode} />
-        <Routes />
-        <Footer />
-        <OverlayManager />
-        <Notifications />
-      </OverlayProvider>
-    </ShopProvider>
+    <OverlayProvider>
+      <MetaConsumer />
+      <MainMenu demoMode={demoMode} />
+      <Routes />
+      <Footer />
+      <OverlayManager />
+      <Notifications />
+    </OverlayProvider>
   );
 };
 
