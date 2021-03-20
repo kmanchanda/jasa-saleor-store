@@ -25,6 +25,7 @@ export const ProductList: React.FC<IProps> = ({
   const sliderRef = useRef(null);
 
   const scrollElement = () => {
+    // @ts-ignore
     sliderRef.current.scrollLeft += 300;
   };
 
