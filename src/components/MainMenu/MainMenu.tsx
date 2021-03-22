@@ -9,8 +9,7 @@ import { makeStyles } from "@material-ui/core/styles";
 import TextField from "@material-ui/core/TextField";
 import { Loader } from "@components/atoms";
 import classNames from "classnames";
-import { xxLargeScreen, largeScreen, xLargeScreen } from "@styles/constants";
-
+import { mediumScreen } from "@styles/constants";
 import { OverlayContext, OverlayTheme, OverlayType } from "..";
 import * as appPaths from "../../app/routes";
 import { maybe } from "../../core/utils";
@@ -20,9 +19,7 @@ import hamburgerHoverImg from "../../images/hamburger-hover.svg";
 import hamburgerImg from "../../images/hamburger.svg";
 import logoImg from "../../images/logo.svg";
 import searchImg from "../../images/search.svg";
-import { mediumScreen } from "../../globalStyles/scss/variables.scss";
 import "./scss/index.scss";
-
 import NothingFound from "../OverlayManager/Search/NothingFound";
 import ProductItem from "../OverlayManager/Search/ProductItem";
 import closeImg from "../../images/x.svg";
@@ -33,23 +30,27 @@ interface MainMenuProps {
 function getModalStyle() {
   return {
     top: `0%`,
-    left: `32%`,
+    left: `35%`,
     borderRadius: `8px`,
-    minWidth: window.innerWidth > 1600 ? `43%` : `38%`,
-    maxWidth: window.innerWidth > 1600 ? `43%` : `38%`,
+    width: `43%`,
     border: `1px solid #000`,
+    outline: "0",
   };
 }
 
 const useStyles = makeStyles(theme => ({
   paper: {
     position: "absolute",
-    maxHeight: 500,
-    overflow: "scroll",
+    maxHeight: "500px",
     backgroundColor: theme.palette.background.paper,
     border: "1px solid #000",
     boxShadow: theme.shadows[5],
     padding: theme.spacing(1, 2, 1),
+    outline: "0",
+  },
+  scrollSearch: {
+    overflowY: "scroll",
+    maxHeight: "400px",
   },
 }));
 const MainMenu: React.FC<MainMenuProps> = ({ demoMode }) => {
@@ -85,14 +86,13 @@ const MainMenu: React.FC<MainMenuProps> = ({ demoMode }) => {
   };
 
   const clearInput = () => {
-    // alert("clearInput")
     setSearchString("");
     setSearchResult([]);
   };
 
   const onSearch = async e => {
     setSearchString(e);
-    if ((e && e.length < 3) || e === "") {
+    if ((e && e.length < 1) || e === "") {
       return;
     }
     setIsLoading(true);
@@ -155,46 +155,6 @@ const MainMenu: React.FC<MainMenuProps> = ({ demoMode }) => {
   const handleClose = () => {
     setOpen(false);
   };
-
-  const body = (
-    <div style={modalStyle} className={classes.paper}>
-      <TextField
-        fullWidth
-        variant="outlined"
-        className="searchInput"
-        onChange={evt => onSearch(evt.target.value)}
-        value={searchString}
-        autoFocus
-        InputProps={{
-          startAdornment: (
-            <InputAdornment position="start">
-              <ReactSVG
-                path={closeImg}
-                onClick={() => clearInput()}
-                className="search__input__close-btn"
-              />
-            </InputAdornment>
-          ),
-        }}
-        // onBlur={this.handleInputBlur}
-      />
-      {searchResult.length > 0 ? (
-        <ul>
-          {searchResult.map(product => (
-            // <span>{JSON.stringify(product)}</span>
-            <ProductItem
-              {...product}
-              onClose={handleClose}
-              key={product.node.id}
-            />
-          ))}
-        </ul>
-      ) : (
-        <NothingFound search={searchString} />
-      )}
-      {isLoading ? <Loader /> : null}
-    </div>
-  );
 
   return (
     <header
@@ -277,6 +237,7 @@ const MainMenu: React.FC<MainMenuProps> = ({ demoMode }) => {
             }}
           </TypedMainMenuQuery>
         </div>
+
         <Media
           query={{ maxWidth: mediumScreen }}
           render={() => (
@@ -289,42 +250,16 @@ const MainMenu: React.FC<MainMenuProps> = ({ demoMode }) => {
         />
 
         <Media
-          query={{ minWidth: xxLargeScreen }}
+          query={{ minWidth: mediumScreen }}
           render={() => (
-            <div className="main-menu__search" onClick={handleOpen}>
-              <ReactSVG path={searchImg} />
+            <div
+              className="main-menu__search"
+              style={{ marginInlineEnd: "20px" }}
+            >
+              <ReactSVG path={searchImg} onClick={handleOpen} />
               <button
                 style={{
-                  marginLeft: "30px",
-                  fontSize: "16px",
-                  lineHeight: " 26px",
-                  color: "#373737",
-                }}
-                type="button"
-              >
-                {searchString === ""
-                  ? "Hvad er du på udkig efter?"
-                  : searchString}
-              </button>
-              <Modal
-                open={open}
-                onClose={handleClose}
-                aria-labelledby="simple-modal-title"
-                aria-describedby="simple-modal-description"
-              >
-                {body}
-              </Modal>
-            </div>
-          )}
-        />
-        <Media
-          query={{ minWidth: largeScreen, maxWidth: xLargeScreen }}
-          render={() => (
-            <div className="main-menu__search">
-              <ReactSVG path={searchImg} />
-              <button
-                style={{
-                  marginLeft: "30px",
+                  marginLeft: "20px",
                   fontSize: "16px",
                   lineHeight: " 26px",
                   color: "#373737",
@@ -342,7 +277,44 @@ const MainMenu: React.FC<MainMenuProps> = ({ demoMode }) => {
                 aria-labelledby="simple-modal-title"
                 aria-describedby="simple-modal-description"
               >
-                {body}
+                <div style={modalStyle} className={classes.paper}>
+                  <TextField
+                    fullWidth
+                    variant="outlined"
+                    className="searchInput"
+                    onChange={evt => onSearch(evt.target.value)}
+                    value={searchString}
+                    autoFocus
+                    InputProps={{
+                      startAdornment: (
+                        <InputAdornment position="start">
+                          <ReactSVG
+                            path={closeImg}
+                            onClick={() => clearInput()}
+                            className="search__input__close-btn"
+                          />
+                        </InputAdornment>
+                      ),
+                    }}
+                  />
+                  {isLoading && <Loader />}
+                  <div className={classes.scrollSearch}>
+                    {searchResult.length > 0 ? (
+                      <ul>
+                        {searchResult.map(product => (
+                          <ProductItem
+                            {...product}
+                            onClose={handleClose}
+                            key={product.node.id}
+                          />
+                        ))}
+                      </ul>
+                    ) : (
+                      searchString &&
+                      !isLoading && <NothingFound search={searchString} />
+                    )}
+                  </div>
+                </div>
               </Modal>
             </div>
           )}

@@ -14,6 +14,7 @@ const ProductItem: React.FC<any> = ({
   onClose = () => null,
 }) => (
   <>
+    <Divider />
     <li onClick={() => onClose()} className="search__products__item">
       <Link
         to={
@@ -35,10 +36,10 @@ const ProductItem: React.FC<any> = ({
         ) : (
           <>
             <Thumbnail source={product} />
-            <p style={{ display: "inline-block" }}>
+            <div style={{ display: "inline-block" }}>
               <p className="name">{product?.name}</p>
               <p className="detail">{product.category?.name || "-"}</p>
-            </p>
+            </div>
             <div style={{ float: "right", marginTop: "15px" }}>
               <ChevronRightIcon />
             </div>
@@ -46,7 +47,6 @@ const ProductItem: React.FC<any> = ({
         )}
       </Link>
     </li>
-    <Divider />
   </>
 );
 

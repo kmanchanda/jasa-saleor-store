@@ -89,14 +89,14 @@
 
   &__search{
     flex-basis: calc(54% - 2rem);
-    
     background: #F9F9F9;
     height: 3.5rem;
     border: 1px solid #F2F2F2;
     box-sizing: border-box;
     border-radius: 5rem;
+    padding-inline: 2rem;
    
-    .searcbox{ display: flex; width: 100%;  
+    .searcbox{ display: flex; width: 90%;  
     .from-control{
       border: 0;
       color: #888888;
@@ -106,8 +106,6 @@
       font-size: 1rem;
       background: #f9f9f9;
     }
-
-
   }
 }
 

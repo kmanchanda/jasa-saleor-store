@@ -17,6 +17,7 @@ const ProductListModule = ({ products }: propTypes) => {
             const { thumbnail, name, id } = item || {};
             return (
               <ProductCardTemplate
+                key={id}
                 imageUrl={thumbnail.url}
                 heading={name}
                 id={id}
