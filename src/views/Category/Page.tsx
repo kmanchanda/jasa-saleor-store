@@ -24,13 +24,14 @@ import { CategoryProducts_products } from "./gqlTypes/CategoryProducts";
 import ProductListModule from "../ProductList";
 
 import { mediumScreen } from "../../globalStyles/scss/variables.scss";
+import { PaginatedProductList } from "@components/organisms/ProductList/PaginatedProductList";
 
 interface SortItem {
   label: string;
   value?: string;
 }
 
-interface SortOptions extends Array<SortItem> {}
+interface SortOptions extends Array<SortItem> { }
 
 interface PageProps {
   activeFilters: number;
@@ -236,7 +237,14 @@ const Page: React.FC<PageProps> = ({
       </div>
       <div className="container">
         {canDisplayProducts && (
-          <ProductListModule products={products.edges.map(edge => edge.node)} />
+          <PaginatedProductList
+            products={products.edges.map(edge => edge.node)}
+            canLoadMore={hasNextPage}
+            loading={displayLoader}
+            onLoadMore={onLoadMore}
+
+          />
+          // <ProductListModule products={products.edges.map(edge => edge.node)} />
         )}
       </div>
     </div>
