@@ -6,7 +6,7 @@ import {
   ProductDetails_product_pricing,
   ProductDetails_product_variants,
 } from "@saleor/sdk/lib/queries/gqlTypes/ProductDetails";
-
+import addMeticon from "../../../../images/addM.png";
 import ReactSVG from "react-svg";
 import { ChevronRightBlackIcon } from "@temp/ImageMapping/imageMapping";
 import AddToCartButton from "../../molecules/AddToCartButton";
@@ -106,17 +106,16 @@ const AddToCartSection: React.FC<IAddToCartSection> = ({
     ? JSON.parse(metadata["Product image (Tryk)"])
     : null;
   /* @todo will replace with api data */
-  const dummyData = [
-    {
-      title: "Vedligeholdelse",
-      content: metadata.Vedligeholdelse || "",
-    },
-    {
-      title: " Specifikationer & Mål",
-      content:
-        " In ad velit in ex nostrud dolore cupidatat consectetur ea in ut nostrud velit in irure cillum tempor laboris sed adipisicing eu esse duis nulla non.",
-    },
-  ];
+  
+  const otherMaterialData = {
+    title : "Vedligeholdelse",
+    data : otherMaterials
+  }
+
+  const specifications = {
+    title : "Specifikationer & mål",
+    data : metadata
+  }
 
   return (
     <S.AddToCartSelection>
@@ -129,75 +128,6 @@ const AddToCartSection: React.FC<IAddToCartSection> = ({
         Dørgreb L-Form i PVD messing. Med 2 mm massiv roset Ø52 mm. CC 30 mm.
         Inkl. skruer. Passer til dørtykkelse 30-75 mm.
       </div>
-
-      {noPurchaseAvailable &&
-        renderErrorMessage(
-          intl.formatMessage(commonMessages.noPurchaseAvailable),
-          "notAvailable"
-        )}
-      {purchaseAvailableDate &&
-        renderErrorMessage(
-          intl.formatMessage(commonMessages.purchaseAvailableOn, {
-            date: new Intl.DateTimeFormat("default", {
-              year: "numeric",
-              month: "numeric",
-              day: "numeric",
-            }).format(purchaseAvailableDate),
-            time: new Intl.DateTimeFormat("default", {
-              hour: "numeric",
-              minute: "numeric",
-            }).format(purchaseAvailableDate),
-          }),
-          "timeRestrictedAvailability"
-        )}
-
-      {isLowStock &&
-        renderErrorMessage(
-          intl.formatMessage(commonMessages.lowStock),
-          "lowStockWarning"
-        )}
-      {isNoItemsAvailable &&
-        renderErrorMessage(
-          intl.formatMessage(commonMessages.noItemsAvailable),
-          "noItemsAvailable"
-        )}
-      {/* <S.VariantPicker>
-        <ProductVariantPicker
-          productVariants={productVariants}
-          onChange={onVariantPickerChange}
-          selectSidebar
-          queryAttributes={queryAttributes}
-          onAttributeChangeHandler={onAttributeChangeHandler}
-        />
-      </S.VariantPicker> */}
-
-      {/* <S.QuantityInput>
-        <QuantityInput
-          quantity={quantity}
-          maxQuantity={availableQuantity}
-          disabled={isOutOfStock || isNoItemsAvailable}
-          onQuantityChange={setQuantity}
-          hideErrors={!variantId || isOutOfStock || isNoItemsAvailable}
-          testingContext="addToCartQuantity"
-        />
-      </S.QuantityInput> */}
-
-      {/* {isOutOfStock ? (
-                renderErrorMessage(
-                    intl.formatMessage(commonMessages.outOfStock),
-                    "outOfStock"
-                )
-            ) : (
-                    <S.ProductPricing>
-                        {getProductPrice(productPricing, variantPricing)}
-                    </S.ProductPricing>
-                )} */}
-      <div className="btn-cart">
-        <AddToCartButton
-          onSubmit={() => onAddToCart(variantId, quantity)}
-          disabled={disableButton}
-        />
-      </div>
       <div className="btn-blo">
         <button className="btnIn2">Se forhandlerliste</button>
       </div>
@@ -205,49 +135,53 @@ const AddToCartSection: React.FC<IAddToCartSection> = ({
         <ReactSVG path={featureImg} /> Opnå gratis forsendelse ved køb over 500
         kr.
       </div>
-      {otherMaterials ? (
-        <div className="addsmettel">
-          <div className="addstitle">ANDET MATERIALE</div>
-          <div className="addmetlist">
-            <div className="addmetbox">
-              {otherMaterials.length > 0
-                ? otherMaterials.map((item, index) => {
-                    const { thumbnails, url } = item || {};
-                    const { small } = thumbnails || {};
-                    return (
-                      <a href={url} target="_blank" rel="noopener noreferrer">
-                        <img
-                          src={small?.url}
-                          alt="addMeticon"
-                          style={{ width: 80, height: 80 }}
-                        />
-                      </a>
-                    );
-                  })
-                : null}
-            </div>
-          </div>
+      
+      <div className="addsmettel">
+        <div className="addstitle">
+            ANDET MATERIALE
         </div>
-      ) : null}
-      {dummyData.map((item, key) => {
-        const { title, content } = item;
-
-        return (
+        <div className="addmetlist">
+            <div className="addmetbox">
+                <img src={addMeticon} alt={"addMeticon"} />
+            </div>
+        </div>
+      </div>
+    
+      {
+        otherMaterials ? (
           <div
-            onClick={() =>
-              overlayContext.show(
-                OverlayType.DisplayContent,
-                OverlayTheme.right,
-                { title, content }
-              )
-            }
-            className="accordian-list"
-          >
-            <span className="accordianTitle">{title}</span>
-            <IconAssetWrapper source={ChevronRightBlackIcon} />
-          </div>
-        );
-      })}
+        onClick={() => {
+          const { title, data} = otherMaterialData;
+          overlayContext.show(
+            OverlayType.DisplayOtherDocuments,
+            OverlayTheme.right,
+            { title, data }
+          )
+        }}
+        className="accordian-list"
+      >
+        <span className="accordianTitle">Vedligeholdelse</span>
+        <IconAssetWrapper source={ChevronRightBlackIcon} />
+      </div>
+        ) : null
+      }
+      
+      
+      <div
+        onClick={() => {
+          const { title, data} = specifications;
+          overlayContext.show(
+            OverlayType.DisplaySpecifications,
+            OverlayTheme.right,
+            { title, data }
+          )
+        }}
+        className="accordian-list"
+      >
+        <span className="accordianTitle">Specifikationer & mål</span>
+        <IconAssetWrapper source={ChevronRightBlackIcon} />
+      </div>
+      
     </S.AddToCartSelection>
   );
 };

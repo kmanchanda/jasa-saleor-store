@@ -13,6 +13,8 @@ export enum OverlayType {
   register = "register",
   DisplayContent = "display-content",
   DisplayFilterChips = "display-filter-chips",
+  DisplayOtherDocuments = "display-other-documents",
+  DisplaySpecifications = "display-specifications"
 }
 
 export enum OverlayTheme {
