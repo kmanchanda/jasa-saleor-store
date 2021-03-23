@@ -7,6 +7,8 @@ import MobileNav from "./MobileNav";
 import Modal from "./Modal";
 import Notification from "./Notification";
 import Search from "./Search";
+import DisplayOtherDocuments from "./DisplayOtherDocuments";
+import DisplaySpecifications from "./DisplaySpecifications";
 
 const OverlayManager: React.FC = props => (
   <OverlayContext.Consumer>
@@ -29,6 +31,12 @@ const OverlayManager: React.FC = props => (
 
         case OverlayType.DisplayContent:
           return <DisplayContent overlay={overlay} />;
+
+        case OverlayType.DisplayOtherDocuments :
+          return <DisplayOtherDocuments overlay={overlay} />;
+        
+        case OverlayType.DisplaySpecifications :
+          return <DisplaySpecifications overlay={overlay} />;
 
         case OverlayType.DisplayFilterChips:
           return <DisplayFilterChips overlay={overlay} />;
