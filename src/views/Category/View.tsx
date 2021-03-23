@@ -145,7 +145,6 @@ export const View: React.FC<ViewProps> = ({ match }) => {
             if (categoryData.loading) {
               return <Loader />;
             }
-
             if (categoryData.data && categoryData.data.category === null) {
               return <NotFound />;
             }
@@ -161,9 +160,9 @@ export const View: React.FC<ViewProps> = ({ match }) => {
             return (
               <TypedCategoryProductsQuery variables={variables}>
                 {categoryProducts => {
-                  if (!canDisplayFilters && categoryProducts.loading) {
-                    return <Loader />;
-                  }
+                  // if (!canDisplayFilters && categoryProducts.loading) {
+                  //   return <Loader />;
+                  // }
 
                   if (canDisplayFilters) {
                     const handleLoadMore = () =>
@@ -200,7 +199,7 @@ export const View: React.FC<ViewProps> = ({ match }) => {
                             edge => edge.node
                           )}
                           category={categoryData.data.category}
-                          displayLoader={categoryData.loading}
+                          displayLoader={categoryProducts.loading}
                           hasNextPage={
                             categoryProducts.data ?.products ?.pageInfo
                               .hasNextPage

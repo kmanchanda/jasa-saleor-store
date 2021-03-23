@@ -14,24 +14,31 @@
     padding: 32px;
 
     .heading-item{
-        margin: 6px;
+      font-family: 'Helvetica Neue';
+      font-style: normal;
+        margin: 8px;
+        margin-bottom: 10px;
         font-weight: 500;
-        font-size: 14px;
+        font-size: 18px;
         line-height: 24px;
         letter-spacing: 0.02em;
         text-transform: uppercase;
         display: flex;
         flex-direction: column;
         color: #131313;
-        min-width: 25%;
+        min-width: 24%;
         justify-content: flex-start;
-
+       
         .subheading-footer-item{
+          font-family: 'Helvetica Neue';
             display: flex;
-            font-size: 8px;
-            line-height: 20px;
-            color: #131313;
+            font-size: 16px;
+            line-height: 26px;
+            color: #373737;
             flex-wrap: wrap;
+            font-style: normal;
+            font-weight: normal;
+            padding: 7px;
         }
     }
 }

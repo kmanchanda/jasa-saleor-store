@@ -13,6 +13,7 @@ import {
   OverlayContext,
   OverlayTheme,
   OverlayType,
+  ProductsFeatured,
 } from "../../components";
 import { ProductListHeader } from "../../@next/components/molecules";
 import { FilterSidebar } from "../../@next/components/organisms/FilterSidebar";
@@ -25,6 +26,7 @@ import ProductListModule from "../ProductList";
 
 import { mediumScreen } from "../../globalStyles/scss/variables.scss";
 import { PaginatedProductList } from "@components/organisms/ProductList/PaginatedProductList";
+import FilterChips from "@temp/components/Filter-Chips/filterChips.componet";
 
 interface SortItem {
   label: string;
@@ -67,7 +69,7 @@ const Page: React.FC<PageProps> = ({
   const canDisplayProducts = maybe(
     () => !!products.edges && products.totalCount !== undefined
   );
-
+  console.log("displayLoader", displayLoader)
   const [showFilters, setShowFilters] = React.useState(false);
   const [header, setHeader] = React.useState(false);
   const overlayContext = React.useContext(OverlayContext);
@@ -119,7 +121,7 @@ const Page: React.FC<PageProps> = ({
       window.removeEventListener("scroll", listenScrollEvent);
     };
   }, []);
-
+  console.log("canDisplayProducts", canDisplayProducts)
   return (
     <div className="category">
       <FilterSidebar
@@ -133,7 +135,7 @@ const Page: React.FC<PageProps> = ({
         <Breadcrumbs breadcrumbs={extractBreadcrumbs(category)} />
       </div>
 
-      <div className="container">
+      {/* <div className="container">
         <FilterSidebar
           show={showFilters}
           hide={() => setShowFilters(false)}
@@ -141,7 +143,7 @@ const Page: React.FC<PageProps> = ({
           attributes={attributes}
           filters={filters}
         />
-      </div>
+      </div> */}
 
       <div className="container col-flex">
         <span className="title-heading">Dørgreb & tilbehør</span>
@@ -242,10 +244,10 @@ const Page: React.FC<PageProps> = ({
             canLoadMore={hasNextPage}
             loading={displayLoader}
             onLoadMore={onLoadMore}
-
           />
           // <ProductListModule products={products.edges.map(edge => edge.node)} />
         )}
+        {products.edges.length == 0 && <div className="productNotFound">No Product Found</div>}
       </div>
     </div>
   );

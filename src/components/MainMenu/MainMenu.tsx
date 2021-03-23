@@ -60,7 +60,6 @@ const MainMenu: React.FC<MainMenuProps> = ({ demoMode }) => {
   const [isLoading, setIsLoading] = useState(false);
 
   const classes = useStyles();
-  // getModalStyle is not a pure function, we roll the style only on the first render
   const [modalStyle] = React.useState(getModalStyle);
   const [open, setOpen] = React.useState(false);
 
@@ -146,6 +145,7 @@ const MainMenu: React.FC<MainMenuProps> = ({ demoMode }) => {
 
     setIsLoading(false);
     setSearchResult([...categoryResult, ...productResult]);
+    // setSearchResult(productResult)
   };
 
   const handleOpen = () => {
@@ -209,7 +209,7 @@ const MainMenu: React.FC<MainMenuProps> = ({ demoMode }) => {
                     query={{ minWidth: mediumScreen }}
                     render={() =>
                       items.map(item => {
-                        const hasSubNavigation = !!item?.children?.length;
+                        const hasSubNavigation = !!item ?.children ?.length;
                         return (
                           <li
                             data-test="mainMenuItem"
@@ -310,9 +310,9 @@ const MainMenu: React.FC<MainMenuProps> = ({ demoMode }) => {
                         ))}
                       </ul>
                     ) : (
-                      searchString &&
-                      !isLoading && <NothingFound search={searchString} />
-                    )}
+                        searchString &&
+                        !isLoading && <NothingFound search={searchString} />
+                      )}
                   </div>
                 </div>
               </Modal>

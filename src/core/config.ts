@@ -3,7 +3,7 @@
 import { generatePageUrl } from "./utils";
 
 export const BASE_URL = "/";
-export const PRODUCTS_PER_PAGE = 20;
+export const PRODUCTS_PER_PAGE = 8;
 export const SUPPORT_EMAIL = "support@example.com";
 export const PROVIDERS = {
   BRAINTREE: {
