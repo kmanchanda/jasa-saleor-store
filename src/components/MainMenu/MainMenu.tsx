@@ -89,9 +89,8 @@ const MainMenu: React.FC<MainMenuProps> = ({ demoMode }) => {
     setSearchResult([]);
   };
 
-  const onSearch = e => {
+  const onSearch = async e => {
     setSearchString(e);
-    setTimeout(function () {
       if ((e && e.length < 1) || e === "") {
         return;
       }
@@ -141,13 +140,12 @@ const MainMenu: React.FC<MainMenuProps> = ({ demoMode }) => {
       }
     `;
 
-      const productResult = SearchProduct(searchProductResultsQuery);
-      const categoryResult = SearchCategory(searchCategory);
+      const productResult = await SearchProduct(searchProductResultsQuery);
+      const categoryResult = await SearchCategory(searchCategory);
 
       setIsLoading(false);
       setSearchResult([...categoryResult, ...productResult]);
       // setSearchResult(productResult)
-    }, 1000);
   };
 
   const handleOpen = () => {
