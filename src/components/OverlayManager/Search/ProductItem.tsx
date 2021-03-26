@@ -28,7 +28,11 @@ const ProductItem: React.FC<any> = ({
             <div style={{ display: "flex" }}>
               <ReactSVG className="search-image" path={searchImg} />
               <span className="product-name">
-                {product?.name} ({product?.products?.totalCount})
+                <span> {product?.name}</span> &nbsp; (
+                <span style={{ color: "#F5A930", padding: "3px" }}>
+                  {product?.products?.totalCount}
+                </span>
+                )
               </span>
               <ChevronRightIcon style={{ height: "auto" }} />
             </div>

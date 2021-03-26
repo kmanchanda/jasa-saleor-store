@@ -43,7 +43,7 @@ const useStyles = makeStyles(theme => ({
     position: "absolute",
     maxHeight: "500px",
     backgroundColor: theme.palette.background.paper,
-    border: "1px solid #000",
+    border: "1px solid #F5A930",
     boxShadow: theme.shadows[5],
     padding: theme.spacing(1, 2, 1),
     outline: "0",
@@ -89,13 +89,14 @@ const MainMenu: React.FC<MainMenuProps> = ({ demoMode }) => {
     setSearchResult([]);
   };
 
-  const onSearch = async e => {
+  const onSearch = e => {
     setSearchString(e);
-    if ((e && e.length < 1) || e === "") {
-      return;
-    }
-    setIsLoading(true);
-    const searchProductResultsQuery = `
+    setTimeout(function () {
+      if ((e && e.length < 1) || e === "") {
+        return;
+      }
+      setIsLoading(true);
+      const searchProductResultsQuery = `
       query {
         products(filter: { search: "${e}" }, first: 20) {
           edges {
@@ -124,7 +125,7 @@ const MainMenu: React.FC<MainMenuProps> = ({ demoMode }) => {
         }
       }
     `;
-    const searchCategory = `
+      const searchCategory = `
       query {
         categories(filter: { search: "${e}" }, first: 50) {
           edges {
@@ -140,12 +141,13 @@ const MainMenu: React.FC<MainMenuProps> = ({ demoMode }) => {
       }
     `;
 
-    const productResult = await SearchProduct(searchProductResultsQuery);
-    const categoryResult = await SearchCategory(searchCategory);
+      const productResult = SearchProduct(searchProductResultsQuery);
+      const categoryResult = SearchCategory(searchCategory);
 
-    setIsLoading(false);
-    setSearchResult([...categoryResult, ...productResult]);
-    // setSearchResult(productResult)
+      setIsLoading(false);
+      setSearchResult([...categoryResult, ...productResult]);
+      // setSearchResult(productResult)
+    }, 1000);
   };
 
   const handleOpen = () => {
@@ -209,7 +211,7 @@ const MainMenu: React.FC<MainMenuProps> = ({ demoMode }) => {
                     query={{ minWidth: mediumScreen }}
                     render={() =>
                       items.map(item => {
-                        const hasSubNavigation = !!item ?.children ?.length;
+                        const hasSubNavigation = !!item?.children?.length;
                         return (
                           <li
                             data-test="mainMenuItem"
@@ -310,9 +312,9 @@ const MainMenu: React.FC<MainMenuProps> = ({ demoMode }) => {
                         ))}
                       </ul>
                     ) : (
-                        searchString &&
-                        !isLoading && <NothingFound search={searchString} />
-                      )}
+                      searchString &&
+                      !isLoading && <NothingFound search={searchString} />
+                    )}
                   </div>
                 </div>
               </Modal>

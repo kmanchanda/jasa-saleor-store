@@ -7,6 +7,8 @@ import Fab from "@material-ui/core/Fab";
 import NavigationIcon from "@material-ui/icons/Navigation";
 import Media from "react-media";
 import ExpandMoreIcon from "@material-ui/icons/ExpandMore";
+import { PaginatedProductList } from "@components/organisms/ProductList/PaginatedProductList";
+import FilterChips from "@temp/components/Filter-Chips/filterChips.componet";
 import {
   Breadcrumbs,
   extractBreadcrumbs,
@@ -25,8 +27,6 @@ import { CategoryProducts_products } from "./gqlTypes/CategoryProducts";
 import ProductListModule from "../ProductList";
 
 import { mediumScreen } from "../../globalStyles/scss/variables.scss";
-import { PaginatedProductList } from "@components/organisms/ProductList/PaginatedProductList";
-import FilterChips from "@temp/components/Filter-Chips/filterChips.componet";
 
 interface SortItem {
   label: string;
@@ -69,7 +69,7 @@ const Page: React.FC<PageProps> = ({
   const canDisplayProducts = maybe(
     () => !!products.edges && products.totalCount !== undefined
   );
-  console.log("displayLoader", displayLoader)
+  console.log("displayLoader", displayLoader);
   const [showFilters, setShowFilters] = React.useState(false);
   const [header, setHeader] = React.useState(false);
   const overlayContext = React.useContext(OverlayContext);
@@ -121,7 +121,7 @@ const Page: React.FC<PageProps> = ({
       window.removeEventListener("scroll", listenScrollEvent);
     };
   }, []);
-  console.log("canDisplayProducts", canDisplayProducts)
+  console.log("canDisplayProducts", canDisplayProducts);
   return (
     <div className="category">
       <FilterSidebar
@@ -247,7 +247,9 @@ const Page: React.FC<PageProps> = ({
           />
           // <ProductListModule products={products.edges.map(edge => edge.node)} />
         )}
-        {products.edges.length == 0 && <div className="productNotFound">No Product Found</div>}
+        {products.edges.length === 0 && (
+          <div className="productNotFound">No Product Found</div>
+        )}
       </div>
     </div>
   );

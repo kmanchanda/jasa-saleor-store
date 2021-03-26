@@ -14,7 +14,8 @@ export enum OverlayType {
   DisplayContent = "display-content",
   DisplayFilterChips = "display-filter-chips",
   DisplayOtherDocuments = "display-other-documents",
-  DisplaySpecifications = "display-specifications"
+  DisplaySpecifications = "display-specifications",
+  DisplayDealer = "display-dealer",
 }
 
 export enum OverlayTheme {

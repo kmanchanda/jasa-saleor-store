@@ -11,15 +11,29 @@
   .MuiOutlinedInput-root{
     border-radius: 90px;
     height: 56px;
+    border-color: #F5A930;
+    border-width: 1px;
   }
   .MuiOutlinedInput-root.Mui-focused .MuiOutlinedInput-notchedOutline {
-    border-color: gray;
-    border-width: 2px;
+    border-color: #F5A930;
+    border-width: 1px;
+  }
+  .MuiOutlinedInput-root.MuiOutlinedInput-notchedOutline {
+    border-color: #F5A930;
+    border-width: 1px;
   }
   .MuiOutlinedInput-inputAdornedStart {
     padding-left: 8px;
-    border-color: gray;
+    border-width: 1px;
+    border-color: #F5A930;
   }
+  .MuiInputBase-formControl{
+    border-color: #F5A930;
+    border-width: 1px;
+  }
+  .MuiOutlinedInput-notchedOutline {
+    border-color: #F5A930;
+}
 }
 
 .placeholder{

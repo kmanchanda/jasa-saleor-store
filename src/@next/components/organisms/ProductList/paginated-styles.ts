@@ -1,4 +1,4 @@
-import { media, styled } from "@styles"
+import { media, styled } from "@styles";
 
 export const List = styled.div`
   display: grid;

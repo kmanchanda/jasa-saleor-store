@@ -30,17 +30,17 @@
   }
 
   &__right {
-    position: fixed;
+    position: absolute;
     background-color: $white;
     right: 0;
     top: 0;
     height: 100%;
+    overflow-y: scroll;
     animation: sidenavRightOpen 0.3s;
   }
 
   &__header {
     align-items: center;
-    border-bottom: 1px solid $gray-light;
     display: flex;
     flex: 1;
     font-weight: $bold-font-weight;
@@ -60,7 +60,11 @@
     &__close-icon {
       cursor: pointer;
       margin: 0 $spacer;
-
+      svg {
+        * {
+          fill: $black;
+        }
+      }
       &:hover,
       &:focus {
         svg {

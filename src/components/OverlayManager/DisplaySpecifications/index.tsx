@@ -38,11 +38,13 @@ class DisplaySpecifications extends React.Component<{
             </div>
             <div className="content-width">
               <ul>
-              {Object.entries(data).map((item, key) => {
-                return (
-                  <li>{item[0]} : {item[1]}</li>
-                );
-              })}
+                {Object.entries(data).map((item, key) => {
+                  return (
+                    <li>
+                      {item[0]} : {item[1]}
+                    </li>
+                  );
+                })}
               </ul>
             </div>
           </Online>

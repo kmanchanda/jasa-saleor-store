@@ -37,10 +37,17 @@ class DisplayOtherDocuments extends React.Component<{
               />
             </div>
             <div className="content-width">
-              For mere info, se 
+              For mere info, se
               {data.map((item, key) => {
                 return (
-                  <span> &nbsp;<a href={item.url} target="_blank"> datablad</a></span>
+                  <span>
+                    {" "}
+                    &nbsp;
+                    <a href={item.url} target="_blank">
+                      {" "}
+                      datablad
+                    </a>
+                  </span>
                 );
               })}
             </div>

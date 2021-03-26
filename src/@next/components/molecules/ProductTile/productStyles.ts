@@ -42,15 +42,14 @@ export const Price = styled.p`
 
 export const Description = styled.p`
   ${textProps}
-    font-family: Helvetica Neue;
-    font-style: normal;
-    font-weight: 500;
-    font-size: 14px;
-    line-height: 24px;
-    letter-spacing: 0.02em;
-    text-transform: uppercase;
-    color: #888888;
-
+  font-family: Helvetica Neue;
+  font-style: normal;
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 24px;
+  letter-spacing: 0.02em;
+  text-transform: uppercase;
+  color: #888888;
 `;
 
 export const Image = styled.div`
@@ -58,9 +57,9 @@ export const Image = styled.div`
   background-color: #f9f9f9;
   border-radius: 2px;
   overflow: hidden;
-  padding: 50px 20px;
+  padding: 89px 28px;
   max-width: 340px;
-  max-height: 440px;
+  height: 440px;
 
   > img {
     height: 100% !important;

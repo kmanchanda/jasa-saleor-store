@@ -1,0 +1,28 @@
+.display-content{
+    max-width: 500px;
+    padding-inline: 20px
+}
+.grid-container {
+    display: grid;
+    grid-template: auto / auto auto;
+    grid-gap: 1px;
+    background-color: #E6E6E6;
+    overflow-y: scroll;
+  }
+  
+  .grid-container >  div {
+    background-color:#FFFFFF;
+    text-align: center;
+    padding: 20px 0;
+    font-size: 30px;
+  }
+.header-text{
+    font-family: Helvetica Neue;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 24px;
+    line-height: 32px;
+    color: #131313;
+    margin-bottom: 30px;
+    margin-top: 10px;
+}  

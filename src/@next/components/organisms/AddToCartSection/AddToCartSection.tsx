@@ -6,9 +6,9 @@ import {
   ProductDetails_product_pricing,
   ProductDetails_product_variants,
 } from "@saleor/sdk/lib/queries/gqlTypes/ProductDetails";
-import addMeticon from "../../../../images/addM.png";
 import ReactSVG from "react-svg";
 import { ChevronRightBlackIcon } from "@temp/ImageMapping/imageMapping";
+import addMeticon from "../../../../images/addM.png";
 import AddToCartButton from "../../molecules/AddToCartButton";
 import "react-accessible-accordion/dist/fancy-example.css";
 
@@ -106,16 +106,20 @@ const AddToCartSection: React.FC<IAddToCartSection> = ({
     ? JSON.parse(metadata["Product image (Tryk)"])
     : null;
   /* @todo will replace with api data */
-  
+
   const otherMaterialData = {
-    title : "Vedligeholdelse",
-    data : otherMaterials
-  }
+    title: "Vedligeholdelse",
+    data: otherMaterials,
+  };
 
   const specifications = {
-    title : "Specifikationer & mål",
-    data : metadata
-  }
+    title: "Specifikationer & mål",
+    data: metadata,
+  };
+  const dealer = {
+    title: "Vores forhandlere",
+    data: metadata,
+  };
 
   return (
     <S.AddToCartSelection>
@@ -129,59 +133,58 @@ const AddToCartSection: React.FC<IAddToCartSection> = ({
         Inkl. skruer. Passer til dørtykkelse 30-75 mm.
       </div>
       <div className="btn-blo">
-        <button className="btnIn2">Se forhandlerliste</button>
+        <button
+          className="btnIn2"
+          onClick={() => {
+            const { title, data } = dealer;
+            overlayContext.show(OverlayType.DisplayDealer, OverlayTheme.right, {
+              title,
+              data,
+            });
+          }}
+        >
+          Se forhandlerliste
+        </button>
       </div>
-      <div className="featurelists">
-        <ReactSVG path={featureImg} /> Opnå gratis forsendelse ved køb over 500
-        kr.
-      </div>
-      
       <div className="addsmettel">
-        <div className="addstitle">
-            ANDET MATERIALE
-        </div>
+        <div className="addstitle">ANDET MATERIALE</div>
         <div className="addmetlist">
-            <div className="addmetbox">
-                <img src={addMeticon} alt={"addMeticon"} />
-            </div>
+          <div className="addmetbox">
+            <img src={addMeticon} alt="addMeticon" />
+          </div>
         </div>
       </div>
-    
-      {
-        otherMaterials ? (
-          <div
-        onClick={() => {
-          const { title, data} = otherMaterialData;
-          overlayContext.show(
-            OverlayType.DisplayOtherDocuments,
-            OverlayTheme.right,
-            { title, data }
-          )
-        }}
-        className="accordian-list"
-      >
-        <span className="accordianTitle">Vedligeholdelse</span>
-        <IconAssetWrapper source={ChevronRightBlackIcon} />
-      </div>
-        ) : null
-      }
-      
-      
+
+      {otherMaterials ? (
+        <div
+          onClick={() => {
+            const { title, data } = otherMaterialData;
+            overlayContext.show(
+              OverlayType.DisplayOtherDocuments,
+              OverlayTheme.right,
+              { title, data }
+            );
+          }}
+          className="accordian-list"
+        >
+          <span className="accordianTitle">Vedligeholdelse</span>
+          <IconAssetWrapper source={ChevronRightBlackIcon} />
+        </div>
+      ) : null}
       <div
         onClick={() => {
-          const { title, data} = specifications;
+          const { title, data } = specifications;
           overlayContext.show(
             OverlayType.DisplaySpecifications,
             OverlayTheme.right,
             { title, data }
-          )
+          );
         }}
         className="accordian-list"
       >
         <span className="accordianTitle">Specifikationer & mål</span>
         <IconAssetWrapper source={ChevronRightBlackIcon} />
       </div>
-      
     </S.AddToCartSelection>
   );
 };
