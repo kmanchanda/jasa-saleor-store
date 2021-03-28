@@ -32,10 +32,24 @@ export const FiltersButton = styled.button`
 `;
 
 export const Clear = styled.button`
-  padding-left: 2rem;
   cursor: pointer;
-  font-size: ${props => props.theme.typography.smallFontSize};
-  color: ${props => props.theme.colors.lightFont};
+  background-color: #F9F9F9;
+  padding: 0.6rem;
+  border: none;
+  transition: 0.3s;
+  outline: none;
+  color: #131313;
+  width:  auto
+  display: inline-block;
+  border: 1px solid #E6E6E6;
+  box-sizing: border-box;
+  border-radius: 40px;
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 22px;
+  text-align: center;
+  letter-spacing: 0.01em;
+
 `;
 export const Element = styled.span`
   padding-left: 2rem;

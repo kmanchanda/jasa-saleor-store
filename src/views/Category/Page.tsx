@@ -33,7 +33,7 @@ interface SortItem {
   value?: string;
 }
 
-interface SortOptions extends Array<SortItem> { }
+interface SortOptions extends Array<SortItem> {}
 
 interface PageProps {
   activeFilters: number;
@@ -69,7 +69,6 @@ const Page: React.FC<PageProps> = ({
   const canDisplayProducts = maybe(
     () => !!products.edges && products.totalCount !== undefined
   );
-  console.log("displayLoader", displayLoader);
   const [showFilters, setShowFilters] = React.useState(false);
   const [header, setHeader] = React.useState(false);
   const overlayContext = React.useContext(OverlayContext);
@@ -121,7 +120,6 @@ const Page: React.FC<PageProps> = ({
       window.removeEventListener("scroll", listenScrollEvent);
     };
   }, []);
-  console.log("canDisplayProducts", canDisplayProducts);
   return (
     <div className="category">
       <FilterSidebar

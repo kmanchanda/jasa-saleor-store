@@ -63,76 +63,58 @@ class DisplayDealer extends React.Component<{
             <div className="header-text">Vores forhandlere</div>
             <div className="grid-container">
               <div>
-                {" "}
-                <img src={img1} />
+                <img alt="dealer img" src={img1} />
               </div>
               <div>
-                {" "}
-                <img src={img2} />
+                <img alt="dealer img" src={img2} />
               </div>
               <div>
-                {" "}
-                <img src={img3} />
+                <img alt="dealer img" src={img3} />
               </div>
               <div style={{ padding: "0px" }}>
-                {" "}
-                <img src={img4} />
+                <img alt="dealer img" src={img4} />
               </div>
               <div>
-                {" "}
-                <img src={img5} />
+                <img alt="dealer img" src={img5} />
               </div>
               <div style={{ padding: "0px" }}>
-                {" "}
-                <img src={img6} />
+                <img alt="dealer img" src={img6} />
               </div>
               <div>
-                {" "}
-                <img src={img7} />
+                <img alt="dealer img" src={img7} />
               </div>
               <div>
-                {" "}
-                <img src={img8} />
+                <img alt="dealer img" src={img8} />
               </div>
               <div>
-                {" "}
-                <img src={img9} />
+                <img alt="dealer img" src={img9} />
               </div>
               <div>
-                {" "}
-                <img src={img10} />
+                <img alt="dealer img" src={img10} />
               </div>
               <div>
-                {" "}
-                <img src={img11} />
+                <img alt="dealer img" src={img11} />
               </div>
               <div>
-                {" "}
-                <img src={img12} />
+                <img alt="dealer img" src={img12} />
               </div>
               <div>
-                {" "}
-                <img src={img13} />
+                <img alt="dealer img" src={img13} />
               </div>
               <div>
-                {" "}
-                <img src={img14} />
+                <img alt="dealer img" src={img14} />
               </div>
               <div>
-                {" "}
-                <img src={img15} />
+                <img alt="dealer img" src={img15} />
               </div>
               <div>
-                {" "}
-                <img src={img16} />
+                <img alt="dealer img" src={img16} />
               </div>
               <div>
-                {" "}
-                <img src={img17} />
+                <img alt="dealer img" src={img17} />
               </div>
               <div>
-                {" "}
-                <img src={img18} />
+                <img alt="dealer img" src={img18} />
               </div>
             </div>
           </Online>

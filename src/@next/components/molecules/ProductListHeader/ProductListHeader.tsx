@@ -1,5 +1,7 @@
 import React from "react";
 import { Chip } from "@components/atoms";
+import { FormattedMessage } from "react-intl";
+import { commonMessages } from "@temp/intl";
 import * as S from "./styles";
 import { IProps } from "./types";
 
@@ -25,10 +27,16 @@ export const ProductListHeader: React.FC<IProps> = ({
                   onClose={() =>
                     onCloseFilterAttribute(attributeSlug, valueSlug)
                   }
+                  key={valueSlug}
                 >
                   {valueName}
                 </Chip>
               )
+            )}
+            {activeFilters > 1 && (
+              <S.Clear onClick={clearFilters} data-test="clearFiltersButton">
+                <FormattedMessage {...commonMessages.clearFilterHeader} />
+              </S.Clear>
             )}
           </S.FiltersChipsWrapper>
         </S.LeftSide>

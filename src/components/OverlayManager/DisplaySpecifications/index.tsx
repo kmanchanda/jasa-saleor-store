@@ -24,7 +24,13 @@ class DisplaySpecifications extends React.Component<{
     const { overlay } = this.props;
     const { hide, context } = overlay;
     const { title = "", data } = context;
-    const metadata = ['Beskrivelse', 'Varenummer', 'DB number', 'Product image (Tryk)', 'Kort beskrivelse'];
+    const metadata = [
+      "Beskrivelse",
+      "Varenummer",
+      "DB number",
+      "Product image (Tryk)",
+      "Kort beskrivelse",
+    ];
 
     return (
       <Overlay testingContext="loginOverlay" context={overlay}>
@@ -41,7 +47,7 @@ class DisplaySpecifications extends React.Component<{
             <div className="content-width">
               <ul>
                 {Object.entries(data).map((item, key) => {
-                  if(!metadata.includes(item[0])) {
+                  if (!metadata.includes(item[0])) {
                     return (
                       <li>
                         {item[0]} : {item[1]}

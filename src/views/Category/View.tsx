@@ -141,7 +141,6 @@ export const View: React.FC<ViewProps> = ({ match }) => {
           loaderFull
         >
           {categoryData => {
-            console.log("categoryData", categoryData);
             if (categoryData.loading) {
               return <Loader />;
             }

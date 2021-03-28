@@ -43,7 +43,11 @@ class DisplayOtherDocuments extends React.Component<{
                   <span>
                     {" "}
                     &nbsp;
-                    <a href={item.url} target="_blank">
+                    <a
+                      href={item.url}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                    >
                       {" "}
                       datablad
                     </a>

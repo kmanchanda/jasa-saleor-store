@@ -29,6 +29,7 @@ export const AttributeValuesChecklist: React.FC<IProps> = ({
               name={name}
               checked={!!value.selected}
               onChange={() => onValueClick(value)}
+              key={index}
             >
               {value && value.name}
             </Checkbox>

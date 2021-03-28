@@ -1,18 +1,13 @@
 import React, { useContext, useState } from "react";
 import { useIntl } from "react-intl";
-import { commonMessages } from "@temp/intl";
 import { ICheckoutModelLine } from "@saleor/sdk/lib/helpers";
 import {
   ProductDetails_product_pricing,
   ProductDetails_product_variants,
 } from "@saleor/sdk/lib/queries/gqlTypes/ProductDetails";
-import ReactSVG from "react-svg";
 import { ChevronRightBlackIcon } from "@temp/ImageMapping/imageMapping";
 import addMeticon from "../../../../images/addM.png";
-import AddToCartButton from "../../molecules/AddToCartButton";
 import "react-accessible-accordion/dist/fancy-example.css";
-
-import featureImg from "../../../../images/feature-icon.svg";
 import IconAssetWrapper from "../../../../components/IconAssetWrapper/index";
 import "./scss/index.scss";
 
@@ -60,8 +55,6 @@ const AddToCartSection: React.FC<IAddToCartSection> = ({
   metadata,
   variantId,
 }) => {
-  const intl = useIntl();
-
   const [quantity] = useState<number>(1);
   const [variantStock] = useState<number>(0);
 

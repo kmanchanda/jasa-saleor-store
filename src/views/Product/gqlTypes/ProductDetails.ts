@@ -423,6 +423,7 @@ export interface ProductDetails_product_category_products_edges_node {
    */
   id: string;
   name: string;
+  loading: boolean;
   /**
    * The main thumbnail for a product.
    */

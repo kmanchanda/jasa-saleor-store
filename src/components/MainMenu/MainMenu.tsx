@@ -64,6 +64,7 @@ const MainMenu: React.FC<MainMenuProps> = ({ demoMode }) => {
   const [open, setOpen] = React.useState(false);
 
   const [activeDropdown, setActiveDropdown] = useState<string>(undefined);
+  // const [searchTerm, setSearchTerm] = useState('')
   useEffect(() => {
     if (activeDropdown) {
       overlayContext.show(OverlayType.mainMenuNav, OverlayTheme.modal);
@@ -89,15 +90,12 @@ const MainMenu: React.FC<MainMenuProps> = ({ demoMode }) => {
     setSearchResult([]);
   };
 
-  const onSearch = async e => {
-    setSearchString(e);
-      if ((e && e.length < 1) || e === "") {
-        return;
-      }
-      setIsLoading(true);
+  useEffect(() => {
+    setIsLoading(true);
+    const delayDebounceFn = setTimeout(async () => {
       const searchProductResultsQuery = `
       query {
-        products(filter: { search: "${e}" }, first: 20) {
+        products(filter: { search: "${searchString}" }, first: 20) {
           edges {
             node {
               id
@@ -126,7 +124,7 @@ const MainMenu: React.FC<MainMenuProps> = ({ demoMode }) => {
     `;
       const searchCategory = `
       query {
-        categories(filter: { search: "${e}" }, first: 50) {
+        categories(filter: { search: "${searchString}" }, first: 50) {
           edges {
             node {
               id
@@ -145,8 +143,10 @@ const MainMenu: React.FC<MainMenuProps> = ({ demoMode }) => {
 
       setIsLoading(false);
       setSearchResult([...categoryResult, ...productResult]);
-      // setSearchResult(productResult)
-  };
+    }, 1000);
+
+    return () => clearTimeout(delayDebounceFn);
+  }, [searchString]);
 
   const handleOpen = () => {
     setOpen(true);
@@ -252,25 +252,27 @@ const MainMenu: React.FC<MainMenuProps> = ({ demoMode }) => {
         <Media
           query={{ minWidth: mediumScreen }}
           render={() => (
-            <div
-              className="main-menu__search"
-              style={{ marginInlineEnd: "20px" }}
-            >
-              <ReactSVG path={searchImg} onClick={handleOpen} />
-              <button
-                style={{
-                  marginLeft: "20px",
-                  fontSize: "16px",
-                  lineHeight: " 26px",
-                  color: "#373737",
-                }}
-                type="button"
+            <>
+              <div
+                className="main-menu__search"
+                style={{ marginInlineEnd: "20px" }}
                 onClick={handleOpen}
               >
-                {searchString === ""
-                  ? "Hvad er du på udkig efter?"
-                  : searchString}
-              </button>
+                <ReactSVG path={searchImg} />
+                <button
+                  style={{
+                    marginLeft: "20px",
+                    fontSize: "16px",
+                    lineHeight: " 26px",
+                    color: "#373737",
+                  }}
+                  type="button"
+                >
+                  {searchString === ""
+                    ? "Hvad er du på udkig efter?"
+                    : searchString}
+                </button>
+              </div>
               <Modal
                 open={open}
                 onClose={handleClose}
@@ -282,7 +284,7 @@ const MainMenu: React.FC<MainMenuProps> = ({ demoMode }) => {
                     fullWidth
                     variant="outlined"
                     className="searchInput"
-                    onChange={evt => onSearch(evt.target.value)}
+                    onChange={evt => setSearchString(evt.target.value)}
                     value={searchString}
                     autoFocus
                     InputProps={{
@@ -316,7 +318,7 @@ const MainMenu: React.FC<MainMenuProps> = ({ demoMode }) => {
                   </div>
                 </div>
               </Modal>
-            </div>
+            </>
           )}
         />
 
