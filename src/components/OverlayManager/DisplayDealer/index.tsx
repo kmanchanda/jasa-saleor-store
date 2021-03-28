@@ -40,14 +40,7 @@ class DisplayDealer extends React.Component<{
 
   render() {
     const { overlay } = this.props;
-    const { hide, context } = overlay;
-    const { title = "", data } = context;
-    const array = [
-      "../../../images/image1.svg",
-      "../../../images/image2.svg",
-      "../../../images/image3.svg",
-      "../../../images/image4.svg",
-    ];
+    const { hide } = overlay;
     return (
       <Overlay testingContext="loginOverlay" context={overlay}>
         <div className="display-content">

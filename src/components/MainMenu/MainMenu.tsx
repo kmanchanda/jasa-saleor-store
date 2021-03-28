@@ -91,6 +91,10 @@ const MainMenu: React.FC<MainMenuProps> = ({ demoMode }) => {
   };
 
   useEffect(() => {
+    if ((searchString && searchString.length < 1) || searchString === "") {
+      setIsLoading(false);
+      return;
+    }
     setIsLoading(true);
     const delayDebounceFn = setTimeout(async () => {
       const searchProductResultsQuery = `
@@ -137,10 +141,8 @@ const MainMenu: React.FC<MainMenuProps> = ({ demoMode }) => {
         }
       }
     `;
-
       const productResult = await SearchProduct(searchProductResultsQuery);
       const categoryResult = await SearchCategory(searchCategory);
-
       setIsLoading(false);
       setSearchResult([...categoryResult, ...productResult]);
     }, 1000);

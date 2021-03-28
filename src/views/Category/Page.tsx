@@ -1,31 +1,23 @@
 import "./scss/index.scss";
-
 import * as React from "react";
-
 import { IFilterAttributes, IFilters } from "@types";
 import Fab from "@material-ui/core/Fab";
 import NavigationIcon from "@material-ui/icons/Navigation";
 import Media from "react-media";
 import ExpandMoreIcon from "@material-ui/icons/ExpandMore";
 import { PaginatedProductList } from "@components/organisms/ProductList/PaginatedProductList";
-import FilterChips from "@temp/components/Filter-Chips/filterChips.componet";
 import {
   Breadcrumbs,
   extractBreadcrumbs,
   OverlayContext,
   OverlayTheme,
   OverlayType,
-  ProductsFeatured,
 } from "../../components";
 import { ProductListHeader } from "../../@next/components/molecules";
 import { FilterSidebar } from "../../@next/components/organisms/FilterSidebar";
-
 import { maybe } from "../../core/utils";
-
 import { Category_category } from "./gqlTypes/Category";
 import { CategoryProducts_products } from "./gqlTypes/CategoryProducts";
-import ProductListModule from "../ProductList";
-
 import { mediumScreen } from "../../globalStyles/scss/variables.scss";
 
 interface SortItem {

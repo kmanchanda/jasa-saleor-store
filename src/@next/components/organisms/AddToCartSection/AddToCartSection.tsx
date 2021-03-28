@@ -1,5 +1,4 @@
-import React, { useContext, useState } from "react";
-import { useIntl } from "react-intl";
+import React, { useContext } from "react";
 import { ICheckoutModelLine } from "@saleor/sdk/lib/helpers";
 import {
   ProductDetails_product_pricing,
@@ -17,12 +16,8 @@ import {
   OverlayType,
 } from "../../../../components/index";
 import * as S from "./styles";
-import { getAvailableQuantity, canAddToCart } from "./stockHelpers";
-
-const LOW_STOCK_QUANTITY: number = 5;
 
 export type ObjectDto = Record<string | number, any>;
-
 export interface IAddToCartSection {
   productId: string;
   productVariants: ProductDetails_product_variants[];
@@ -40,65 +35,11 @@ export interface IAddToCartSection {
   onAttributeChangeHandler(slug: string | null, value: string): void;
 }
 
-const AddToCartSection: React.FC<IAddToCartSection> = ({
-  availableForPurchase,
-  isAvailableForPurchase,
-  items,
-  name,
-  productPricing,
-  productVariants,
-  queryAttributes,
-  descriptionJson,
-  onAddToCart,
-  onAttributeChangeHandler,
-  setVariantId,
-  metadata,
-  variantId,
-}) => {
-  const [quantity] = useState<number>(1);
-  const [variantStock] = useState<number>(0);
-
+const AddToCartSection: React.FC<IAddToCartSection> = ({ name, metadata }) => {
   const overlayContext = useContext(OverlayContext);
-
-  const availableQuantity = getAvailableQuantity(
-    items,
-    variantId,
-    variantStock
-  );
-  const isOutOfStock = !!variantId && variantStock === 0;
-  const noPurchaseAvailable = !isAvailableForPurchase && !availableForPurchase;
-  const purchaseAvailableDate =
-    !isAvailableForPurchase &&
-    availableForPurchase &&
-    Date.parse(availableForPurchase);
-  const isNoItemsAvailable = !!variantId && !isOutOfStock && !availableQuantity;
-  const isLowStock =
-    !!variantId &&
-    !isOutOfStock &&
-    !isNoItemsAvailable &&
-    availableQuantity < LOW_STOCK_QUANTITY;
-
-  const disableButton = !canAddToCart(
-    items,
-    !!isAvailableForPurchase,
-    variantId,
-    variantStock,
-    quantity
-  );
-
-  const renderErrorMessage = (message: string, testingContextId: string) => (
-    <S.ErrorMessage
-      data-test="stockErrorMessage"
-      data-testId={testingContextId}
-    >
-      {message}
-    </S.ErrorMessage>
-  );
-
   const otherMaterials = metadata["Product image (Tryk)"]
     ? JSON.parse(metadata["Product image (Tryk)"])
     : null;
-  /* @todo will replace with api data */
 
   const otherMaterialData = {
     title: "Vedligeholdelse",

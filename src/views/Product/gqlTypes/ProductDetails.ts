@@ -423,7 +423,7 @@ export interface ProductDetails_product_category_products_edges_node {
    */
   id: string;
   name: string;
-  loading: boolean;
+
   /**
    * The main thumbnail for a product.
    */
@@ -440,6 +440,7 @@ export interface ProductDetails_product_category_products_edges_node {
 
 export interface ProductDetails_product_category_products_edges {
   __typename: "ProductCountableEdge";
+  loading: boolean;
   /**
    * The item at the end of the edge.
    */
