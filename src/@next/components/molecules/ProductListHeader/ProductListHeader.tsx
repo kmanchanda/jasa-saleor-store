@@ -33,17 +33,12 @@ export const ProductListHeader: React.FC<IProps> = ({
                 </Chip>
               )
             )}
-            {activeFilters > 1 && (
+            {activeFilters > 0 && (
               <S.Clear onClick={clearFilters} data-test="clearFiltersButton">
                 <FormattedMessage {...commonMessages.clearFilterHeader} />
               </S.Clear>
             )}
           </S.FiltersChipsWrapper>
-          {activeFilters > 1 && (
-            <S.Clear onClick={clearFilters} data-test="clearFiltersButton">
-              <FormattedMessage {...commonMessages.clearFilterHeader} />
-            </S.Clear>
-          )}
         </S.LeftSide>
         {/* <S.RightSide>
           {activeFilters > 0 && (
